@@ -332,14 +332,6 @@
     .equipe-role { display: inline-block; background: var(--gold); color: var(--navy); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 16px; border-radius: 50px; margin-bottom: 18px; }
     .equipe-card p { font-size: 0.88rem; color: var(--gray); line-height: 1.7; }
 
-    /* ===== RDV ===== */
-    #rdv { background: var(--off-white); }
-    .rdv-form { max-width: 760px; margin: 48px auto 0; background: var(--white); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow); border: 1px solid rgba(46,94,170,0.08); }
-    .rdv-dispo { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
-    .rdv-check { display: inline-flex; align-items: center; gap: 7px; background: var(--off-white); border: 1.5px solid rgba(46,94,170,0.15); border-radius: 8px; padding: 9px 14px; font-size: 0.85rem; color: var(--dark); cursor: pointer; transition: border-color 0.2s, background 0.2s; }
-    .rdv-check input { width: auto; margin: 0; accent-color: var(--navy); }
-    .rdv-check:hover { border-color: var(--navy); }
-
     /* ===== GUIDE PDF ===== */
     #guide { background: linear-gradient(135deg, #eaf1ff 0%, #F0F5FF 100%); }
     .guide-inner { max-width: 760px; margin: 0 auto; text-align: center; }
@@ -347,7 +339,7 @@
     .guide-form { display: flex; gap: 12px; max-width: 540px; margin: 32px auto 14px; flex-wrap: wrap; }
     .guide-form input { flex: 1; min-width: 160px; border: 1.5px solid rgba(46,94,170,0.18); border-radius: 8px; padding: 13px 16px; font-family: var(--font-body); font-size: 0.9rem; outline: none; }
     .guide-form input:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(46,94,170,0.10); }
-    .guide-form button { background: var(--navy); color: #fff; border: none; border-radius: 8px; padding: 13px 26px; font-family: var(--font-body); font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: background 0.2s, transform 0.2s; white-space: nowrap; }
+    .guide-form button { width: 100%; max-width: 400px; margin: 0 auto; display: block; background: var(--navy); color: #fff; border: none; border-radius: 8px; padding: 18px 40px; font-family: var(--font-body); font-weight: 700; font-size: 1.1rem; cursor: pointer; transition: background 0.2s, transform 0.2s; white-space: nowrap; }
     .guide-form button:hover { background: var(--navy-dark); transform: translateY(-1px); }
     .guide-note { font-size: 0.78rem; color: var(--gray); }
     .guide-success { display: none; margin-top: 16px; color: #27ae60; font-size: 0.9rem; }
@@ -785,77 +777,6 @@
   </div>
 </section>
 
-<!-- ===== PRENDRE RENDEZ-VOUS ===== -->
-<section id="rdv">
-  <div class="section-inner">
-    <span class="section-badge fade-up">Prendre rendez-vous</span>
-    <h2 class="section-title fade-up delay-1">Échangeons sur votre projet</h2>
-    <div class="section-divider fade-up delay-2"></div>
-    <p class="section-subtitle fade-up delay-2">Indiquez vos disponibilités, nous vous rappelons sous 24h.</p>
-
-    <form class="rdv-form fade-up" id="rdvForm" novalidate>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="rdvNom">Nom complet *</label>
-          <input type="text" id="rdvNom" placeholder="Jean Dupont" required />
-        </div>
-        <div class="form-group">
-          <label for="rdvEmail">Email *</label>
-          <input type="email" id="rdvEmail" placeholder="jean@exemple.fr" required />
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="rdvTel">Téléphone *</label>
-          <input type="tel" id="rdvTel" placeholder="06 00 00 00 00" required />
-        </div>
-        <div class="form-group">
-          <label for="rdvType">Type de bien</label>
-          <select id="rdvType">
-            <option value="">Sélectionner…</option>
-            <option value="studio">Studio</option>
-            <option value="t2">T2</option>
-            <option value="t3">T3</option>
-            <option value="t4">T4 et plus</option>
-            <option value="immeuble">Immeuble</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="rdvZone">Zone</label>
-        <select id="rdvZone">
-          <option value="">Sélectionner…</option>
-          <option value="paris">Paris</option>
-          <option value="92">Hauts-de-Seine (92)</option>
-          <option value="93">Seine-Saint-Denis (93)</option>
-          <option value="94">Val-de-Marne (94)</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Disponibilités</label>
-        <div class="rdv-dispo">
-          <label class="rdv-check"><input type="checkbox" name="dispo" value="Matin" /> Matin</label>
-          <label class="rdv-check"><input type="checkbox" name="dispo" value="Après-midi" /> Après-midi</label>
-          <label class="rdv-check"><input type="checkbox" name="dispo" value="Lundi" /> Lundi</label>
-          <label class="rdv-check"><input type="checkbox" name="dispo" value="Mardi" /> Mardi</label>
-          <label class="rdv-check"><input type="checkbox" name="dispo" value="Mercredi" /> Mercredi</label>
-          <label class="rdv-check"><input type="checkbox" name="dispo" value="Jeudi" /> Jeudi</label>
-          <label class="rdv-check"><input type="checkbox" name="dispo" value="Vendredi" /> Vendredi</label>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="rdvMessage">Message (optionnel)</label>
-        <textarea id="rdvMessage" placeholder="Quelques mots sur votre bien ou votre projet…"></textarea>
-      </div>
-      <button type="submit" class="btn-submit">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        Demander un rappel sous 24h
-      </button>
-      <div class="form-success" id="rdvSuccess">✓ Demande envoyée ! Nous vous rappelons sous 24h.</div>
-    </form>
-  </div>
-</section>
-
 <!-- ===== CONTACT ===== -->
 <section id="contact">
   <div class="section-inner">
@@ -1189,21 +1110,6 @@
     form.querySelectorAll('input,select,textarea,button').forEach(el => el.disabled = true);
     successMsg.style.display = 'block';
     successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  });
-
-  // RDV form
-  const rdvForm = document.getElementById('rdvForm');
-  rdvForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const nom = document.getElementById('rdvNom').value.trim();
-    const email = document.getElementById('rdvEmail').value.trim();
-    const tel = document.getElementById('rdvTel').value.trim();
-    if (!nom || !email || !tel) {
-      alert('Merci de renseigner votre nom, votre email et votre téléphone.');
-      return;
-    }
-    rdvForm.querySelectorAll('input,select,textarea,button').forEach(el => el.disabled = true);
-    document.getElementById('rdvSuccess').style.display = 'block';
   });
 
   // Guide form

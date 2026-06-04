@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Combien coûte la gestion locative à Paris en 2026 ? | Olivia Gestion</title>
+  <meta name="description" content="Découvrez les tarifs de gestion locative à Paris en 2026 : fourchettes de prix, taux effectifs avec et sans TVA, comparatif des grandes agences." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #1a2f5e; --navy-dark: #111f3f; --navy-light: #243d78;
+      --gold: #C9A84C; --gold-light: #e0c06a; --gold-dark: #a8882e;
+      --white: #ffffff; --off-white: #f8f7f4; --light-gray: #f0eff0;
+      --gray: #6b7280; --dark: #1a1a2e;
+      --font-title: 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', Arial, sans-serif;
+      --shadow: 0 4px 24px rgba(26,47,94,0.10);
+      --radius-lg: 18px;
+    }
+    body { font-family: var(--font-body); color: var(--dark); background: var(--off-white); line-height: 1.65; }
+    h1,h2,h3,h4 { font-family: var(--font-title); }
+    a { text-decoration: none; color: inherit; }
+
+    #header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.97); backdrop-filter: blur(8px); box-shadow: 0 2px 16px rgba(26,47,94,0.08); }
+    .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 72px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo-emblem svg { width: 48px; height: 48px; }
+    .logo-name { font-family: var(--font-title); font-size: 1.25rem; font-weight: bold; color: var(--navy); letter-spacing: 0.04em; }
+    .logo-tagline { font-size: 0.65rem; color: var(--gold-dark); letter-spacing: 0.12em; text-transform: uppercase; }
+    nav { display: flex; align-items: center; gap: 4px; }
+    nav a { font-size: 0.82rem; color: var(--navy); padding: 8px 12px; border-radius: 6px; transition: background 0.2s; }
+    nav a:hover { background: var(--light-gray); }
+    .btn-nav { background: var(--gold); color: var(--navy) !important; font-weight: bold; padding: 9px 20px !important; border-radius: 6px; margin-left: 8px; }
+    .burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+    .burger span { display: block; width: 26px; height: 2px; background: var(--navy); border-radius: 2px; }
+    .mobile-nav { display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--white); box-shadow: 0 8px 24px rgba(26,47,94,0.12); padding: 16px 24px 24px; flex-direction: column; gap: 4px; z-index: 999; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { color: var(--navy); font-size: 0.95rem; padding: 12px 16px; border-radius: 8px; border-bottom: 1px solid var(--light-gray); }
+    .mobile-nav .btn-nav { margin: 8px 0 0; text-align: center; }
+
+    .article-wrap { max-width: 760px; margin: 0 auto; padding: 108px 24px 80px; }
+    .article-back { display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; color: var(--gray); margin-bottom: 32px; transition: color 0.2s; }
+    .article-back:hover { color: var(--navy); }
+    .article-tag { display: inline-block; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-dark); background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.25); border-radius: 20px; padding: 3px 12px; margin-bottom: 16px; }
+    .article-meta { font-size: 0.78rem; color: var(--gray); margin-bottom: 24px; }
+    h1.article-title { font-size: clamp(1.8rem, 3.5vw, 2.5rem); color: var(--navy); line-height: 1.25; margin-bottom: 20px; }
+    .article-intro { font-size: 1.05rem; color: var(--gray); line-height: 1.8; margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--light-gray); }
+    .article-body h2 { font-size: 1.5rem; color: var(--navy); margin: 40px 0 16px; line-height: 1.3; }
+    .article-body h3 { font-size: 1.15rem; color: var(--navy); margin: 28px 0 12px; }
+    .article-body p { font-size: 0.95rem; color: #374151; line-height: 1.8; margin-bottom: 18px; }
+    .article-body ul, .article-body ol { margin: 0 0 18px 20px; }
+    .article-body li { font-size: 0.95rem; color: #374151; line-height: 1.8; margin-bottom: 6px; }
+    .article-body strong { color: var(--navy); }
+    .article-highlight { background: linear-gradient(135deg, rgba(26,47,94,0.04), rgba(201,168,76,0.06)); border-left: 4px solid var(--gold); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; padding: 20px 24px; margin: 28px 0; }
+    .article-highlight p { margin: 0; font-size: 0.95rem; color: var(--navy); font-style: italic; }
+    .comp-table { width: 100%; border-collapse: collapse; margin: 24px 0 32px; background: var(--white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); }
+    .comp-table th { background: var(--navy); color: var(--white); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 12px 16px; text-align: left; font-family: var(--font-body); font-weight: 600; }
+    .comp-table td { padding: 12px 16px; font-size: 0.88rem; border-bottom: 1px solid var(--light-gray); }
+    .comp-table tr:last-child td { border-bottom: none; }
+    .comp-table tr.highlight td { background: rgba(201,168,76,0.07); font-weight: 600; color: var(--navy); }
+    .cta-end { background: linear-gradient(135deg, var(--navy-dark), var(--navy)); border-radius: var(--radius-lg); padding: 36px; text-align: center; margin-top: 48px; }
+    .cta-end h3 { font-size: 1.3rem; color: var(--white); margin-bottom: 10px; }
+    .cta-end p { font-size: 0.9rem; color: rgba(255,255,255,0.72); margin-bottom: 24px; }
+    .btn-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: var(--navy); font-weight: 700; font-size: 0.9rem; padding: 13px 28px; border-radius: 8px; transition: background 0.2s; }
+    .btn-cta:hover { background: var(--gold-dark); color: var(--white); }
+
+    footer { background: var(--dark); color: rgba(255,255,255,0.7); padding: 40px 24px 24px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .footer-inner p { font-size: 0.8rem; }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold-light); }
+
+    @media (max-width: 900px) { nav { display: none; } .burger { display: flex; } }
+  </style>
+</head>
+<body>
+
+<header id="header">
+  <div class="header-inner">
+    <a href="../index.html" class="logo">
+      <div class="logo-emblem">
+        <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" fill="white" stroke="#f0eff0" stroke-width="1"/><path d="M 6 24 A 18 18 0 0 1 42 24" stroke="#1a2f5e" stroke-width="2.5" stroke-linecap="round" fill="none"/><path d="M 6 24 A 18 18 0 0 0 42 24" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" fill="none"/><text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="15" font-weight="bold" fill="#1a2f5e">OG</text></svg>
+      </div>
+      <div class="logo-text">
+        <span class="logo-name">Olivia Gestion</span>
+        <span class="logo-tagline">Gestion locative Paris</span>
+      </div>
+    </a>
+    <nav>
+      <a href="../index.html#services">Services</a>
+      <a href="../index.html#tarifs">Tarifs</a>
+      <a href="../simulateur.html">Simulateur</a>
+      <a href="index.html">Blog</a>
+      <a href="../index.html#contact" class="btn-nav">Nous contacter</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="../index.html#services" onclick="closeMobileNav()">Services</a>
+  <a href="../index.html#tarifs" onclick="closeMobileNav()">Tarifs</a>
+  <a href="../simulateur.html" onclick="closeMobileNav()">Simulateur</a>
+  <a href="index.html" onclick="closeMobileNav()">Blog</a>
+  <a href="../index.html#contact" class="btn-nav" onclick="closeMobileNav()">Nous contacter</a>
+</div>
+
+<div class="article-wrap">
+  <a href="index.html" class="article-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Retour au blog
+  </a>
+
+  <span class="article-tag">Honoraires</span>
+  <p class="article-meta">Juin 2026 · 5 min de lecture · Par l'équipe Olivia Gestion</p>
+  <h1 class="article-title">Combien coûte la gestion locative à Paris en 2026 ?</h1>
+  <p class="article-intro">Les honoraires de gestion locative à Paris varient considérablement d'une agence à l'autre. Entre les grandes enseignes nationales qui facturent 10 à 12 % TTC et les gestionnaires indépendants non assujettis à la TVA, l'écart peut représenter plusieurs centaines d'euros par an. Voici un tour d'horizon complet des tarifs pratiqués en 2026 pour vous aider à faire le bon choix.</p>
+
+  <div class="article-body">
+
+    <h2>Les honoraires de gestion locative : comment ça fonctionne ?</h2>
+    <p>Les honoraires de gestion locative correspondent à la rémunération versée à l'agence ou au gestionnaire pour administrer votre bien au quotidien. Ils sont exprimés en pourcentage du loyer mensuel charges comprises et prélevés à chaque encaissement.</p>
+    <p>Ces honoraires couvrent généralement : l'encaissement et le reversement des loyers, l'émission des quittances mensuelles, le compte-rendu de gérance, la révision annuelle du loyer selon l'IRL, la gestion des petits travaux et sinistres, ainsi que l'interface avec le locataire pour toutes les demandes courantes.</p>
+    <p>La <strong>TVA est le premier piège à éviter</strong> lors de la comparaison des offres. Une agence facturant 10 % HT appliquera une TVA de 20 %, portant le taux effectif à 12 %. Un gestionnaire non assujetti à la TVA facturant 7 % représente donc un avantage net de 5 points — soit près de <strong>500 € d'économie par an sur un loyer de 1 000 € mensuels</strong>.</p>
+
+    <h2>Grille des tarifs pratiqués à Paris en 2026</h2>
+    <p>Voici un comparatif des honoraires de gestion locative pratiqués par les principales catégories d'acteurs sur le marché parisien en 2026 :</p>
+
+    <table class="comp-table">
+      <thead>
+        <tr><th>Type d'agence</th><th>Taux HT</th><th>TVA</th><th>Taux effectif</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Grandes agences nationales (Foncia, Nexity…)</td><td>10 %</td><td>+ 20 %</td><td><strong>12 % TTC</strong></td></tr>
+        <tr><td>Agences intermédiaires</td><td>8 %</td><td>+ 20 %</td><td><strong>9,6 % TTC</strong></td></tr>
+        <tr><td>Gestionnaires indépendants assujettis TVA</td><td>7–8 %</td><td>+ 20 %</td><td><strong>8,4–9,6 % TTC</strong></td></tr>
+        <tr class="highlight"><td>Olivia Gestion (non assujetti TVA)</td><td>7 %</td><td>–</td><td><strong>7 % nets</strong></td></tr>
+      </tbody>
+    </table>
+
+    <div class="article-highlight">
+      <p>Sur un loyer mensuel de 1 500 € CC (18 000 €/an), la différence entre une grande agence à 12 % effectif et Olivia Gestion à 7 % représente <strong>900 € d'économie annuelle</strong>.</p>
+    </div>
+
+    <h2>Qu'est-ce qui justifie ces écarts de prix ?</h2>
+
+    <h3>La structure de coûts des grandes agences</h3>
+    <p>Les grandes enseignes nationales comme Foncia ou Nexity bénéficient d'une notoriété et d'outils digitaux performants, mais leur modèle repose sur des frais de structure importants : agences physiques en zones premiums, équipes importantes, frais de marketing conséquents. Ces coûts se répercutent directement sur les honoraires facturés au propriétaire.</p>
+    <p>À cela s'ajoute l'assujettissement à la TVA, qui majore mécaniquement leurs tarifs de 20 %. Le propriétaire paye donc in fine bien plus que le taux affiché en vitrine.</p>
+
+    <h3>L'avantage des gestionnaires de petite taille</h3>
+    <p>Les agences de gestion locative de taille modeste, notamment celles créées sous forme de micro-entreprise ou SARL avec un chiffre d'affaires inférieur au seuil de TVA, peuvent proposer des honoraires nets sans majoration fiscale. Ce n'est pas un artifice comptable : c'est simplement que la TVA ne s'applique pas, et le propriétaire en bénéficie directement.</p>
+    <p>Par ailleurs, les structures à taille humaine offrent souvent un suivi plus personnalisé : un interlocuteur unique, une meilleure réactivité et une connaissance fine du marché local parisien.</p>
+
+    <h2>Les autres frais à surveiller en 2026</h2>
+    <p>Au-delà des honoraires de gestion courants, plusieurs postes de facturation sont à surveiller :</p>
+    <ul>
+      <li><strong>Frais de relocation</strong> : honoraires lors du changement de locataire, réglementés par la loi ALUR selon la zone géographique.</li>
+      <li><strong>Frais d'état des lieux</strong> : également réglementés, plafonnés à 3,03 €/m² pour la part bailleur à Paris.</li>
+      <li><strong>Frais de gestion des travaux</strong> : certaines agences ajoutent une commission de 5 à 10 % sur les travaux coordonnés. Chez Olivia Gestion, aucun surcoût n'est appliqué.</li>
+      <li><strong>Garantie loyers impayés (GLI)</strong> : optionnelle, à souscrire si votre locataire ne présente pas de garant solide.</li>
+    </ul>
+
+    <h2>Comment choisir son gestionnaire à Paris ?</h2>
+    <p>Face à cette diversité d'offres, voici les questions à poser avant de signer un mandat :</p>
+    <ol>
+      <li>Le taux affiché est-il HT ou TTC ? L'agence est-elle assujettie à la TVA ?</li>
+      <li>Quels frais s'ajoutent en cas de relocation ou de travaux ?</li>
+      <li>Aurai-je un interlocuteur unique ou un portefeuille tournant ?</li>
+      <li>Quel est le délai de reversement des loyers ?</li>
+      <li>La gestion est-elle digitalisée avec accès propriétaire en ligne ?</li>
+    </ol>
+    <p>La rentabilité locative ne se joue pas seulement sur le loyer : optimiser ses charges de gestion fait partie intégrante d'une stratégie patrimoniale efficace. À Paris, où les loyers sont élevés, même un point de différence sur le taux de gestion se traduit par plusieurs centaines d'euros d'économie annuelle.</p>
+
+    <div class="article-highlight">
+      <p>Chez <strong>Olivia Gestion</strong>, nos honoraires de gestion locative s'élèvent à <strong>7 % sans TVA</strong>, tout compris, sans frais cachés. Nous intervenons à Paris et en petite couronne (92, 93, 94). <a href="../index.html#contact" style="color:var(--gold-dark); font-weight:600;">Contactez-nous</a> pour un devis gratuit.</p>
+    </div>
+
+  </div>
+
+  <div class="cta-end">
+    <h3>Prêt à optimiser votre rentabilité ?</h3>
+    <p>Simulez vos économies et contactez-nous pour un premier échange gratuit sur votre projet de gestion locative.</p>
+    <a href="../index.html#contact" class="btn-cta">Demander un devis gratuit</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>© 2025 Olivia Gestion · <a href="../index.html" style="color:var(--gold);">olivia-gestion.fr</a></p>
+    <div class="footer-links">
+      <a href="../index.html">Accueil</a>
+      <a href="../simulateur.html">Simulateur</a>
+      <a href="index.html">Blog</a>
+      <a href="../index.html#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const burger = document.getElementById('burger');
+  const mobileNav = document.getElementById('mobileNav');
+  burger.addEventListener('click', () => mobileNav.classList.toggle('open'));
+  function closeMobileNav() { mobileNav.classList.remove('open'); }
+</script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog – Gestion locative Paris | Olivia Gestion</title>
+  <meta name="description" content="Conseils et guides pratiques sur la gestion locative à Paris : honoraires, réglementation ALUR, mise en location, fiscalité propriétaire." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #1a2f5e; --navy-dark: #111f3f; --navy-light: #243d78;
+      --gold: #C9A84C; --gold-light: #e0c06a; --gold-dark: #a8882e;
+      --white: #ffffff; --off-white: #f8f7f4; --light-gray: #f0eff0;
+      --gray: #6b7280; --dark: #1a1a2e;
+      --font-title: 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', Arial, sans-serif;
+      --shadow: 0 4px 24px rgba(26,47,94,0.10);
+      --radius-lg: 18px;
+    }
+    body { font-family: var(--font-body); color: var(--dark); background: var(--off-white); line-height: 1.65; }
+    h1,h2,h3 { font-family: var(--font-title); }
+    a { text-decoration: none; color: inherit; }
+
+    #header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.97); backdrop-filter: blur(8px); box-shadow: 0 2px 16px rgba(26,47,94,0.08); }
+    .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 72px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo-emblem svg { width: 48px; height: 48px; }
+    .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .logo-name { font-family: var(--font-title); font-size: 1.25rem; font-weight: bold; color: var(--navy); letter-spacing: 0.04em; }
+    .logo-tagline { font-size: 0.65rem; color: var(--gold-dark); letter-spacing: 0.12em; text-transform: uppercase; }
+    nav { display: flex; align-items: center; gap: 4px; }
+    nav a { font-size: 0.82rem; color: var(--navy); padding: 8px 12px; border-radius: 6px; transition: background 0.2s; }
+    nav a:hover { background: var(--light-gray); }
+    nav a.active { color: var(--gold-dark); font-weight: 600; }
+    .btn-nav { background: var(--gold); color: var(--navy) !important; font-weight: bold; padding: 9px 20px !important; border-radius: 6px; margin-left: 8px; }
+    .btn-nav:hover { background: var(--gold-dark) !important; color: var(--white) !important; }
+    .burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+    .burger span { display: block; width: 26px; height: 2px; background: var(--navy); border-radius: 2px; }
+    .mobile-nav { display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--white); box-shadow: 0 8px 24px rgba(26,47,94,0.12); padding: 16px 24px 24px; flex-direction: column; gap: 4px; z-index: 999; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { color: var(--navy); font-size: 0.95rem; padding: 12px 16px; border-radius: 8px; border-bottom: 1px solid var(--light-gray); }
+    .mobile-nav .btn-nav { margin: 8px 0 0; text-align: center; }
+
+    .page-hero { padding: 120px 24px 60px; background: linear-gradient(135deg, var(--navy-dark), var(--navy)); text-align: center; }
+    .page-hero .badge { display: inline-block; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-light); background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3); border-radius: 30px; padding: 5px 16px; margin-bottom: 20px; }
+    .page-hero h1 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); color: var(--white); margin-bottom: 16px; }
+    .page-hero h1 em { color: var(--gold-light); font-style: italic; }
+    .page-hero p { font-size: 1rem; color: rgba(255,255,255,0.75); max-width: 520px; margin: 0 auto; }
+
+    .blog-wrap { max-width: 1100px; margin: 0 auto; padding: 60px 24px 80px; }
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
+
+    .blog-card { background: var(--white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); transition: transform 0.25s, box-shadow 0.25s; display: flex; flex-direction: column; }
+    .blog-card:hover { transform: translateY(-5px); box-shadow: 0 12px 40px rgba(26,47,94,0.15); }
+    .blog-card-img { height: 180px; background: linear-gradient(135deg, var(--navy-dark), var(--navy-light)); display: flex; align-items: center; justify-content: center; }
+    .blog-card-img svg { opacity: 0.4; }
+    .blog-card-body { padding: 28px; flex: 1; display: flex; flex-direction: column; }
+    .blog-tag { display: inline-block; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-dark); background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.25); border-radius: 20px; padding: 3px 12px; margin-bottom: 14px; }
+    .blog-card h2 { font-size: 1.15rem; color: var(--navy); line-height: 1.35; margin-bottom: 12px; }
+    .blog-card p { font-size: 0.87rem; color: var(--gray); line-height: 1.7; flex: 1; margin-bottom: 20px; }
+    .blog-card-meta { font-size: 0.75rem; color: rgba(107,114,128,0.7); margin-bottom: 16px; }
+    .blog-read { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; color: var(--navy); transition: color 0.2s; }
+    .blog-read:hover { color: var(--gold-dark); }
+
+    footer { background: var(--dark); color: rgba(255,255,255,0.7); padding: 40px 24px 24px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .footer-inner p { font-size: 0.8rem; }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold-light); }
+
+    @media (max-width: 900px) { nav { display: none; } .burger { display: flex; } }
+  </style>
+</head>
+<body>
+
+<header id="header">
+  <div class="header-inner">
+    <a href="../index.html" class="logo">
+      <div class="logo-emblem">
+        <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" fill="white" stroke="#f0eff0" stroke-width="1"/><path d="M 6 24 A 18 18 0 0 1 42 24" stroke="#1a2f5e" stroke-width="2.5" stroke-linecap="round" fill="none"/><path d="M 6 24 A 18 18 0 0 0 42 24" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" fill="none"/><text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="15" font-weight="bold" fill="#1a2f5e">OG</text></svg>
+      </div>
+      <div class="logo-text">
+        <span class="logo-name">Olivia Gestion</span>
+        <span class="logo-tagline">Gestion locative Paris</span>
+      </div>
+    </a>
+    <nav>
+      <a href="../index.html#services">Services</a>
+      <a href="../index.html#tarifs">Tarifs</a>
+      <a href="../index.html#pourquoi">Avantages</a>
+      <a href="../index.html#apropos">À propos</a>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="../simulateur.html">Simulateur</a>
+      <a href="index.html" class="active">Blog</a>
+      <a href="../index.html#contact" class="btn-nav">Nous contacter</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="../index.html#services" onclick="closeMobileNav()">Services</a>
+  <a href="../index.html#tarifs" onclick="closeMobileNav()">Tarifs</a>
+  <a href="../index.html#pourquoi" onclick="closeMobileNav()">Avantages</a>
+  <a href="../simulateur.html" onclick="closeMobileNav()">Simulateur</a>
+  <a href="index.html" onclick="closeMobileNav()">Blog</a>
+  <a href="../index.html#contact" class="btn-nav" onclick="closeMobileNav()">Nous contacter</a>
+</div>
+
+<div class="page-hero">
+  <div class="badge">Ressources & conseils</div>
+  <h1>Le blog <em>Olivia Gestion</em></h1>
+  <p>Guides pratiques, décryptages réglementaires et conseils pour les propriétaires bailleurs à Paris et en petite couronne.</p>
+</div>
+
+<div class="blog-wrap">
+  <div class="blog-grid">
+
+    <article class="blog-card">
+      <div class="blog-card-img">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-tag">Honoraires</span>
+        <div class="blog-card-meta">Juin 2026 · 5 min de lecture</div>
+        <h2>Combien coûte la gestion locative à Paris en 2026 ?</h2>
+        <p>Fourchettes de prix, taux effectifs avec TVA, comparatif des grandes agences vs. indépendants. Tout ce que vous devez savoir avant de signer un mandat.</p>
+        <a href="blog-1.html" class="blog-read">
+          Lire l'article
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <article class="blog-card">
+      <div class="blog-card-img">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-tag">Fiscalité</span>
+        <div class="blog-card-meta">Juin 2026 · 6 min de lecture</div>
+        <h2>Gestion locative : pourquoi choisir une agence sans TVA ?</h2>
+        <p>Non-assujettissement à la TVA : ce que ça change concrètement sur la rentabilité de votre investissement locatif parisien.</p>
+        <a href="blog-2.html" class="blog-read">
+          Lire l'article
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <article class="blog-card">
+      <div class="blog-card-img">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-tag">Mise en location</span>
+        <div class="blog-card-meta">Juin 2026 · 5 min de lecture</div>
+        <h2>Honoraires de mise en location à Paris : tout ce qu'il faut savoir en 2026</h2>
+        <p>Plafonds ALUR, partage bailleur/locataire, frais d'état des lieux : le guide complet pour ne pas payer plus que la loi ne l'autorise.</p>
+        <a href="blog-3.html" class="blog-read">
+          Lire l'article
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </article>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>© 2025 Olivia Gestion · <a href="../index.html" style="color:var(--gold);">olivia-gestion.fr</a></p>
+    <div class="footer-links">
+      <a href="../index.html">Accueil</a>
+      <a href="../simulateur.html">Simulateur</a>
+      <a href="index.html">Blog</a>
+      <a href="../index.html#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const burger = document.getElementById('burger');
+  const mobileNav = document.getElementById('mobileNav');
+  burger.addEventListener('click', () => mobileNav.classList.toggle('open'));
+  function closeMobileNav() { mobileNav.classList.remove('open'); }
+</script>
+</body>
+</html>

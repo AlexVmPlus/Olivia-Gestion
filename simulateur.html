@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulateur d'économies – Gestion locative | Olivia Gestion</title>
+  <meta name="description" content="Calculez combien vous économisez avec Olivia Gestion vs une agence classique. Honoraires 7% sans TVA vs 10-12% avec TVA." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #1a2f5e; --navy-dark: #111f3f; --navy-light: #243d78;
+      --gold: #C9A84C; --gold-light: #e0c06a; --gold-dark: #a8882e;
+      --white: #ffffff; --off-white: #f8f7f4; --light-gray: #f0eff0;
+      --gray: #6b7280; --dark: #1a1a2e;
+      --font-title: 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', Arial, sans-serif;
+      --shadow: 0 4px 24px rgba(26,47,94,0.10);
+      --shadow-md: 0 8px 40px rgba(26,47,94,0.15);
+      --radius: 10px; --radius-lg: 18px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--dark); background: var(--off-white); line-height: 1.65; }
+    h1,h2,h3,h4 { font-family: var(--font-title); }
+    a { text-decoration: none; color: inherit; }
+
+    /* HEADER */
+    #header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.97); backdrop-filter: blur(8px); box-shadow: 0 2px 16px rgba(26,47,94,0.08); }
+    .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 72px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo-emblem svg { width: 48px; height: 48px; }
+    .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .logo-name { font-family: var(--font-title); font-size: 1.25rem; font-weight: bold; color: var(--navy); letter-spacing: 0.04em; }
+    .logo-tagline { font-size: 0.65rem; color: var(--gold-dark); letter-spacing: 0.12em; text-transform: uppercase; }
+    nav { display: flex; align-items: center; gap: 4px; }
+    nav a { font-size: 0.82rem; color: var(--navy); padding: 8px 12px; border-radius: 6px; transition: background 0.2s; }
+    nav a:hover { background: var(--light-gray); }
+    nav a.active { color: var(--gold-dark); font-weight: 600; }
+    .btn-nav { background: var(--gold); color: var(--navy) !important; font-weight: bold; padding: 9px 20px !important; border-radius: 6px; margin-left: 8px; }
+    .btn-nav:hover { background: var(--gold-dark) !important; color: var(--white) !important; }
+    .burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+    .burger span { display: block; width: 26px; height: 2px; background: var(--navy); border-radius: 2px; }
+    .mobile-nav { display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--white); box-shadow: 0 8px 24px rgba(26,47,94,0.12); padding: 16px 24px 24px; flex-direction: column; gap: 4px; z-index: 999; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { color: var(--navy); font-size: 0.95rem; padding: 12px 16px; border-radius: 8px; border-bottom: 1px solid var(--light-gray); }
+    .mobile-nav .btn-nav { margin: 8px 0 0; text-align: center; }
+
+    /* PAGE HERO */
+    .page-hero { padding: 120px 24px 60px; background: linear-gradient(135deg, var(--navy-dark), var(--navy)); text-align: center; }
+    .page-hero .badge { display: inline-block; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-light); background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3); border-radius: 30px; padding: 5px 16px; margin-bottom: 20px; }
+    .page-hero h1 { font-size: clamp(2rem, 4vw, 3rem); color: var(--white); margin-bottom: 16px; }
+    .page-hero h1 em { color: var(--gold-light); font-style: italic; }
+    .page-hero p { font-size: 1.05rem; color: rgba(255,255,255,0.78); max-width: 560px; margin: 0 auto; line-height: 1.7; }
+
+    /* MAIN */
+    .sim-wrap { max-width: 1100px; margin: 0 auto; padding: 60px 24px 80px; display: grid; grid-template-columns: 1fr 1.3fr; gap: 40px; align-items: start; }
+
+    /* FORM */
+    .sim-form-card { background: var(--white); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow); }
+    .sim-form-card h2 { font-size: 1.4rem; color: var(--navy); margin-bottom: 8px; }
+    .sim-form-card .sub { font-size: 0.88rem; color: var(--gray); margin-bottom: 32px; }
+    .form-group { margin-bottom: 22px; }
+    .form-group label { display: block; font-size: 0.78rem; font-weight: 600; color: var(--navy); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+    .form-group input, .form-group select { width: 100%; border: 1.5px solid rgba(26,47,94,0.15); border-radius: 8px; padding: 12px 14px; font-family: var(--font-body); font-size: 0.95rem; color: var(--dark); background: var(--white); outline: none; transition: border-color 0.2s, box-shadow 0.2s; -webkit-appearance: none; }
+    .form-group input:focus, .form-group select:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(26,47,94,0.08); }
+    .input-suffix { position: relative; }
+    .input-suffix input { padding-right: 40px; }
+    .input-suffix span { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); font-size: 0.9rem; color: var(--gray); pointer-events: none; }
+
+    /* RESULTS */
+    .sim-results-card { background: var(--white); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow); }
+    .sim-results-card h2 { font-size: 1.4rem; color: var(--navy); margin-bottom: 8px; }
+    .sim-results-card .sub { font-size: 0.88rem; color: var(--gray); margin-bottom: 28px; }
+    .savings-hero { background: linear-gradient(135deg, var(--navy-dark), var(--navy)); border-radius: var(--radius-lg); padding: 28px 32px; text-align: center; margin-bottom: 28px; }
+    .savings-label { font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 8px; }
+    .savings-amount { font-family: var(--font-title); font-size: 3rem; font-weight: 700; color: var(--gold-light); line-height: 1; }
+    .savings-amount-sub { font-size: 0.88rem; color: rgba(255,255,255,0.65); margin-top: 6px; }
+    .savings-vs { font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-top: 4px; }
+    .comp-table { width: 100%; border-collapse: collapse; }
+    .comp-table thead th { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dark); text-align: left; padding: 10px 12px; border-bottom: 2px solid rgba(201,168,76,0.2); }
+    .comp-table tbody tr { border-bottom: 1px solid var(--light-gray); transition: background 0.15s; }
+    .comp-table tbody tr:last-child { border-bottom: none; }
+    .comp-table tbody tr.olivia { background: rgba(201,168,76,0.06); }
+    .comp-table td { padding: 14px 12px; font-size: 0.88rem; vertical-align: middle; }
+    .comp-table .agency { font-weight: 600; color: var(--navy); }
+    .comp-table .olivia .agency { color: var(--gold-dark); }
+    .comp-table .rate { color: var(--gray); font-size: 0.82rem; }
+    .comp-table .annual { font-family: var(--font-title); font-weight: 700; color: var(--dark); text-align: right; }
+    .comp-table .olivia .annual { color: var(--gold-dark); }
+    .comp-table .badge-olivia { display: inline-block; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3); border-radius: 4px; font-size: 0.68rem; padding: 2px 7px; color: var(--gold-dark); margin-left: 6px; font-weight: 600; vertical-align: middle; }
+    .no-result { text-align: center; padding: 40px 20px; }
+    .no-result svg { opacity: 0.25; margin: 0 auto 16px; display: block; }
+    .no-result p { color: var(--gray); font-size: 0.9rem; }
+    .cta-block { margin-top: 28px; padding: 24px; background: var(--off-white); border-radius: var(--radius-lg); text-align: center; }
+    .cta-block p { font-size: 0.88rem; color: var(--gray); margin-bottom: 16px; line-height: 1.6; }
+    .btn-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: var(--navy); font-weight: 700; font-size: 0.9rem; padding: 13px 28px; border-radius: 8px; transition: background 0.2s, transform 0.2s; }
+    .btn-cta:hover { background: var(--gold-dark); color: var(--white); transform: translateY(-2px); }
+    .disclaimer { font-size: 0.76rem; color: var(--gray); text-align: center; margin-top: 12px; font-style: italic; }
+
+    /* FOOTER */
+    footer { background: var(--dark); color: rgba(255,255,255,0.7); padding: 40px 24px 24px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .footer-inner p { font-size: 0.8rem; }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold-light); }
+
+    @media (max-width: 900px) {
+      nav { display: none; }
+      .burger { display: flex; }
+      .sim-wrap { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 580px) {
+      .sim-form-card, .sim-results-card { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<header id="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-emblem">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="24" r="22" fill="white" stroke="#f0eff0" stroke-width="1"/>
+          <path d="M 6 24 A 18 18 0 0 1 42 24" stroke="#1a2f5e" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <path d="M 6 24 A 18 18 0 0 0 42 24" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="15" font-weight="bold" fill="#1a2f5e">OG</text>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <span class="logo-name">Olivia Gestion</span>
+        <span class="logo-tagline">Gestion locative Paris</span>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#tarifs">Tarifs</a>
+      <a href="index.html#pourquoi">Avantages</a>
+      <a href="index.html#apropos">À propos</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="simulateur.html" class="active">Simulateur</a>
+      <a href="blog/">Blog</a>
+      <a href="index.html#contact" class="btn-nav">Nous contacter</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html#services" onclick="closeMobileNav()">Services</a>
+  <a href="index.html#tarifs" onclick="closeMobileNav()">Tarifs</a>
+  <a href="index.html#pourquoi" onclick="closeMobileNav()">Avantages</a>
+  <a href="index.html#apropos" onclick="closeMobileNav()">À propos</a>
+  <a href="index.html#faq" onclick="closeMobileNav()">FAQ</a>
+  <a href="simulateur.html" onclick="closeMobileNav()">Simulateur</a>
+  <a href="blog/" onclick="closeMobileNav()">Blog</a>
+  <a href="index.html#contact" class="btn-nav" onclick="closeMobileNav()">Nous contacter</a>
+</div>
+
+<div class="page-hero">
+  <div class="badge">Outil gratuit</div>
+  <h1>Simulateur d'<em>économies locatives</em></h1>
+  <p>Comparez vos honoraires de gestion et découvrez combien vous économisez chaque année avec Olivia Gestion.</p>
+</div>
+
+<div class="sim-wrap">
+  <!-- FORM -->
+  <div class="sim-form-card">
+    <h2>Votre bien</h2>
+    <p class="sub">Renseignez les informations de votre bien pour obtenir une comparaison personnalisée.</p>
+
+    <div class="form-group">
+      <label for="surface">Surface du bien</label>
+      <div class="input-suffix">
+        <input type="number" id="surface" placeholder="Ex : 45" min="1" max="999" />
+        <span>m²</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="zone">Zone</label>
+      <select id="zone">
+        <option value="tres_tendue">Paris intramuros – Zone très tendue</option>
+        <option value="tendue">Zone tendue (agglomérations &gt; 50 000 hab.)</option>
+        <option value="non_tendue">Zone non tendue</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="loyer">Loyer mensuel charges comprises</label>
+      <div class="input-suffix">
+        <input type="number" id="loyer" placeholder="Ex : 1200" min="1" />
+        <span>€</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="typeGestion">Type de gestion souhaité</label>
+      <select id="typeGestion">
+        <option value="gestion">Gestion seule</option>
+        <option value="gestion_location">Gestion + Mise en location</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="sim-results-card">
+    <h2>Résultats</h2>
+    <p class="sub">Comparatif annuel de vos honoraires de gestion.</p>
+
+    <div id="noResult" class="no-result">
+      <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#1a2f5e" stroke-width="1.2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      <p>Renseignez le loyer mensuel pour afficher la comparaison.</p>
+    </div>
+
+    <div id="resultContent" style="display:none">
+      <div class="savings-hero">
+        <div class="savings-label">Votre économie annuelle avec Olivia Gestion</div>
+        <div class="savings-amount" id="savingsAmount">–</div>
+        <div class="savings-amount-sub">vs. une grande agence (Foncia / Nexity)</div>
+        <div class="savings-vs" id="savingsVsOther">–</div>
+      </div>
+
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Agence</th>
+            <th>Taux effectif</th>
+            <th style="text-align:right">Coût annuel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="agency">Foncia / Nexity</td>
+            <td class="rate">10% + TVA 20% = 12% effectif</td>
+            <td class="annual" id="costFoncia">–</td>
+          </tr>
+          <tr>
+            <td class="agency">Agence moyenne</td>
+            <td class="rate">8% + TVA 20% = 9,6% effectif</td>
+            <td class="annual" id="costMoyenne">–</td>
+          </tr>
+          <tr class="olivia">
+            <td class="agency">Olivia Gestion <span class="badge-olivia">SANS TVA</span></td>
+            <td class="rate">7% sans TVA = 7% effectif</td>
+            <td class="annual" id="costOlivia">–</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div id="locationBlock" style="display:none; margin-top:20px; padding:16px; background:rgba(201,168,76,0.06); border-radius:var(--radius); border-left:3px solid var(--gold);">
+        <p style="font-size:0.82rem; color:var(--navy); font-weight:600; margin-bottom:6px;">Honoraires de mise en location (1ère année – part bailleur)</p>
+        <p id="locationText" style="font-size:0.85rem; color:var(--gray);"></p>
+      </div>
+
+      <div class="cta-block">
+        <p>Prêt à économiser ? Confiez-nous votre bien et bénéficiez de nos honoraires parmi les plus compétitifs de Paris.</p>
+        <a href="index.html#contact" class="btn-cta">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Nous contacter gratuitement
+        </a>
+      </div>
+      <p class="disclaimer">Simulation indicative basée sur les loyers charges comprises. Les honoraires de mise en location sont réglementés et partagés bailleur/locataire selon la loi ALUR.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>© 2025 Olivia Gestion · <a href="index.html" style="color:var(--gold);">olivia-gestion.fr</a></p>
+    <div class="footer-links">
+      <a href="index.html">Accueil</a>
+      <a href="simulateur.html">Simulateur</a>
+      <a href="blog/">Blog</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const burger = document.getElementById('burger');
+  const mobileNav = document.getElementById('mobileNav');
+  burger.addEventListener('click', () => mobileNav.classList.toggle('open'));
+  function closeMobileNav() { mobileNav.classList.remove('open'); }
+
+  const locationRates = { tres_tendue: 12.10, tendue: 10.09, non_tendue: 8.07 };
+
+  function fmt(n) {
+    return n.toLocaleString('fr-FR', { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + ' €';
+  }
+
+  function calculate() {
+    const loyer = parseFloat(document.getElementById('loyer').value) || 0;
+    const surface = parseFloat(document.getElementById('surface').value) || 0;
+    const zone = document.getElementById('zone').value;
+    const typeGestion = document.getElementById('typeGestion').value;
+
+    const noResult = document.getElementById('noResult');
+    const resultContent = document.getElementById('resultContent');
+
+    if (loyer <= 0) {
+      noResult.style.display = 'block';
+      resultContent.style.display = 'none';
+      return;
+    }
+
+    noResult.style.display = 'none';
+    resultContent.style.display = 'block';
+
+    const annuel = loyer * 12;
+    const foncia = annuel * 0.12;
+    const moyenne = annuel * 0.096;
+    const olivia = annuel * 0.07;
+
+    document.getElementById('costFoncia').textContent = fmt(foncia);
+    document.getElementById('costMoyenne').textContent = fmt(moyenne);
+    document.getElementById('costOlivia').textContent = fmt(olivia);
+
+    const econFoncia = foncia - olivia;
+    const econMoyenne = moyenne - olivia;
+
+    document.getElementById('savingsAmount').textContent = fmt(econFoncia);
+    document.getElementById('savingsVsOther').textContent = 'soit ' + fmt(econMoyenne) + ' vs une agence moyenne';
+
+    const locationBlock = document.getElementById('locationBlock');
+    if (typeGestion === 'gestion_location' && surface > 0) {
+      locationBlock.style.display = 'block';
+      const tarifTotal = locationRates[zone];
+      const bailleurPart = (tarifTotal / 2) * surface;
+      document.getElementById('locationText').textContent =
+        'Pour un bien de ' + surface + ' m² en zone sélectionnée : honoraires de mise en location à votre charge estimés à ' +
+        fmt(bailleurPart) + ' (tarif réglementé ALUR, part bailleur = ' + (tarifTotal / 2).toFixed(2).replace('.', ',') + ' €/m²). Ce tarif est identique chez toutes les agences — notre avantage porte sur les frais de gestion annuels récurrents.';
+    } else {
+      locationBlock.style.display = 'none';
+    }
+  }
+
+  ['loyer', 'surface', 'zone', 'typeGestion'].forEach(id => {
+    document.getElementById(id).addEventListener('input', calculate);
+    document.getElementById(id).addEventListener('change', calculate);
+  });
+</script>
+</body>
+</html>

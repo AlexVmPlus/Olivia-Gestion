@@ -4,8 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Olivia Gestion – Gestion locative Paris &amp; Petite Couronne | 7% sans TVA</title>
-  <meta name="description" content="Olivia Gestion, spécialiste de la gestion locative à Paris et petite couronne (92, 93, 94). Honoraires 7% sans TVA, transparence totale, interlocuteur dédié. Demandez votre devis gratuit." />
-  <meta name="keywords" content="gestion locative Paris, administrateur de biens Paris, gestion locative 92 93 94, agence gestion locative pas cher Paris" />
+  <meta name="description" content="Olivia Gestion, spécialiste de la gestion locative à Paris et petite couronne (92, 93, 94). Fondée par Alexy Meech et Coline Attal, titulaires de la carte G. Honoraires 7% sans TVA, transparence totale, interlocuteur dédié." />
+  <meta name="keywords" content="gestion locative Paris, administrateur de biens Paris, gestion locative 92 93 94, carte G Paris, Alexy Meech, Coline Attal, agence gestion locative Paris" />
+  <meta name="author" content="Alexy Meech et Coline Attal, Olivia Gestion" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://olivia-gestion.fr/" />
   <meta property="og:title" content="Olivia Gestion – Gestion locative Paris &amp; Petite Couronne | 7% sans TVA" />
@@ -16,14 +17,40 @@
   <meta name="twitter:description" content="Spécialiste de la gestion locative à Paris et petite couronne. Honoraires 7% sans TVA, transparence totale." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://images.unsplash.com" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "Olivia Gestion",
+    "description": "Cabinet de gestion locative à Paris et en petite couronne. Carte G, activité réglementée par la loi Hoguet.",
+    "url": "https://olivia-gestion.fr/",
+    "email": "contact@olivia-gestion.fr",
+    "telephone": "+33659879939",
+    "image": "https://olivia-gestion.fr/og-image.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "25 rue de Ponthieu",
+      "postalCode": "75008",
+      "addressLocality": "Paris",
+      "addressCountry": "FR"
+    },
+    "areaServed": ["Paris", "Hauts-de-Seine", "Seine-Saint-Denis", "Val-de-Marne"],
+    "founder": [
+      { "@type": "Person", "name": "Alexy Meech", "jobTitle": "Président" },
+      { "@type": "Person", "name": "Coline Attal", "jobTitle": "Directrice Générale" }
+    ],
+    "identifier": { "@type": "PropertyValue", "name": "RCS Paris", "value": "105790315" }
+  }
+  </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --navy: #1a2f5e; --navy-dark: #111f3f; --navy-light: #243d78;
+      --navy: #2E5EAA; --navy-dark: #244a8a; --navy-light: #4A7FCC;
       --gold: #C9A84C; --gold-light: #e0c06a; --gold-dark: #a8882e;
-      --white: #ffffff; --off-white: #f8f7f4; --light-gray: #f0eff0;
-      --gray: #6b7280; --dark: #1a1a2e;
+      --white: #ffffff; --off-white: #F0F5FF; --light-gray: #eef2fb;
+      --gray: #6b7280; --dark: #1f2a44;
       --font-title: 'Playfair Display', Georgia, serif;
       --font-body: 'Inter', Arial, sans-serif;
       --shadow: 0 4px 24px rgba(30,58,122,0.10);
@@ -49,9 +76,9 @@
     .logo { display: flex; align-items: center; gap: 12px; cursor: pointer; }
     .logo-emblem { position: relative; width: 48px; height: 48px; flex-shrink: 0; }
     .logo-emblem svg { width: 48px; height: 48px; }
-    .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
-    .logo-name { font-family: var(--font-title); font-size: 1.25rem; font-weight: bold; color: var(--navy); letter-spacing: 0.04em; }
-    .logo-tagline { font-size: 0.65rem; color: var(--gold-dark); letter-spacing: 0.12em; text-transform: uppercase; }
+    .logo-text { display: flex; flex-direction: column; line-height: 1.15; }
+    .logo-name { font-family: var(--font-title); font-size: 1.5rem; font-weight: 700; color: var(--navy); letter-spacing: 0.10em; }
+    .logo-tagline { font-family: var(--font-body); font-size: 0.64rem; font-weight: 300; color: var(--gold-dark); letter-spacing: 0.22em; text-transform: uppercase; }
     nav { display: flex; align-items: center; gap: 4px; }
     nav a { font-size: 0.82rem; color: var(--navy); padding: 8px 12px; border-radius: 6px; transition: background 0.2s, color 0.2s; letter-spacing: 0.03em; white-space: nowrap; }
     nav a:hover { background: var(--light-gray); }
@@ -77,12 +104,12 @@
     #hero { padding-top: 72px; min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-light) 100%); }
     .hero-bg {
       position: absolute; inset: 0;
-      background-image: url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1800&q=85');
-      background-size: cover; background-position: center 40%; opacity: 0.38;
+      background-image: url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=1600&q=70');
+      background-size: cover; background-position: center 40%; opacity: 0.32;
     }
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(120deg, rgba(21,45,96,0.90) 0%, rgba(30,58,122,0.78) 45%, rgba(21,45,96,0.60) 100%);
+      background: linear-gradient(120deg, rgba(36,74,138,0.92) 0%, rgba(46,94,170,0.80) 45%, rgba(36,74,138,0.62) 100%);
     }
     .hero-inner { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
     .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(201,168,76,0.18); border: 1px solid rgba(201,168,76,0.45); border-radius: 30px; padding: 6px 18px; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 28px; }
@@ -291,8 +318,69 @@
     .delay-3 { transition-delay: 0.30s; }
     .delay-4 { transition-delay: 0.40s; }
 
+    /* ===== CARTE G BADGE (hero) ===== */
+    .carte-g-badge { display: inline-flex; align-items: center; gap: 9px; background: rgba(201,168,76,0.12); border: 1.5px solid var(--gold); border-radius: 50px; padding: 9px 20px; margin-bottom: 32px; color: var(--gold-light); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.04em; }
+    .carte-g-badge svg { flex-shrink: 0; }
+
+    /* ===== ÉQUIPE ===== */
+    #equipe { background: var(--off-white); }
+    .equipe-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 48px; }
+    .equipe-card { background: var(--white); border-radius: var(--radius-lg); padding: 40px 34px; box-shadow: var(--shadow); text-align: center; transition: transform 0.25s, box-shadow 0.25s; }
+    .equipe-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .equipe-photo { width: 110px; height: 110px; border-radius: 50%; background: linear-gradient(135deg, #d7ddea, #c2cbdc); margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; color: #fff; }
+    .equipe-name { font-family: var(--font-title); font-size: 1.3rem; color: var(--navy); margin-bottom: 10px; }
+    .equipe-role { display: inline-block; background: var(--gold); color: var(--navy); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 16px; border-radius: 50px; margin-bottom: 18px; }
+    .equipe-card p { font-size: 0.88rem; color: var(--gray); line-height: 1.7; }
+
+    /* ===== RDV ===== */
+    #rdv { background: var(--off-white); }
+    .rdv-form { max-width: 760px; margin: 48px auto 0; background: var(--white); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow); border: 1px solid rgba(46,94,170,0.08); }
+    .rdv-dispo { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+    .rdv-check { display: inline-flex; align-items: center; gap: 7px; background: var(--off-white); border: 1.5px solid rgba(46,94,170,0.15); border-radius: 8px; padding: 9px 14px; font-size: 0.85rem; color: var(--dark); cursor: pointer; transition: border-color 0.2s, background 0.2s; }
+    .rdv-check input { width: auto; margin: 0; accent-color: var(--navy); }
+    .rdv-check:hover { border-color: var(--navy); }
+
+    /* ===== GUIDE PDF ===== */
+    #guide { background: linear-gradient(135deg, #eaf1ff 0%, #F0F5FF 100%); }
+    .guide-inner { max-width: 760px; margin: 0 auto; text-align: center; }
+    .guide-icon { width: 64px; height: 64px; background: var(--gold); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 22px; }
+    .guide-form { display: flex; gap: 12px; max-width: 540px; margin: 32px auto 14px; flex-wrap: wrap; }
+    .guide-form input { flex: 1; min-width: 160px; border: 1.5px solid rgba(46,94,170,0.18); border-radius: 8px; padding: 13px 16px; font-family: var(--font-body); font-size: 0.9rem; outline: none; }
+    .guide-form input:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(46,94,170,0.10); }
+    .guide-form button { background: var(--navy); color: #fff; border: none; border-radius: 8px; padding: 13px 26px; font-family: var(--font-body); font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: background 0.2s, transform 0.2s; white-space: nowrap; }
+    .guide-form button:hover { background: var(--navy-dark); transform: translateY(-1px); }
+    .guide-note { font-size: 0.78rem; color: var(--gray); }
+    .guide-success { display: none; margin-top: 16px; color: #27ae60; font-size: 0.9rem; }
+
+    /* ===== POP-UP & COOKIE shared inputs ===== */
+    /* ===== EXIT POPUP ===== */
+    #exitPopup { position: fixed; inset: 0; z-index: 2000; background: rgba(20,30,55,0.72); display: none; align-items: center; justify-content: center; padding: 24px; }
+    #exitPopup.show { display: flex; }
+    .exit-card { background: #fff; border-radius: var(--radius-lg); max-width: 460px; width: 100%; padding: 44px 38px; text-align: center; position: relative; box-shadow: 0 24px 80px rgba(0,0,0,0.3); }
+    .exit-close { position: absolute; top: 16px; right: 18px; background: none; border: none; font-size: 1.6rem; line-height: 1; color: var(--gray); cursor: pointer; }
+    .exit-card h3 { font-family: var(--font-title); font-size: 1.7rem; color: var(--navy); margin-bottom: 12px; }
+    .exit-card p { font-size: 0.95rem; color: var(--gray); margin-bottom: 22px; line-height: 1.6; }
+    .exit-form { display: flex; flex-direction: column; gap: 12px; }
+    .exit-form input { border: 1.5px solid rgba(46,94,170,0.18); border-radius: 8px; padding: 13px 16px; font-family: var(--font-body); font-size: 0.9rem; outline: none; }
+    .exit-form input:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(46,94,170,0.10); }
+    .exit-form button { background: var(--gold); color: var(--navy); border: none; border-radius: 8px; padding: 14px; font-family: var(--font-body); font-weight: 700; font-size: 0.92rem; cursor: pointer; transition: background 0.2s; }
+    .exit-form button:hover { background: var(--gold-dark); color: #fff; }
+    .exit-decline { display: inline-block; margin-top: 14px; font-size: 0.82rem; color: var(--gray); cursor: pointer; text-decoration: underline; background: none; border: none; }
+
+    /* ===== COOKIE BANNER ===== */
+    #cookieBanner { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 1500; background: #fff; border-radius: var(--radius); box-shadow: 0 8px 40px rgba(20,30,55,0.18); padding: 18px 22px; display: none; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; max-width: 1100px; margin: 0 auto; }
+    #cookieBanner.show { display: flex; }
+    .cookie-text { font-size: 0.85rem; color: var(--dark); flex: 1; min-width: 240px; }
+    .cookie-text a { color: var(--navy); text-decoration: underline; }
+    .cookie-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .cookie-btn { border: none; border-radius: 7px; padding: 10px 20px; font-family: var(--font-body); font-weight: 600; font-size: 0.83rem; cursor: pointer; transition: opacity 0.2s; }
+    .cookie-btn:hover { opacity: 0.9; }
+    .cookie-accept { background: var(--navy); color: #fff; }
+    .cookie-refuse { background: var(--light-gray); color: var(--dark); }
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 900px) {
+      .equipe-grid { grid-template-columns: 1fr; }
       nav { display: none; }
       .burger { display: flex; }
       .hero-inner { grid-template-columns: 1fr; gap: 40px; }
@@ -325,9 +413,9 @@
       <div class="logo-emblem">
         <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="24" cy="24" r="22" fill="white" stroke="#f0eff0" stroke-width="1"/>
-          <path d="M 6 24 A 18 18 0 0 1 42 24" stroke="#1a2f5e" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <path d="M 6 24 A 18 18 0 0 1 42 24" stroke="#2E5EAA" stroke-width="2.5" stroke-linecap="round" fill="none"/>
           <path d="M 6 24 A 18 18 0 0 0 42 24" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-          <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="15" font-weight="bold" fill="#1a2f5e">OG</text>
+          <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="15" font-weight="bold" fill="#2E5EAA">OG</text>
         </svg>
       </div>
       <div class="logo-text">
@@ -344,6 +432,7 @@
       <a href="#faq">FAQ</a>
       <a href="simulateur.html">Simulateur</a>
       <a href="blog/">Blog</a>
+      <a href="espace-proprietaire.html">Espace propriétaire</a>
       <a href="#contact" class="btn-nav">Nous contacter</a>
     </nav>
     <button class="burger" id="burger" aria-label="Menu">
@@ -361,6 +450,7 @@
   <a href="#faq" onclick="closeMobileNav()">FAQ</a>
   <a href="simulateur.html" onclick="closeMobileNav()">Simulateur</a>
   <a href="blog/" onclick="closeMobileNav()">Blog</a>
+  <a href="espace-proprietaire.html" onclick="closeMobileNav()">Espace propriétaire</a>
   <a href="#contact" class="btn-nav" onclick="closeMobileNav()">Nous contacter</a>
 </div>
 
@@ -372,7 +462,11 @@
     <div class="hero-content">
       <div class="hero-badge">Gestion locative · Paris &amp; Petite couronne</div>
       <h1 class="hero-title">Votre bien,<br><em>notre priorité</em></h1>
-      <p class="hero-sub">Confiez la gestion de votre patrimoine immobilier à des experts parisiens passionnés. Transparence totale, réactivité garantie et accompagnement sur-mesure.</p>
+      <p class="hero-sub">Nous gérons votre appartement comme si c'était le nôtre. Vous touchez vos loyers, on s'occupe du reste : locataires, travaux, paperasse. Un seul interlocuteur, des comptes clairs chaque mois.</p>
+      <div class="carte-g-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Carte G · Activité réglementée · Loi Hoguet
+      </div>
       <div class="hero-actions">
         <a href="#contact" class="btn-primary">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
@@ -452,21 +546,21 @@
     <div class="services-grid">
       <div class="service-card fade-up">
         <div class="service-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1a2f5e" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         </div>
         <h3>Gestion locative complète</h3>
         <p>Encaissement des loyers, reversement mensuel, gestion des impayés, quittances et régularisation de charges. Votre bien géré sans effort.</p>
       </div>
       <div class="service-card fade-up delay-1">
         <div class="service-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1a2f5e" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </div>
         <h3>Mise en location</h3>
         <p>Estimation du loyer, photos professionnelles, diffusion multi-plateformes, sélection rigoureuse des candidats et signature du bail.</p>
       </div>
       <div class="service-card fade-up delay-2">
         <div class="service-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1a2f5e" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>
         </div>
         <h3>État des lieux</h3>
         <p>États des lieux d'entrée et de sortie détaillés, réalisés par nos soins avec rapport photographique complet et contradictoire.</p>
@@ -480,7 +574,7 @@
       </div>
       <div class="service-card fade-up delay-4">
         <div class="service-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1a2f5e" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
         </div>
         <h3>Gestion des travaux</h3>
         <p>Coordination avec artisans de confiance, devis comparatifs, suivi des interventions et réception des travaux en votre nom.</p>
@@ -492,16 +586,23 @@
         <h3>Conseil juridique &amp; fiscal</h3>
         <p>Accompagnement sur les obligations légales du bailleur, optimisation fiscale et veille réglementaire continue.</p>
       </div>
+      <div class="service-card fade-up delay-2">
+        <div class="service-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3>Travaux &amp; Rénovation</h3>
+        <p>Nous coordonnons l'ensemble de vos travaux grâce à notre réseau de prestataires de confiance avec qui nous travaillons depuis plusieurs années. Changement de serrure, ménage professionnel, rafraîchissement ou rénovation complète d'appartement : tout est géré sur devis transparent. Notre statut hors TVA nous permet de vous proposer des devis particulièrement compétitifs.</p>
+      </div>
     </div>
 
     <!-- TVA NOTICE -->
     <div class="tva-notice fade-up">
       <div class="tva-notice-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a2f5e" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
       </div>
       <div class="tva-notice-text">
         <strong>Olivia Gestion n'est pas assujettie à la TVA</strong>
-        <p>Vos factures de travaux ne subissent aucune TVA supplémentaire de notre part — un avantage direct et concret pour la rentabilité de votre investissement. Les artisans facturent directement au taux applicable, sans surcoût de notre côté.</p>
+        <p>Vos factures de travaux ne subissent aucune TVA supplémentaire de notre part : un avantage direct et concret pour la rentabilité de votre investissement. Les artisans facturent directement au taux applicable, sans surcoût de notre côté.</p>
       </div>
     </div>
   </div>
@@ -564,9 +665,9 @@
 
     <div class="tva-banner fade-up delay-1">
       <div class="tva-banner-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a2f5e" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       </div>
-      <p><strong>Non assujetti à la TVA :</strong> Olivia Gestion n'est pas assujettie à la TVA — vos factures de travaux ne subissent aucune TVA supplémentaire de notre part, un avantage direct pour votre rentabilité locative.</p>
+      <p><strong>Non assujetti à la TVA :</strong> Olivia Gestion n'est pas assujettie à la TVA, et vos factures de travaux ne subissent aucune TVA supplémentaire de notre part, un avantage direct pour votre rentabilité locative.</p>
     </div>
   </div>
 </section>
@@ -580,7 +681,7 @@
     <div class="pourquoi-grid">
       <div class="pourquoi-card slide-left">
         <div class="pourquoi-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a2f5e" stroke-width="1.7" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="1.7" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
         </div>
         <div class="pourquoi-number">01</div>
         <h3>Transparence totale</h3>
@@ -596,7 +697,7 @@
       </div>
       <div class="pourquoi-card fade-up delay-2">
         <div class="pourquoi-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a2f5e" stroke-width="1.7" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="1.7" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
         <div class="pourquoi-number">03</div>
         <h3>Expertise Paris &amp; banlieue</h3>
@@ -637,11 +738,11 @@
 
       <div class="apropos-content slide-right delay-2">
         <span class="section-badge">Notre histoire</span>
-        <h2 class="section-title">Une équipe jeune et dynamique au service de votre patrimoine</h2>
+        <h2 class="section-title">Deux gestionnaires, pas un standard téléphonique</h2>
         <div class="section-divider"></div>
-        <p>Olivia Gestion est née de la conviction que la gestion locative méritait une approche plus moderne, plus transparente et plus humaine. Trop souvent, les propriétaires subissent une gestion opaque, des frais inexpliqués et une disponibilité insuffisante de leurs gestionnaires.</p>
-        <p>Notre équipe de spécialistes, formés aux réalités du marché parisien et de la petite couronne, allie expertise juridique et fiscale à une vraie proximité avec nos clients. Nous utilisons les meilleurs outils digitaux pour vous offrir visibilité et sérénité en temps réel.</p>
-        <p>Jeunes professionnels passionnés d'immobilier, nous apportons à chaque mandat l'énergie, la rigueur et l'engagement personnel que vous méritez.</p>
+        <p>On a créé Olivia Gestion parce qu'on en avait assez de voir des propriétaires mal traités : frais qu'on ne comprend pas, gestionnaire injoignable, comptes flous. Nous voulions faire les choses simplement et honnêtement.</p>
+        <p>Tous les deux diplômés de l'ESPI et titulaires de la carte G, nous connaissons le terrain : la loi, la fiscalité, mais surtout le marché parisien au quotidien. Quand vous nous appelez, c'est l'un de nous deux qui répond.</p>
+        <p>On gère volontairement un nombre limité de biens pour pouvoir s'occuper de chacun correctement. C'est ça, pour nous, une bonne gestion locative.</p>
         <div class="apropos-values">
           <span class="apropos-value">Expertise Paris intramuros</span>
           <span class="apropos-value">Petite couronne</span>
@@ -665,24 +766,24 @@
       <p class="section-subtitle">Vous êtes CGP, conseiller financier ou professionnel de l'immobilier ? Rejoignez notre réseau d'apporteurs d'affaires et proposez à vos clients une gestion locative d'excellence.</p>
       <ul class="cgp-avantages">
         <li>
-          <div class="cgp-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1a2f5e" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div><strong style="color:rgba(255,255,255,0.95)">Commission attractive</strong> — Rémunération à l'apport d'affaires, versée dès la signature du mandat de gestion.</div>
+          <div class="cgp-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div><strong style="color:rgba(255,255,255,0.95)">Commission attractive</strong> ·Rémunération à l'apport d'affaires, versée dès la signature du mandat de gestion.</div>
         </li>
         <li>
-          <div class="cgp-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1a2f5e" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div><strong style="color:rgba(255,255,255,0.95)">Partenariat durable</strong> — Commission récurrente sur la durée du mandat pour les apporteurs fidèles.</div>
+          <div class="cgp-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div><strong style="color:rgba(255,255,255,0.95)">Partenariat durable</strong> ·Commission récurrente sur la durée du mandat pour les apporteurs fidèles.</div>
         </li>
         <li>
-          <div class="cgp-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1a2f5e" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div><strong style="color:rgba(255,255,255,0.95)">Reporting transparent</strong> — Accès à un tableau de bord partenaire avec suivi de vos apports et commissions.</div>
+          <div class="cgp-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div><strong style="color:rgba(255,255,255,0.95)">Reporting transparent</strong> ·Accès à un tableau de bord partenaire avec suivi de vos apports et commissions.</div>
         </li>
         <li>
-          <div class="cgp-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1a2f5e" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div><strong style="color:rgba(255,255,255,0.95)">Qualité de service irréprochable</strong> — Votre réputation est notre priorité : nous gérons chaque bien avec soin et sérieux.</div>
+          <div class="cgp-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div><strong style="color:rgba(255,255,255,0.95)">Qualité de service irréprochable</strong> ·Votre réputation est notre priorité : nous gérons chaque bien avec soin et sérieux.</div>
         </li>
         <li>
-          <div class="cgp-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1a2f5e" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div><strong style="color:rgba(255,255,255,0.95)">Convention de partenariat</strong> — Cadre juridique clair, convention signée, facturation transparente.</div>
+          <div class="cgp-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div><strong style="color:rgba(255,255,255,0.95)">Convention de partenariat</strong> ·Cadre juridique clair, convention signée, facturation transparente.</div>
         </li>
       </ul>
       <a href="#contact" class="btn-cgp">
@@ -734,46 +835,219 @@
       <div class="faq-item fade-up">
         <div class="faq-question" onclick="toggleFaq(this)">
           <h3>Quels sont vos honoraires de gestion ?</h3>
-          <div class="faq-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a2f5e" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          <div class="faq-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
         </div>
         <div class="faq-body"><div class="faq-body-inner"><p style="padding:16px 24px 20px; border-top:1px solid rgba(30,58,122,0.07);">Nos honoraires de <strong>gestion courante s'élèvent à 7% des loyers charges comprises</strong>, prélevés à chaque encaissement. Ce taux inclut l'encaissement des loyers, les quittances mensuelles, le compte-rendu de gérance, la révision du loyer, la gestion des petits travaux et la régularisation des charges. Aucun frais caché, aucun supplément surprenant.</p></div></div>
       </div>
       <div class="faq-item fade-up delay-1">
         <div class="faq-question" onclick="toggleFaq(this)">
           <h3>Quelle est votre zone d'intervention ?</h3>
-          <div class="faq-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a2f5e" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          <div class="faq-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
         </div>
-        <div class="faq-body"><div class="faq-body-inner"><p style="padding:16px 24px 20px; border-top:1px solid rgba(30,58,122,0.07);">Nous intervenons principalement sur <strong>Paris intramuros (tous arrondissements)</strong> et la <strong>petite couronne</strong> : Hauts-de-Seine (92), Seine-Saint-Denis (93) et Val-de-Marne (94). Pour tout bien situé en dehors de cette zone, n'hésitez pas à nous contacter — nous étudions chaque demande au cas par cas.</p></div></div>
+        <div class="faq-body"><div class="faq-body-inner"><p style="padding:16px 24px 20px; border-top:1px solid rgba(30,58,122,0.07);">Nous intervenons principalement sur <strong>Paris intramuros (tous arrondissements)</strong> et la <strong>petite couronne</strong> : Hauts-de-Seine (92), Seine-Saint-Denis (93) et Val-de-Marne (94). Pour tout bien situé en dehors de cette zone, n'hésitez pas à nous contacter : nous étudions chaque demande au cas par cas.</p></div></div>
       </div>
       <div class="faq-item fade-up delay-2">
         <div class="faq-question" onclick="toggleFaq(this)">
           <h3>Combien de temps faut-il pour trouver un locataire ?</h3>
-          <div class="faq-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a2f5e" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          <div class="faq-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
         </div>
-        <div class="faq-body"><div class="faq-body-inner"><p style="padding:16px 24px 20px; border-top:1px solid rgba(30,58,122,0.07);">Sur le marché parisien, la mise en location s'effectue en général <strong>entre 2 et 4 semaines</strong> pour un bien correctement estimé. Grâce à notre diffusion sur toutes les grandes plateformes (SeLoger, Leboncoin, PAP, etc.) et à notre réseau, nous maximisons votre visibilité. La sélection rigoureuse des candidats nous permet de vous présenter rapidement des dossiers solides.</p></div></div>
+        <div class="faq-body"><div class="faq-body-inner"><p style="padding:16px 24px 20px; border-top:1px solid rgba(46,94,170,0.07);">Notre processus de mise en location est conçu pour être rapide et rigoureux. Sur le marché parisien, nous trouvons un locataire en <strong>1 à 3 semaines maximum</strong> grâce à une diffusion ciblée sur SeLoger et une sélection sérieuse des candidats. Chaque dossier est étudié avec soin pour vous présenter uniquement des profils solides.</p></div></div>
       </div>
       <div class="faq-item fade-up delay-3">
         <div class="faq-question" onclick="toggleFaq(this)">
           <h3>Que comprend exactement la gestion locative ?</h3>
-          <div class="faq-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a2f5e" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          <div class="faq-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
         </div>
         <div class="faq-body"><div class="faq-body-inner"><p style="padding:16px 24px 20px; border-top:1px solid rgba(30,58,122,0.07);">Notre mandat de gestion comprend : <strong>encaissement et reversement des loyers</strong>, émission des quittances, relances en cas d'impayé, régularisation annuelle des charges, révision du loyer selon l'IRL, compte-rendu mensuel, gestion des petits travaux et sinistres, et interface avec le locataire pour toutes les demandes courantes. Vous n'avez plus rien à gérer au quotidien.</p></div></div>
       </div>
       <div class="faq-item fade-up delay-2">
         <div class="faq-question" onclick="toggleFaq(this)">
           <h3>Êtes-vous assujetti à la TVA ?</h3>
-          <div class="faq-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a2f5e" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          <div class="faq-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
         </div>
         <div class="faq-body"><div class="faq-body-inner"><p style="padding:16px 24px 20px; border-top:1px solid rgba(30,58,122,0.07);"><strong>Non, Olivia Gestion n'est pas assujettie à la TVA.</strong> Cela signifie concrètement que nos honoraires de gestion ne sont pas majorés de TVA, et que les factures d'artisans ou de travaux que nous coordonnons vous sont transmises sans surcoût fiscal de notre part. C'est un avantage direct et mesurable sur la rentabilité de votre bien.</p></div></div>
       </div>
       <div class="faq-item fade-up delay-3">
         <div class="faq-question" onclick="toggleFaq(this)">
           <h3>Comment se passe la première mise en location ?</h3>
-          <div class="faq-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a2f5e" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          <div class="faq-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
         </div>
         <div class="faq-body"><div class="faq-body-inner"><p style="padding:16px 24px 20px; border-top:1px solid rgba(30,58,122,0.07);">Après la signature du mandat, nous réalisons une <strong>visite du bien et une estimation du loyer</strong> au prix du marché. Nous organisons les photos professionnelles, rédigeons l'annonce et lançons la diffusion. Nous gérons toutes les visites, sélectionnons les candidats (vérification des dossiers, solvabilité), vous présentons les meilleurs profils, puis rédigeons le bail et réalisons l'état des lieux d'entrée. Les honoraires sont <strong>partagés à égalité entre vous et le locataire</strong>, conformément à la loi ALUR.</p></div></div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ===== QUESTIONS DES PROPRIÉTAIRES ===== -->
+<section id="proprietaires" style="background: var(--white);">
+  <div class="section-inner">
+    <span class="section-badge fade-up">Vos vraies préoccupations</span>
+    <h2 class="section-title fade-up delay-1">Ce que nos propriétaires nous demandent vraiment</h2>
+    <div class="section-divider fade-up delay-2"></div>
+
+    <div class="faq-list">
+      <div class="faq-item fade-up">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>Et si mon locataire ne paie pas ?</h3>
+          <div class="faq-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="faq-body"><div class="faq-body-inner"><p>Dès le premier retard, nous lançons les relances (amiable, puis formelle) et nous vous tenons informé à chaque étape. Si la situation se bloque, nous vous accompagnons dans la procédure et faisons le lien avec un avocat partenaire. C'est aussi pour ces cas-là que nous recommandons une <strong>assurance loyers impayés</strong> : vous êtes couvert et nous gérons le dossier pour vous.</p></div></div>
+      </div>
+      <div class="faq-item fade-up delay-1">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>Comment fixez-vous le montant du loyer ?</h3>
+          <div class="faq-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="faq-body"><div class="faq-body-inner"><p>Nous partons d'une <strong>étude comparative du marché</strong> dans votre quartier, sur des biens réellement loués. À Paris, nous respectons l'encadrement des loyers (loyer de référence majoré, complément éventuel justifié). L'objectif : le meilleur loyer possible dans le cadre légal, sans risque de contestation.</p></div></div>
+      </div>
+      <div class="faq-item fade-up delay-2">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>Puis-je reprendre mon bien quand je veux ?</h3>
+          <div class="faq-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="faq-body"><div class="faq-body-inner"><p>Oui, dans le respect des délais légaux de congé : <strong>6 mois avant l'échéance du bail pour une reprise</strong> (habitation par vous ou un proche) ou pour une vente. Nous préparons le congé, vérifions sa validité et vous accompagnons dans toute la démarche pour éviter le moindre vice de forme.</p></div></div>
+      </div>
+      <div class="faq-item fade-up delay-3">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>Que se passe-t-il en cas de travaux urgents ?</h3>
+          <div class="faq-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="faq-body"><div class="faq-body-inner"><p>Fuite, panne de chaudière, serrure cassée : nous intervenons rapidement via notre réseau d'artisans. Pour ne pas vous déranger pour chaque détail, nous fixons ensemble dans le mandat un <strong>seuil de décision autonome</strong> : en dessous, on agit tout de suite ; au-dessus, on vous appelle avant d'engager les frais.</p></div></div>
+      </div>
+      <div class="faq-item fade-up delay-1">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>Comment se passe la reddition de comptes ?</h3>
+          <div class="faq-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="faq-body"><div class="faq-body-inner"><p>Vous recevez un <strong>compte-rendu de gérance détaillé chaque mois</strong> : loyers encaissés, frais éventuels, solde reversé. En fin d'année, nous vous remettons un relevé annuel récapitulatif, prêt à utiliser pour votre déclaration fiscale.</p></div></div>
+      </div>
+      <div class="faq-item fade-up delay-2">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>Gérez-vous les biens meublés et vides ?</h3>
+          <div class="faq-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="faq-body"><div class="faq-body-inner"><p>Les deux. Location vide ou meublée, nous gérons l'ensemble et nous vous conseillons sur la <strong>fiscalité propre à chaque régime</strong> (location nue au réel ou micro-foncier, LMNP pour le meublé) afin de choisir l'option la plus avantageuse pour votre situation.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ÉQUIPE ===== -->
+<section id="equipe">
+  <div class="section-inner">
+    <span class="section-badge fade-up">Qui sommes-nous</span>
+    <h2 class="section-title fade-up delay-1">Une équipe d'experts à votre service</h2>
+    <div class="section-divider fade-up delay-2"></div>
+    <p class="section-subtitle fade-up delay-2">Deux professionnels formés à l'ESPI, titulaires de la carte G.</p>
+
+    <div class="equipe-grid">
+      <div class="equipe-card slide-left">
+        <div class="equipe-photo">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h3 class="equipe-name">Coline Attal</h3>
+        <span class="equipe-role">Directrice Générale</span>
+        <p>Diplômée d'un Bachelor Immobilier à l'ESPI Paris, Coline a forgé son expertise au fil d'expériences complémentaires : négociatrice immobilière, chargée de location, gestionnaire de travaux, puis assistante commerciale et administrative. Cette polyvalence lui confère une vision globale et opérationnelle de la gestion locative, au service de chaque propriétaire.</p>
+      </div>
+      <div class="equipe-card slide-right delay-1">
+        <div class="equipe-photo">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h3 class="equipe-name">Alexy Meech</h3>
+        <span class="equipe-role">Président</span>
+        <p>Diplômé d'un Bachelor Immobilier à l'ESPI Paris, Alexy a débuté sa carrière dans l'investissement locatif, accompagnant des clients de A à Z : recherche de bien, montage financier avec courtiers, gestion des travaux, ameublement et mise en location. Il a également travaillé sur la structuration de foncières immobilières et l'analyse financière du marché français, une expertise qui profite directement aux propriétaires qui nous confient leur patrimoine.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GUIDE PDF ===== -->
+<section id="guide">
+  <div class="guide-inner">
+    <div class="guide-icon fade-up">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+    </div>
+    <span class="section-badge fade-up">Ressource gratuite</span>
+    <h2 class="section-title fade-up delay-1" style="margin-top:8px;">Guide gratuit : tout ce qu'il faut savoir pour louer son bien à Paris en 2026</h2>
+    <p class="section-subtitle fade-up delay-2" style="margin:0 auto;">Honoraires, zones ALUR, sélection des locataires, fiscalité… Un guide complet rédigé par nos experts.</p>
+    <form class="guide-form fade-up delay-2" id="guideForm">
+      <input type="text" id="guidePrenom" placeholder="Prénom" required />
+      <input type="email" id="guideEmail" placeholder="Votre email" required />
+      <button type="submit">Recevoir le guide gratuitement</button>
+    </form>
+    <p class="guide-note">Votre email ne sera jamais partagé. Désinscription en un clic.</p>
+    <div class="guide-success" id="guideSuccess">✓ Merci ! Votre guide arrive dans votre boîte mail (envoi sous peu).</div>
+  </div>
+</section>
+
+<!-- ===== PRENDRE RENDEZ-VOUS ===== -->
+<section id="rdv">
+  <div class="section-inner">
+    <span class="section-badge fade-up">Prendre rendez-vous</span>
+    <h2 class="section-title fade-up delay-1">Échangeons sur votre projet</h2>
+    <div class="section-divider fade-up delay-2"></div>
+    <p class="section-subtitle fade-up delay-2">Indiquez vos disponibilités, nous vous rappelons sous 24h.</p>
+
+    <form class="rdv-form fade-up" id="rdvForm" novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="rdvNom">Nom complet *</label>
+          <input type="text" id="rdvNom" placeholder="Jean Dupont" required />
+        </div>
+        <div class="form-group">
+          <label for="rdvEmail">Email *</label>
+          <input type="email" id="rdvEmail" placeholder="jean@exemple.fr" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="rdvTel">Téléphone *</label>
+          <input type="tel" id="rdvTel" placeholder="06 00 00 00 00" required />
+        </div>
+        <div class="form-group">
+          <label for="rdvType">Type de bien</label>
+          <select id="rdvType">
+            <option value="">Sélectionner…</option>
+            <option value="studio">Studio</option>
+            <option value="t2">T2</option>
+            <option value="t3">T3</option>
+            <option value="t4">T4 et plus</option>
+            <option value="immeuble">Immeuble</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="rdvZone">Zone</label>
+        <select id="rdvZone">
+          <option value="">Sélectionner…</option>
+          <option value="paris">Paris</option>
+          <option value="92">Hauts-de-Seine (92)</option>
+          <option value="93">Seine-Saint-Denis (93)</option>
+          <option value="94">Val-de-Marne (94)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Disponibilités</label>
+        <div class="rdv-dispo">
+          <label class="rdv-check"><input type="checkbox" name="dispo" value="Matin" /> Matin</label>
+          <label class="rdv-check"><input type="checkbox" name="dispo" value="Après-midi" /> Après-midi</label>
+          <label class="rdv-check"><input type="checkbox" name="dispo" value="Lundi" /> Lundi</label>
+          <label class="rdv-check"><input type="checkbox" name="dispo" value="Mardi" /> Mardi</label>
+          <label class="rdv-check"><input type="checkbox" name="dispo" value="Mercredi" /> Mercredi</label>
+          <label class="rdv-check"><input type="checkbox" name="dispo" value="Jeudi" /> Jeudi</label>
+          <label class="rdv-check"><input type="checkbox" name="dispo" value="Vendredi" /> Vendredi</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="rdvMessage">Message (optionnel)</label>
+        <textarea id="rdvMessage" placeholder="Quelques mots sur votre bien ou votre projet…"></textarea>
+      </div>
+      <button type="submit" class="btn-submit">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Demander un rappel sous 24h
+      </button>
+      <div class="form-success" id="rdvSuccess">✓ Demande envoyée ! Nous vous rappelons sous 24h.</div>
+    </form>
   </div>
 </section>
 
@@ -791,7 +1065,7 @@
 
         <div class="contact-detail">
           <div class="contact-detail-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a2f5e" stroke-width="1.8" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="1.8" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
           <div class="contact-detail-text">
             <strong>Adresse</strong>
@@ -800,7 +1074,7 @@
         </div>
         <div class="contact-detail">
           <div class="contact-detail-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a2f5e" stroke-width="1.8" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="1.8" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
           </div>
           <div class="contact-detail-text">
             <strong>Email</strong>
@@ -809,7 +1083,16 @@
         </div>
         <div class="contact-detail">
           <div class="contact-detail-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a2f5e" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div class="contact-detail-text">
+            <strong>Téléphone / WhatsApp</strong>
+            <span>06 79 21 75 53</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
           <div class="contact-detail-text">
             <strong>Disponibilité</strong>
@@ -818,7 +1101,7 @@
         </div>
         <div class="contact-detail">
           <div class="contact-detail-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a2f5e" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
           </div>
           <div class="contact-detail-text">
             <strong>Zone d'intervention</strong>
@@ -908,9 +1191,11 @@
         </div>
         <p>Experts en gestion locative à Paris et en petite couronne. Transparence, réactivité et accompagnement personnalisé pour chaque propriétaire.</p>
         <div class="footer-legal-info">
-          SARL Olivia Gestion · Capital social : 1 000 €<br>
+          Olivia Gestion SAS · Capital social : 1 000 €<br>
           RCS Paris 105 790 315<br>
-          Siège social : 25 rue de Ponthieu, 75008 Paris
+          Siège social : 25 rue de Ponthieu, 75008 Paris<br>
+          Carte G · Activité réglementée (loi Hoguet)<br>
+          contact@olivia-gestion.fr · 06 79 21 75 53
         </div>
         <div class="footer-socials">
           <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="footer-social" aria-label="LinkedIn">
@@ -943,6 +1228,7 @@
           <li><a href="#faq">FAQ</a></li>
           <li><a href="simulateur.html">Simulateur</a></li>
           <li><a href="blog/">Blog</a></li>
+          <li><a href="espace-proprietaire.html">Espace propriétaire</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
@@ -950,27 +1236,27 @@
       <div class="footer-col">
         <h4>Légal</h4>
         <ul>
-          <li><a href="#">Mentions légales</a></li>
-          <li><a href="#">Politique de confidentialité</a></li>
-          <li><a href="#">CGV</a></li>
-          <li><a href="#">Carte professionnelle</a></li>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+          <li><a href="mentions-legales.html#confidentialite">Politique de confidentialité</a></li>
+          <li><a href="mentions-legales.html#cgv">CGV</a></li>
+          <li><a href="mentions-legales.html#editeur">Carte professionnelle</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <p>© 2025 Olivia Gestion – SARL au capital de 1 000 € · RCS Paris 105 790 315 · 25 rue de Ponthieu, 75008 Paris</p>
+      <p>© 2026 Olivia Gestion · SAS au capital de 1 000 € · RCS Paris 105 790 315 · 25 rue de Ponthieu, 75008 Paris</p>
       <div class="footer-bottom-legal">
-        <a href="#">Mentions légales</a>
-        <a href="#">Confidentialité</a>
-        <a href="#">Cookies</a>
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="mentions-legales.html#confidentialite">Confidentialité</a>
+        <a href="mentions-legales.html#cookies">Cookies</a>
       </div>
     </div>
   </div>
 </footer>
 
 <!-- ===== WHATSAPP ===== -->
-<a id="whatsapp-btn" href="https://wa.me/33659879939" target="_blank" rel="noopener" aria-label="Nous contacter sur WhatsApp">
+<a id="whatsapp-btn" href="https://wa.me/33679217553" target="_blank" rel="noopener" aria-label="Nous contacter sur WhatsApp">
   <svg viewBox="0 0 32 32" fill="white" xmlns="http://www.w3.org/2000/svg">
     <path d="M16 2C8.28 2 2 8.28 2 16c0 2.44.65 4.72 1.78 6.7L2 30l7.5-1.74A13.93 13.93 0 0 0 16 30c7.72 0 14-6.28 14-14S23.72 2 16 2zm0 25.5c-2.2 0-4.25-.6-6.02-1.64l-.43-.26-4.45 1.03 1.06-4.33-.28-.45A11.46 11.46 0 0 1 4.5 16C4.5 9.6 9.6 4.5 16 4.5S27.5 9.6 27.5 16 22.4 27.5 16 27.5zm6.3-8.55c-.35-.17-2.05-1.01-2.37-1.13-.32-.11-.55-.17-.78.18-.23.35-.88 1.13-1.08 1.36-.2.23-.4.26-.74.09-.35-.17-1.47-.54-2.8-1.73a10.51 10.51 0 0 1-1.94-2.41c-.2-.35-.02-.54.15-.71.15-.15.35-.4.52-.6.17-.2.23-.35.35-.58.12-.23.06-.43-.03-.6-.09-.17-.78-1.87-1.07-2.56-.28-.67-.57-.58-.78-.59h-.66c-.23 0-.6.09-.91.43-.32.35-1.2 1.17-1.2 2.85 0 1.68 1.23 3.3 1.4 3.53.17.23 2.42 3.7 5.87 5.19.82.35 1.46.56 1.96.72.82.26 1.57.22 2.16.13.66-.1 2.05-.84 2.34-1.65.29-.81.29-1.5.2-1.65-.08-.15-.31-.23-.66-.4z"/>
   </svg>
@@ -980,6 +1266,32 @@
 <button id="scrollTop" aria-label="Retour en haut">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
+
+<!-- ===== EXIT POPUP ===== -->
+<div id="exitPopup">
+  <div class="exit-card">
+    <button class="exit-close" id="exitClose" aria-label="Fermer">&times;</button>
+    <h3>Avant de partir…</h3>
+    <p>Obtenez une estimation gratuite de vos honoraires de gestion, sans engagement.</p>
+    <form class="exit-form" id="exitForm">
+      <input type="email" id="exitEmail" placeholder="Votre email" required />
+      <button type="submit">Recevoir mon estimation</button>
+    </form>
+    <button class="exit-decline" id="exitDecline">Non merci</button>
+    <div class="form-success" id="exitSuccess" style="margin-top:14px;">✓ Merci ! Nous revenons vers vous très vite.</div>
+  </div>
+</div>
+
+<!-- ===== COOKIE BANNER ===== -->
+<div id="cookieBanner">
+  <div class="cookie-text">
+    Nous utilisons des cookies pour améliorer votre expérience. <a href="mentions-legales.html#cookies">En savoir plus</a>
+  </div>
+  <div class="cookie-actions">
+    <button class="cookie-btn cookie-accept" id="cookieAccept">Accepter</button>
+    <button class="cookie-btn cookie-refuse" id="cookieRefuse">Refuser</button>
+  </div>
+</div>
 
 <!-- ===== SCRIPTS ===== -->
 <script>
@@ -1066,6 +1378,66 @@
     successMsg.style.display = 'block';
     successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   });
+
+  // RDV form
+  const rdvForm = document.getElementById('rdvForm');
+  rdvForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const nom = document.getElementById('rdvNom').value.trim();
+    const email = document.getElementById('rdvEmail').value.trim();
+    const tel = document.getElementById('rdvTel').value.trim();
+    if (!nom || !email || !tel) {
+      alert('Merci de renseigner votre nom, votre email et votre téléphone.');
+      return;
+    }
+    rdvForm.querySelectorAll('input,select,textarea,button').forEach(el => el.disabled = true);
+    document.getElementById('rdvSuccess').style.display = 'block';
+  });
+
+  // Guide form
+  const guideForm = document.getElementById('guideForm');
+  guideForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const prenom = document.getElementById('guidePrenom').value.trim();
+    const email = document.getElementById('guideEmail').value.trim();
+    if (!prenom || !email) { alert('Merci de renseigner votre prénom et votre email.'); return; }
+    guideForm.style.display = 'none';
+    document.getElementById('guideSuccess').style.display = 'block';
+  });
+
+  // Exit-intent popup (once per session)
+  const exitPopup = document.getElementById('exitPopup');
+  function closeExitPopup() { exitPopup.classList.remove('show'); }
+  if (!sessionStorage.getItem('exitShown')) {
+    document.addEventListener('mouseleave', (e) => {
+      if (e.clientY <= 0 && !sessionStorage.getItem('exitShown')) {
+        exitPopup.classList.add('show');
+        sessionStorage.setItem('exitShown', '1');
+      }
+    });
+  }
+  document.getElementById('exitClose').addEventListener('click', closeExitPopup);
+  document.getElementById('exitDecline').addEventListener('click', closeExitPopup);
+  exitPopup.addEventListener('click', (e) => { if (e.target === exitPopup) closeExitPopup(); });
+  document.getElementById('exitForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('exitEmail').value.trim();
+    if (!email) { alert('Merci de renseigner votre email.'); return; }
+    e.target.style.display = 'none';
+    document.getElementById('exitSuccess').style.display = 'block';
+  });
+
+  // Cookie banner
+  const cookieBanner = document.getElementById('cookieBanner');
+  if (!localStorage.getItem('cookieChoice')) {
+    setTimeout(() => cookieBanner.classList.add('show'), 800);
+  }
+  function setCookieChoice(choice) {
+    localStorage.setItem('cookieChoice', choice);
+    cookieBanner.classList.remove('show');
+  }
+  document.getElementById('cookieAccept').addEventListener('click', () => setCookieChoice('accepted'));
+  document.getElementById('cookieRefuse').addEventListener('click', () => setCookieChoice('refused'));
 </script>
 </body>
 </html>

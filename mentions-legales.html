@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mentions légales, CGV &amp; Confidentialité | Olivia Gestion</title>
+  <meta name="description" content="Mentions légales, conditions générales de vente et politique de confidentialité (RGPD) d'Olivia Gestion SAS, cabinet de gestion locative à Paris. Carte G, loi Hoguet." />
+  <meta name="robots" content="index, follow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #2E5EAA; --navy-dark: #244a8a; --navy-light: #4A7FCC;
+      --gold: #C9A84C; --gold-dark: #a8882e;
+      --white: #ffffff; --off-white: #F0F5FF; --light-gray: #eef2fb;
+      --gray: #6b7280; --dark: #1f2a44;
+      --font-title: 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', Arial, sans-serif;
+      --radius: 10px; --radius-lg: 18px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--dark); background: var(--white); line-height: 1.7; }
+    h1,h2,h3,h4 { font-family: var(--font-title); }
+    a { text-decoration: none; color: var(--navy); }
+
+    /* HEADER */
+    #header { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,0.97); backdrop-filter: blur(8px); box-shadow: 0 2px 16px rgba(46,94,170,0.08); }
+    .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 72px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo-emblem svg { width: 48px; height: 48px; }
+    .logo-text { display: flex; flex-direction: column; line-height: 1.15; }
+    .logo-name { font-family: var(--font-title); font-size: 1.5rem; font-weight: 700; color: var(--navy); letter-spacing: 0.10em; }
+    .logo-tagline { font-size: 0.64rem; font-weight: 300; color: var(--gold-dark); letter-spacing: 0.22em; text-transform: uppercase; }
+    nav { display: flex; align-items: center; gap: 4px; }
+    nav a { font-size: 0.82rem; color: var(--navy); padding: 8px 12px; border-radius: 6px; transition: background 0.2s; }
+    nav a:hover { background: var(--light-gray); }
+    .btn-nav { background: var(--gold); color: var(--navy) !important; font-weight: bold; padding: 9px 20px !important; border-radius: 6px; margin-left: 8px; }
+    @media (max-width: 900px) { nav a:not(.btn-nav) { display: none; } }
+
+    /* HERO */
+    .legal-hero { background: linear-gradient(135deg, var(--navy-dark), var(--navy) 60%, var(--navy-light)); color: #fff; padding: 72px 24px 56px; text-align: center; }
+    .legal-hero h1 { font-size: clamp(1.9rem, 4vw, 2.8rem); margin-bottom: 12px; }
+    .legal-hero p { color: rgba(255,255,255,0.8); font-size: 1rem; }
+
+    /* CONTENT */
+    .legal-wrap { max-width: 860px; margin: 0 auto; padding: 56px 24px 80px; }
+    .legal-toc { background: var(--off-white); border: 1px solid rgba(46,94,170,0.1); border-radius: var(--radius-lg); padding: 24px 28px; margin-bottom: 48px; }
+    .legal-toc h2 { font-size: 1rem; color: var(--navy); margin-bottom: 14px; }
+    .legal-toc ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; }
+    .legal-toc a { font-size: 0.9rem; }
+    .legal-toc a:hover { text-decoration: underline; }
+    .legal-section { margin-bottom: 48px; scroll-margin-top: 90px; }
+    .legal-section > h2 { font-size: 1.5rem; color: var(--navy); margin-bottom: 8px; padding-bottom: 12px; border-bottom: 2px solid rgba(201,168,76,0.4); }
+    .legal-section h3 { font-size: 1.05rem; color: var(--navy); margin: 26px 0 8px; font-family: var(--font-body); font-weight: 700; }
+    .legal-section p, .legal-section li { font-size: 0.92rem; color: #374151; margin-bottom: 12px; }
+    .legal-section ul { padding-left: 22px; margin-bottom: 12px; }
+    .legal-section li { margin-bottom: 6px; }
+    .legal-info-box { background: var(--off-white); border-left: 4px solid var(--gold); border-radius: var(--radius); padding: 18px 22px; margin-bottom: 16px; font-size: 0.92rem; }
+    .legal-info-box strong { color: var(--navy); }
+    .legal-updated { font-size: 0.82rem; color: var(--gray); font-style: italic; margin-top: 8px; }
+
+    /* FOOTER */
+    footer { background: var(--dark); color: rgba(255,255,255,0.6); padding: 32px 24px; text-align: center; }
+    footer p { font-size: 0.8rem; margin-bottom: 6px; }
+    footer a { color: rgba(255,255,255,0.75); text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<header id="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-emblem">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="24" r="22" fill="white" stroke="#eef2fb" stroke-width="1"/>
+          <path d="M 6 24 A 18 18 0 0 1 42 24" stroke="#2E5EAA" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <path d="M 6 24 A 18 18 0 0 0 42 24" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="15" font-weight="bold" fill="#2E5EAA">OG</text>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <span class="logo-name">Olivia Gestion</span>
+        <span class="logo-tagline">Gestion locative Paris</span>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#tarifs">Tarifs</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="simulateur.html">Simulateur</a>
+      <a href="espace-proprietaire.html">Espace propriétaire</a>
+      <a href="index.html#contact" class="btn-nav">Nous contacter</a>
+    </nav>
+  </div>
+</header>
+
+<section class="legal-hero">
+  <h1>Mentions légales &amp; conditions</h1>
+  <p>Informations légales, CGV et politique de confidentialité d'Olivia Gestion</p>
+</section>
+
+<div class="legal-wrap">
+
+  <nav class="legal-toc" aria-label="Sommaire">
+    <h2>Sommaire</h2>
+    <ul>
+      <li><a href="#editeur">1. Éditeur du site</a></li>
+      <li><a href="#hebergement">2. Hébergement</a></li>
+      <li><a href="#activite">3. Activité réglementée</a></li>
+      <li><a href="#propriete">4. Propriété intellectuelle</a></li>
+      <li><a href="#cgv">5. Conditions générales (CGV)</a></li>
+      <li><a href="#confidentialite">6. Confidentialité (RGPD)</a></li>
+      <li><a href="#cookies">7. Cookies</a></li>
+    </ul>
+  </nav>
+
+  <!-- 1. ÉDITEUR -->
+  <section class="legal-section" id="editeur">
+    <h2>1. Éditeur du site</h2>
+    <div class="legal-info-box">
+      <strong>Olivia Gestion SAS</strong><br>
+      Société par actions simplifiée au capital de 1 000 €<br>
+      RCS Paris 105 790 315<br>
+      Siège social : 25 rue de Ponthieu, 75008 Paris<br>
+      Email : contact@olivia-gestion.fr<br>
+      Téléphone : 06 79 21 75 53
+    </div>
+    <p><strong>Directeur de la publication :</strong> Alexy Meech, Président.</p>
+  </section>
+
+  <!-- 2. HÉBERGEMENT -->
+  <section class="legal-section" id="hebergement">
+    <h2>2. Hébergement</h2>
+    <p>Le site est hébergé par <strong>GitHub Pages</strong>, service fourni par GitHub Inc. (filiale de Microsoft Corporation), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.</p>
+  </section>
+
+  <!-- 3. ACTIVITÉ RÉGLEMENTÉE -->
+  <section class="legal-section" id="activite">
+    <h2>3. Activité réglementée</h2>
+    <p>Olivia Gestion exerce une activité de gestion immobilière soumise à la <strong>loi n° 70-9 du 2 janvier 1970 (loi Hoguet)</strong> et à son décret d'application n° 72-678 du 20 juillet 1972.</p>
+    <p>À ce titre, la société est titulaire d'une <strong>carte professionnelle « Gestion immobilière » (carte G)</strong>, délivrée par la Chambre de Commerce et d'Industrie compétente, et dispose d'une garantie financière ainsi que d'une assurance de responsabilité civile professionnelle conformes à la réglementation en vigueur.</p>
+  </section>
+
+  <!-- 4. PROPRIÉTÉ INTELLECTUELLE -->
+  <section class="legal-section" id="propriete">
+    <h2>4. Propriété intellectuelle</h2>
+    <p>L'ensemble des contenus présents sur ce site (textes, logo, éléments graphiques, mise en page) est la propriété exclusive d'Olivia Gestion, sauf mention contraire. Toute reproduction, représentation ou diffusion, totale ou partielle, sans autorisation écrite préalable est interdite et constitue une contrefaçon sanctionnée par le Code de la propriété intellectuelle.</p>
+  </section>
+
+  <!-- 5. CGV -->
+  <section class="legal-section" id="cgv">
+    <h2>5. Conditions générales de vente</h2>
+
+    <h3>5.1 Objet</h3>
+    <p>Les présentes conditions générales régissent les prestations de gestion locative, de mise en location et de services associés fournies par Olivia Gestion à ses clients propriétaires bailleurs (le « Mandant »).</p>
+
+    <h3>5.2 Mandat de gestion</h3>
+    <p>Toute prestation de gestion locative fait l'objet d'un <strong>mandat de gestion écrit</strong>, conforme à la loi Hoguet, précisant l'étendue des pouvoirs confiés, la durée du mandat, les conditions de reconduction et de résiliation, ainsi que la rémunération de la société.</p>
+
+    <h3>5.3 Honoraires</h3>
+    <ul>
+      <li><strong>Gestion locative courante :</strong> 7 % des loyers charges comprises, prélevés à chaque encaissement.</li>
+      <li><strong>Mise en location et état des lieux :</strong> honoraires partagés à égalité entre bailleur et locataire, dans la limite des plafonds légaux fixés par le décret du 1er août 2014 (loi ALUR), selon la zone du bien.</li>
+      <li>Olivia Gestion n'étant pas assujettie à la TVA, ses honoraires ne sont pas majorés de TVA.</li>
+    </ul>
+
+    <h3>5.4 Durée et résiliation</h3>
+    <p>Le mandat est conclu pour une durée déterminée renouvelable. Chaque partie peut y mettre fin dans les conditions et délais de préavis prévus au contrat. La résiliation n'affecte pas les opérations en cours, qui sont menées à leur terme.</p>
+
+    <h3>5.5 Reddition de comptes</h3>
+    <p>Olivia Gestion adresse au Mandant un compte-rendu de gérance mensuel détaillé ainsi qu'un relevé annuel destiné à faciliter sa déclaration fiscale.</p>
+
+    <h3>5.6 Responsabilité</h3>
+    <p>Olivia Gestion est tenue à une obligation de moyens dans l'exécution de ses missions. Sa responsabilité est couverte par son assurance de responsabilité civile professionnelle.</p>
+
+    <h3>5.7 Droit applicable et litiges</h3>
+    <p>Les présentes conditions sont soumises au droit français. En cas de litige, une solution amiable sera recherchée en priorité. À défaut d'accord, le litige relèvera des tribunaux compétents.</p>
+  </section>
+
+  <!-- 6. CONFIDENTIALITÉ -->
+  <section class="legal-section" id="confidentialite">
+    <h2>6. Politique de confidentialité (RGPD)</h2>
+    <p>Olivia Gestion accorde une grande importance à la protection de vos données personnelles, conformément au Règlement Général sur la Protection des Données (RGPD, règlement UE 2016/679) et à la loi Informatique et Libertés.</p>
+
+    <h3>6.1 Responsable du traitement</h3>
+    <p>Le responsable du traitement est Olivia Gestion SAS, 25 rue de Ponthieu, 75008 Paris. Pour toute question relative à vos données : <strong>contact@olivia-gestion.fr</strong>.</p>
+
+    <h3>6.2 Données collectées</h3>
+    <p>Via les formulaires du site, nous pouvons collecter : nom et prénom, adresse email, numéro de téléphone, type et localisation du bien, ainsi que les informations que vous nous communiquez dans vos messages. Aucune donnée sensible n'est collectée.</p>
+
+    <h3>6.3 Finalités</h3>
+    <ul>
+      <li>Répondre à vos demandes de contact, de devis ou de rendez-vous ;</li>
+      <li>Vous adresser, avec votre accord, des informations et ressources (guide, lancement de l'espace propriétaire) ;</li>
+      <li>Gérer la relation contractuelle dans le cadre d'un mandat.</li>
+    </ul>
+
+    <h3>6.4 Base légale</h3>
+    <p>Les traitements reposent sur votre consentement (formulaires, demandes d'information), l'exécution de mesures précontractuelles ou contractuelles, et le respect de nos obligations légales.</p>
+
+    <h3>6.5 Durée de conservation</h3>
+    <ul>
+      <li><strong>Prospects :</strong> les données sont conservées 3 ans à compter du dernier contact ;</li>
+      <li><strong>Clients :</strong> pendant la durée de la relation contractuelle, puis selon les obligations légales et comptables applicables (jusqu'à 10 ans) ;</li>
+      <li><strong>Cookies :</strong> 13 mois maximum.</li>
+    </ul>
+
+    <h3>6.6 Vos droits</h3>
+    <p>Vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité de vos données, ainsi que du droit de définir des directives relatives à leur sort après votre décès. Vous pouvez exercer ces droits en écrivant à <strong>contact@olivia-gestion.fr</strong>. Vous pouvez également introduire une réclamation auprès de la CNIL (www.cnil.fr).</p>
+
+    <h3>6.7 Partage des données</h3>
+    <p>Vos données ne sont jamais vendues. Elles peuvent être transmises à nos prestataires techniques strictement dans la mesure nécessaire au fonctionnement du service, dans le respect de la réglementation.</p>
+  </section>
+
+  <!-- 7. COOKIES -->
+  <section class="legal-section" id="cookies">
+    <h2>7. Cookies</h2>
+    <p>Le site utilise des cookies destinés à améliorer votre expérience de navigation et à mesurer l'audience. Lors de votre première visite, un bandeau vous permet d'accepter ou de refuser leur dépôt. Votre choix est conservé localement dans votre navigateur et peut être modifié à tout moment en effaçant les données de navigation du site.</p>
+    <p>Les cookies strictement nécessaires au fonctionnement du site ne requièrent pas votre consentement. Les autres cookies ne sont déposés qu'après votre acceptation.</p>
+    <p class="legal-updated">Dernière mise à jour : juin 2026.</p>
+  </section>
+
+</div>
+
+<footer>
+  <p>© 2026 Olivia Gestion · SAS au capital de 1 000 € · RCS Paris 105 790 315 · 25 rue de Ponthieu, 75008 Paris</p>
+  <p><a href="index.html">Retour à l'accueil</a> · <a href="espace-proprietaire.html">Espace propriétaire</a></p>
+</footer>
+
+</body>
+</html>

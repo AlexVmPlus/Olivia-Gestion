@@ -65,20 +65,20 @@
 
     /* ===== HEADER ===== */
     #header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000; overflow: hidden;
       background: rgba(255,255,255,0.97); backdrop-filter: blur(8px);
-      box-shadow: 0 2px 16px rgba(30,58,122,0.08); transition: box-shadow 0.3s;
+      box-shadow: 0 2px 16px rgba(46,94,170,0.08); transition: box-shadow 0.3s;
     }
     .header-inner {
       max-width: 1200px; margin: 0 auto; padding: 0 24px;
-      height: 72px; display: flex; align-items: center; justify-content: space-between;
+      height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 16px;
     }
-    .logo { display: flex; align-items: center; gap: 12px; cursor: pointer; }
-    .logo-emblem { position: relative; width: 48px; height: 48px; flex-shrink: 0; }
-    .logo-emblem svg { width: 48px; height: 48px; }
-    .logo-text { display: flex; flex-direction: column; line-height: 1.15; }
-    .logo-name { font-family: var(--font-title); font-size: 1.5rem; font-weight: 700; color: var(--navy); letter-spacing: 0.10em; }
-    .logo-tagline { font-family: var(--font-body); font-size: 0.64rem; font-weight: 300; color: var(--gold-dark); letter-spacing: 0.22em; text-transform: uppercase; }
+    .logo { display: flex; align-items: center; gap: 11px; cursor: pointer; flex-shrink: 0; min-width: 0; }
+    .logo-emblem { position: relative; width: 42px; height: 42px; flex-shrink: 0; }
+    .logo-emblem svg { width: 42px; height: 42px; }
+    .logo-text { display: flex; flex-direction: column; line-height: 1.1; min-width: 0; }
+    .logo-name { font-family: var(--font-title); font-size: 1.2rem; font-weight: 700; color: var(--navy); letter-spacing: 0.06em; white-space: nowrap; }
+    .logo-tagline { font-family: var(--font-body); font-size: 0.58rem; font-weight: 400; color: var(--gold-dark); letter-spacing: 0.18em; text-transform: uppercase; white-space: nowrap; }
     nav { display: flex; align-items: center; gap: 4px; }
     nav a { font-size: 0.82rem; color: var(--navy); padding: 8px 12px; border-radius: 6px; transition: background 0.2s, color 0.2s; letter-spacing: 0.03em; white-space: nowrap; }
     nav a:hover { background: var(--light-gray); }
@@ -86,7 +86,7 @@
     .btn-nav:hover { background: var(--gold-dark) !important; color: var(--white) !important; transform: translateY(-1px); }
     .burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
     .burger span { display: block; width: 26px; height: 2px; background: var(--navy); border-radius: 2px; transition: all 0.3s; }
-    .mobile-nav { display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--white); box-shadow: 0 8px 24px rgba(30,58,122,0.12); padding: 16px 24px 24px; flex-direction: column; gap: 4px; z-index: 999; }
+    .mobile-nav { display: none; position: fixed; top: 70px; left: 0; right: 0; background: var(--white); box-shadow: 0 8px 24px rgba(30,58,122,0.12); padding: 16px 24px 24px; flex-direction: column; gap: 4px; z-index: 999; }
     .mobile-nav.open { display: flex; }
     .mobile-nav a { color: var(--navy); font-size: 0.95rem; padding: 12px 16px; border-radius: 8px; border-bottom: 1px solid var(--light-gray); transition: background 0.2s; }
     .mobile-nav a:hover { background: var(--off-white); }
@@ -101,7 +101,7 @@
     .section-divider { width: 56px; height: 3px; background: linear-gradient(90deg, var(--gold), var(--navy)); border-radius: 3px; margin: 20px 0 36px; }
 
     /* ===== HERO ===== */
-    #hero { padding-top: 72px; min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-light) 100%); }
+    #hero { padding-top: 70px; min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-light) 100%); }
     .hero-bg {
       position: absolute; inset: 0;
       background-image: url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=1600&q=70');
@@ -272,7 +272,7 @@
     /* ===== FOOTER ===== */
     footer { background: var(--dark); color: rgba(255,255,255,0.7); padding: 56px 24px 28px; }
     .footer-inner { max-width: 1100px; margin: 0 auto; }
-    .footer-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .footer-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.08); }
     .footer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
     .footer-logo-name { font-family: var(--font-title); font-size: 1.15rem; color: var(--white); letter-spacing: 0.04em; }
     .footer-logo-tagline { font-size: 0.62rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.12em; }
@@ -426,13 +426,9 @@
     <nav>
       <a href="#services">Services</a>
       <a href="#tarifs">Tarifs</a>
-      <a href="#pourquoi">Avantages</a>
-      <a href="#apropos">À propos</a>
-      <a href="#cgp">Partenaires CGP</a>
-      <a href="#faq">FAQ</a>
       <a href="simulateur.html">Simulateur</a>
-      <a href="blog/">Blog</a>
-      <a href="espace-proprietaire.html">Espace propriétaire</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
       <a href="#contact" class="btn-nav">Nous contacter</a>
     </nav>
     <button class="burger" id="burger" aria-label="Menu">
@@ -444,13 +440,14 @@
 <div class="mobile-nav" id="mobileNav">
   <a href="#services" onclick="closeMobileNav()">Services</a>
   <a href="#tarifs" onclick="closeMobileNav()">Tarifs</a>
-  <a href="#pourquoi" onclick="closeMobileNav()">Avantages</a>
-  <a href="#apropos" onclick="closeMobileNav()">À propos</a>
-  <a href="#cgp" onclick="closeMobileNav()">Partenaires CGP</a>
-  <a href="#faq" onclick="closeMobileNav()">FAQ</a>
   <a href="simulateur.html" onclick="closeMobileNav()">Simulateur</a>
-  <a href="blog/" onclick="closeMobileNav()">Blog</a>
+  <a href="#faq" onclick="closeMobileNav()">FAQ</a>
+  <a href="#contact" onclick="closeMobileNav()">Contact</a>
+  <a href="notre-histoire.html" onclick="closeMobileNav()">Notre histoire</a>
+  <a href="questions-proprietaires.html" onclick="closeMobileNav()">Questions propriétaires</a>
+  <a href="partenaires-cgp.html" onclick="closeMobileNav()">Partenaires CGP</a>
   <a href="espace-proprietaire.html" onclick="closeMobileNav()">Espace propriétaire</a>
+  <a href="blog/" onclick="closeMobileNav()">Blog</a>
   <a href="#contact" class="btn-nav" onclick="closeMobileNav()">Nous contacter</a>
 </div>
 
@@ -487,8 +484,8 @@
           <div class="hero-stat-label">Transparence</div>
         </div>
         <div class="hero-stat">
-          <div class="hero-stat-value" data-count="24" data-suffix="h">24h</div>
-          <div class="hero-stat-label">Réponse garantie</div>
+          <div class="hero-stat-value">Paris</div>
+          <div class="hero-stat-label">&amp; 92 · 93 · 94</div>
         </div>
       </div>
     </div>
@@ -715,115 +712,6 @@
   </div>
 </section>
 
-<!-- ===== À PROPOS ===== -->
-<section id="apropos">
-  <div class="section-inner">
-    <div class="apropos-inner">
-      <div class="apropos-image slide-left">
-        <div class="apropos-image-content">
-          <svg class="apropos-logo-big" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="48" cy="48" r="44" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
-            <path d="M 10 48 A 38 38 0 0 1 86 48" stroke="#C9A84C" stroke-width="3" stroke-linecap="round" fill="none"/>
-            <path d="M 10 48 A 38 38 0 0 0 86 48" stroke="rgba(255,255,255,0.4)" stroke-width="3" stroke-linecap="round" fill="none"/>
-            <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="30" font-weight="bold" fill="white">OG</text>
-          </svg>
-          <div class="apropos-image-title">Olivia Gestion</div>
-          <div class="apropos-image-sub">Gestion locative · Paris &amp; Petite couronne</div>
-        </div>
-        <div class="apropos-float">
-          <strong>Paris 8<sup>e</sup></strong>
-          Siège social
-        </div>
-      </div>
-
-      <div class="apropos-content slide-right delay-2">
-        <span class="section-badge">Notre histoire</span>
-        <h2 class="section-title">Deux gestionnaires, pas un standard téléphonique</h2>
-        <div class="section-divider"></div>
-        <p>On a créé Olivia Gestion parce qu'on en avait assez de voir des propriétaires mal traités : frais qu'on ne comprend pas, gestionnaire injoignable, comptes flous. Nous voulions faire les choses simplement et honnêtement.</p>
-        <p>Tous les deux diplômés de l'ESPI et titulaires de la carte G, nous connaissons le terrain : la loi, la fiscalité, mais surtout le marché parisien au quotidien. Quand vous nous appelez, c'est l'un de nous deux qui répond.</p>
-        <p>On gère volontairement un nombre limité de biens pour pouvoir s'occuper de chacun correctement. C'est ça, pour nous, une bonne gestion locative.</p>
-        <div class="apropos-values">
-          <span class="apropos-value">Expertise Paris intramuros</span>
-          <span class="apropos-value">Petite couronne</span>
-          <span class="apropos-value">Approche digitale</span>
-          <span class="apropos-value">Conformité ALUR</span>
-          <span class="apropos-value">Suivi personnalisé</span>
-          <span class="apropos-value">Équipe dédiée</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== CGP PARTENAIRES ===== -->
-<section id="cgp">
-  <div class="cgp-inner">
-    <div class="cgp-content slide-left">
-      <span class="section-badge">Espace partenaires</span>
-      <h2 class="section-title">Conseillers en Gestion de Patrimoine</h2>
-      <div class="section-divider"></div>
-      <p class="section-subtitle">Vous êtes CGP, conseiller financier ou professionnel de l'immobilier ? Rejoignez notre réseau d'apporteurs d'affaires et proposez à vos clients une gestion locative d'excellence.</p>
-      <ul class="cgp-avantages">
-        <li>
-          <div class="cgp-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div><strong style="color:rgba(255,255,255,0.95)">Commission attractive</strong> ·Rémunération à l'apport d'affaires, versée dès la signature du mandat de gestion.</div>
-        </li>
-        <li>
-          <div class="cgp-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div><strong style="color:rgba(255,255,255,0.95)">Partenariat durable</strong> ·Commission récurrente sur la durée du mandat pour les apporteurs fidèles.</div>
-        </li>
-        <li>
-          <div class="cgp-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div><strong style="color:rgba(255,255,255,0.95)">Reporting transparent</strong> ·Accès à un tableau de bord partenaire avec suivi de vos apports et commissions.</div>
-        </li>
-        <li>
-          <div class="cgp-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div><strong style="color:rgba(255,255,255,0.95)">Qualité de service irréprochable</strong> ·Votre réputation est notre priorité : nous gérons chaque bien avec soin et sérieux.</div>
-        </li>
-        <li>
-          <div class="cgp-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div><strong style="color:rgba(255,255,255,0.95)">Convention de partenariat</strong> ·Cadre juridique clair, convention signée, facturation transparente.</div>
-        </li>
-      </ul>
-      <a href="#contact" class="btn-cgp">
-        Devenir partenaire
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-    </div>
-
-    <div class="cgp-cards slide-right delay-2">
-      <div class="cgp-card">
-        <div class="cgp-card-header">
-          <div class="cgp-card-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-          </div>
-          <h3>Pour les CGP &amp; family offices</h3>
-        </div>
-        <p>Complétez votre offre patrimoniale avec une gestion locative haut de gamme. Vos clients investisseurs méritent la même qualité pour la gestion que pour le conseil.</p>
-      </div>
-      <div class="cgp-card">
-        <div class="cgp-card-header">
-          <div class="cgp-card-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="2" width="18" height="20" rx="1"/><line x1="9" y1="22" x2="9" y2="2"/><line x1="9" y1="6" x2="3" y2="6"/><line x1="9" y1="10" x2="3" y2="10"/><line x1="9" y1="14" x2="3" y2="14"/><line x1="21" y1="6" x2="15" y2="6"/><line x1="21" y1="10" x2="15" y2="10"/><line x1="21" y1="14" x2="15" y2="14"/></svg>
-          </div>
-          <h3>Pour les agents immobiliers</h3>
-        </div>
-        <p>Vous vendez, nous gérons. Proposez à vos acquéreurs un service de gestion clé en main et fidélisez votre clientèle investisseur durablement.</p>
-      </div>
-      <div class="cgp-card">
-        <div class="cgp-card-header">
-          <div class="cgp-card-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-          </div>
-          <h3>Pour les courtiers &amp; CGPI</h3>
-        </div>
-        <p>Un partenaire de gestion locative de référence pour vos clients ayant investi en locatif via votre accompagnement en financement ou défiscalisation.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ===== FAQ ===== -->
 <section id="faq">
   <div class="section-inner">
@@ -873,89 +761,6 @@
           <div class="faq-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
         </div>
         <div class="faq-body"><div class="faq-body-inner"><p style="padding:16px 24px 20px; border-top:1px solid rgba(30,58,122,0.07);">Après la signature du mandat, nous réalisons une <strong>visite du bien et une estimation du loyer</strong> au prix du marché. Nous organisons les photos professionnelles, rédigeons l'annonce et lançons la diffusion. Nous gérons toutes les visites, sélectionnons les candidats (vérification des dossiers, solvabilité), vous présentons les meilleurs profils, puis rédigeons le bail et réalisons l'état des lieux d'entrée. Les honoraires sont <strong>partagés à égalité entre vous et le locataire</strong>, conformément à la loi ALUR.</p></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== QUESTIONS DES PROPRIÉTAIRES ===== -->
-<section id="proprietaires" style="background: var(--white);">
-  <div class="section-inner">
-    <span class="section-badge fade-up">Vos vraies préoccupations</span>
-    <h2 class="section-title fade-up delay-1">Ce que nos propriétaires nous demandent vraiment</h2>
-    <div class="section-divider fade-up delay-2"></div>
-
-    <div class="faq-list">
-      <div class="faq-item fade-up">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <h3>Et si mon locataire ne paie pas ?</h3>
-          <div class="faq-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-        </div>
-        <div class="faq-body"><div class="faq-body-inner"><p>Dès le premier retard, nous lançons les relances (amiable, puis formelle) et nous vous tenons informé à chaque étape. Si la situation se bloque, nous vous accompagnons dans la procédure et faisons le lien avec un avocat partenaire. C'est aussi pour ces cas-là que nous recommandons une <strong>assurance loyers impayés</strong> : vous êtes couvert et nous gérons le dossier pour vous.</p></div></div>
-      </div>
-      <div class="faq-item fade-up delay-1">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <h3>Comment fixez-vous le montant du loyer ?</h3>
-          <div class="faq-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-        </div>
-        <div class="faq-body"><div class="faq-body-inner"><p>Nous partons d'une <strong>étude comparative du marché</strong> dans votre quartier, sur des biens réellement loués. À Paris, nous respectons l'encadrement des loyers (loyer de référence majoré, complément éventuel justifié). L'objectif : le meilleur loyer possible dans le cadre légal, sans risque de contestation.</p></div></div>
-      </div>
-      <div class="faq-item fade-up delay-2">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <h3>Puis-je reprendre mon bien quand je veux ?</h3>
-          <div class="faq-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-        </div>
-        <div class="faq-body"><div class="faq-body-inner"><p>Oui, dans le respect des délais légaux de congé : <strong>6 mois avant l'échéance du bail pour une reprise</strong> (habitation par vous ou un proche) ou pour une vente. Nous préparons le congé, vérifions sa validité et vous accompagnons dans toute la démarche pour éviter le moindre vice de forme.</p></div></div>
-      </div>
-      <div class="faq-item fade-up delay-3">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <h3>Que se passe-t-il en cas de travaux urgents ?</h3>
-          <div class="faq-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-        </div>
-        <div class="faq-body"><div class="faq-body-inner"><p>Fuite, panne de chaudière, serrure cassée : nous intervenons rapidement via notre réseau d'artisans. Pour ne pas vous déranger pour chaque détail, nous fixons ensemble dans le mandat un <strong>seuil de décision autonome</strong> : en dessous, on agit tout de suite ; au-dessus, on vous appelle avant d'engager les frais.</p></div></div>
-      </div>
-      <div class="faq-item fade-up delay-1">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <h3>Comment se passe la reddition de comptes ?</h3>
-          <div class="faq-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-        </div>
-        <div class="faq-body"><div class="faq-body-inner"><p>Vous recevez un <strong>compte-rendu de gérance détaillé chaque mois</strong> : loyers encaissés, frais éventuels, solde reversé. En fin d'année, nous vous remettons un relevé annuel récapitulatif, prêt à utiliser pour votre déclaration fiscale.</p></div></div>
-      </div>
-      <div class="faq-item fade-up delay-2">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <h3>Gérez-vous les biens meublés et vides ?</h3>
-          <div class="faq-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-        </div>
-        <div class="faq-body"><div class="faq-body-inner"><p>Les deux. Location vide ou meublée, nous gérons l'ensemble et nous vous conseillons sur la <strong>fiscalité propre à chaque régime</strong> (location nue au réel ou micro-foncier, LMNP pour le meublé) afin de choisir l'option la plus avantageuse pour votre situation.</p></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== ÉQUIPE ===== -->
-<section id="equipe">
-  <div class="section-inner">
-    <span class="section-badge fade-up">Qui sommes-nous</span>
-    <h2 class="section-title fade-up delay-1">Une équipe d'experts à votre service</h2>
-    <div class="section-divider fade-up delay-2"></div>
-    <p class="section-subtitle fade-up delay-2">Deux professionnels formés à l'ESPI, titulaires de la carte G.</p>
-
-    <div class="equipe-grid">
-      <div class="equipe-card slide-left">
-        <div class="equipe-photo">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        </div>
-        <h3 class="equipe-name">Coline Attal</h3>
-        <span class="equipe-role">Directrice Générale</span>
-        <p>Diplômée d'un Bachelor Immobilier à l'ESPI Paris, Coline a forgé son expertise au fil d'expériences complémentaires : négociatrice immobilière, chargée de location, gestionnaire de travaux, puis assistante commerciale et administrative. Cette polyvalence lui confère une vision globale et opérationnelle de la gestion locative, au service de chaque propriétaire.</p>
-      </div>
-      <div class="equipe-card slide-right delay-1">
-        <div class="equipe-photo">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        </div>
-        <h3 class="equipe-name">Alexy Meech</h3>
-        <span class="equipe-role">Président</span>
-        <p>Diplômé d'un Bachelor Immobilier à l'ESPI Paris, Alexy a débuté sa carrière dans l'investissement locatif, accompagnant des clients de A à Z : recherche de bien, montage financier avec courtiers, gestion des travaux, ameublement et mise en location. Il a également travaillé sur la structuration de foncières immobilières et l'analyse financière du marché français, une expertise qui profite directement aux propriétaires qui nous confient leur patrimoine.</p>
       </div>
     </div>
   </div>
@@ -1219,16 +1024,23 @@
       </div>
 
       <div class="footer-col">
+        <h4>Découvrir</h4>
+        <ul>
+          <li><a href="notre-histoire.html">Notre histoire</a></li>
+          <li><a href="questions-proprietaires.html">Questions propriétaires</a></li>
+          <li><a href="partenaires-cgp.html">Partenaires CGP</a></li>
+          <li><a href="espace-proprietaire.html">Espace propriétaire</a></li>
+          <li><a href="simulateur.html">Simulateur</a></li>
+          <li><a href="blog/">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
         <h4>Informations</h4>
         <ul>
           <li><a href="#tarifs">Nos tarifs</a></li>
           <li><a href="#pourquoi">Nos engagements</a></li>
-          <li><a href="#apropos">À propos</a></li>
-          <li><a href="#cgp">Espace CGP</a></li>
           <li><a href="#faq">FAQ</a></li>
-          <li><a href="simulateur.html">Simulateur</a></li>
-          <li><a href="blog/">Blog</a></li>
-          <li><a href="espace-proprietaire.html">Espace propriétaire</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>

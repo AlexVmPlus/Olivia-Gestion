@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Partenaires CGP &amp; apporteurs d'affaires | Olivia Gestion</title>
+  <meta name="description" content="Conseillers en gestion de patrimoine, agents immobiliers, courtiers : rejoignez le réseau d'apporteurs d'affaires d'Olivia Gestion et offrez à vos clients une gestion locative d'excellence. Commission attractive et partenariat durable." />
+  <meta name="robots" content="index, follow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #2E5EAA; --navy-dark: #244a8a; --navy-light: #4A7FCC;
+      --gold: #C9A84C; --gold-light: #e0c06a; --gold-dark: #a8882e;
+      --white: #ffffff; --off-white: #F0F5FF; --light-gray: #eef2fb;
+      --gray: #6b7280; --dark: #1f2a44;
+      --font-title: 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', Arial, sans-serif;
+      --shadow: 0 4px 24px rgba(46,94,170,0.10); --shadow-md: 0 8px 40px rgba(46,94,170,0.15);
+      --radius: 10px; --radius-lg: 18px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--dark); background: var(--white); line-height: 1.65; }
+    h1,h2,h3,h4 { font-family: var(--font-title); }
+    a { text-decoration: none; color: inherit; }
+
+    /* HEADER */
+    #header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; overflow: hidden; background: rgba(255,255,255,0.97); backdrop-filter: blur(8px); box-shadow: 0 2px 16px rgba(46,94,170,0.08); }
+    .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .logo { display: flex; align-items: center; gap: 11px; flex-shrink: 0; min-width: 0; }
+    .logo-emblem svg { width: 42px; height: 42px; }
+    .logo-text { display: flex; flex-direction: column; line-height: 1.1; min-width: 0; }
+    .logo-name { font-family: var(--font-title); font-size: 1.2rem; font-weight: 700; color: var(--navy); letter-spacing: 0.06em; white-space: nowrap; }
+    .logo-tagline { font-size: 0.58rem; font-weight: 400; color: var(--gold-dark); letter-spacing: 0.18em; text-transform: uppercase; white-space: nowrap; }
+    nav { display: flex; align-items: center; gap: 4px; }
+    nav a { font-size: 0.82rem; color: var(--navy); padding: 8px 12px; border-radius: 6px; transition: background 0.2s; white-space: nowrap; }
+    nav a:hover { background: var(--light-gray); }
+    .btn-nav { background: var(--gold); color: var(--navy) !important; font-weight: bold; padding: 9px 20px !important; border-radius: 6px; margin-left: 8px; }
+    .btn-nav:hover { background: var(--gold-dark) !important; color: var(--white) !important; }
+    .burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+    .burger span { display: block; width: 26px; height: 2px; background: var(--navy); border-radius: 2px; }
+    .mobile-nav { display: none; position: fixed; top: 70px; left: 0; right: 0; background: var(--white); box-shadow: 0 8px 24px rgba(46,94,170,0.12); padding: 16px 24px 24px; flex-direction: column; gap: 4px; z-index: 999; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { color: var(--navy); font-size: 0.95rem; padding: 12px 16px; border-radius: 8px; border-bottom: 1px solid var(--light-gray); }
+    .mobile-nav .btn-nav { margin: 8px 0 0; text-align: center; }
+    @media (max-width: 900px) { nav { display: none; } .burger { display: flex; } }
+
+    /* HERO */
+    .page-hero { padding: 120px 24px 64px; background: linear-gradient(135deg, var(--navy-dark), var(--navy) 60%, var(--navy-light)); text-align: center; }
+    .page-hero .badge { display: inline-block; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-light); background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3); border-radius: 30px; padding: 5px 16px; margin-bottom: 20px; }
+    .page-hero h1 { font-size: clamp(2rem, 4vw, 3rem); color: var(--white); margin-bottom: 14px; line-height: 1.2; }
+    .page-hero p { font-size: 1.05rem; color: rgba(255,255,255,0.8); max-width: 620px; margin: 0 auto; }
+
+    /* CONTENT */
+    .cgp-section { max-width: 1100px; margin: 0 auto; padding: 72px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .section-divider { width: 56px; height: 3px; background: linear-gradient(90deg, var(--gold), var(--navy)); border-radius: 3px; margin: 18px 0 28px; }
+    .cgp-content h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--navy); line-height: 1.25; }
+    .cgp-content > p { font-size: 1rem; color: var(--gray); line-height: 1.7; }
+    .cgp-avantages { list-style: none; margin: 28px 0; display: flex; flex-direction: column; gap: 14px; }
+    .cgp-avantages li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.92rem; color: #374151; line-height: 1.55; }
+    .cgp-avantages strong { color: var(--navy); }
+    .cgp-check { flex-shrink: 0; width: 22px; height: 22px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+    .btn-cgp { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: var(--navy); font-weight: bold; font-size: 0.9rem; padding: 14px 28px; border-radius: 8px; transition: background 0.2s, transform 0.2s; }
+    .btn-cgp:hover { background: var(--gold-dark); color: #fff; transform: translateY(-2px); }
+    .cgp-cards { display: flex; flex-direction: column; gap: 16px; }
+    .cgp-card { background: var(--white); border: 1px solid rgba(46,94,170,0.1); border-radius: var(--radius-lg); padding: 24px 26px; box-shadow: var(--shadow); transition: transform 0.25s, box-shadow 0.25s; }
+    .cgp-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .cgp-card-header { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
+    .cgp-card-icon { width: 44px; height: 44px; background: linear-gradient(135deg, rgba(46,94,170,0.08), rgba(201,168,76,0.12)); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .cgp-card h3 { font-size: 1rem; color: var(--navy); }
+    .cgp-card p { font-size: 0.88rem; color: var(--gray); line-height: 1.6; }
+
+    /* CTA */
+    .cgp-cta { background: linear-gradient(135deg, var(--navy-dark), var(--navy)); }
+    .cgp-cta-inner { max-width: 800px; margin: 0 auto; padding: 72px 24px; text-align: center; }
+    .cgp-cta-inner h2 { font-size: 1.8rem; color: var(--white); margin-bottom: 12px; }
+    .cgp-cta-inner p { color: rgba(255,255,255,0.78); margin-bottom: 28px; }
+
+    /* FOOTER */
+    footer { background: var(--dark); color: rgba(255,255,255,0.7); padding: 56px 24px 28px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .footer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .footer-logo-name { font-family: var(--font-title); font-size: 1.15rem; color: var(--white); letter-spacing: 0.04em; }
+    .footer-logo-tagline { font-size: 0.62rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.12em; }
+    .footer-brand p { font-size: 0.85rem; line-height: 1.7; max-width: 260px; }
+    .footer-legal-info { margin-top: 16px; font-size: 0.76rem; color: rgba(255,255,255,0.4); line-height: 1.7; }
+    .footer-col h4 { font-size: 0.78rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); margin-bottom: 18px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a { font-size: 0.85rem; color: rgba(255,255,255,0.65); transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--gold-light); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 28px; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { font-size: 0.78rem; color: rgba(255,255,255,0.4); }
+    .footer-bottom-legal { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-bottom-legal a { font-size: 0.78rem; color: rgba(255,255,255,0.4); }
+    .footer-bottom-legal a:hover { color: var(--gold-light); }
+    @media (max-width: 900px) { .cgp-section { grid-template-columns: 1fr; gap: 40px; } .footer-top { grid-template-columns: 1fr 1fr; gap: 30px; } }
+    @media (max-width: 580px) { .footer-top { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; text-align: center; } }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-emblem">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="24" r="22" fill="white" stroke="#eef2fb" stroke-width="1"/>
+          <path d="M 6 24 A 18 18 0 0 1 42 24" stroke="#2E5EAA" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <path d="M 6 24 A 18 18 0 0 0 42 24" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="15" font-weight="bold" fill="#2E5EAA">OG</text>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <span class="logo-name">Olivia Gestion</span>
+        <span class="logo-tagline">Gestion locative Paris</span>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#tarifs">Tarifs</a>
+      <a href="simulateur.html">Simulateur</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="index.html#contact" class="btn-nav">Nous contacter</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html#services">Services</a>
+  <a href="index.html#tarifs">Tarifs</a>
+  <a href="simulateur.html">Simulateur</a>
+  <a href="index.html#faq">FAQ</a>
+  <a href="notre-histoire.html">Notre histoire</a>
+  <a href="questions-proprietaires.html">Questions propriétaires</a>
+  <a href="index.html#contact" class="btn-nav">Nous contacter</a>
+</div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <span class="badge">Espace partenaires</span>
+  <h1>Conseillers en Gestion de Patrimoine</h1>
+  <p>Vous êtes CGP, conseiller financier ou professionnel de l'immobilier ? Rejoignez notre réseau d'apporteurs d'affaires et proposez à vos clients une gestion locative d'excellence.</p>
+</section>
+
+<!-- CONTENT -->
+<section class="cgp-section">
+  <div class="cgp-content">
+    <h2>Un partenariat clair, rémunérateur et durable</h2>
+    <div class="section-divider"></div>
+    <p>Nous travaillons main dans la main avec les professionnels du patrimoine. Vous nous confiez un client, nous le gérons avec le même soin que les nôtres, et vous êtes rémunéré pour cet apport.</p>
+    <ul class="cgp-avantages">
+      <li>
+        <div class="cgp-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div><strong>Commission attractive</strong> : rémunération à l'apport d'affaires, versée dès la signature du mandat de gestion.</div>
+      </li>
+      <li>
+        <div class="cgp-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div><strong>Partenariat durable</strong> : commission récurrente sur la durée du mandat pour les apporteurs fidèles.</div>
+      </li>
+      <li>
+        <div class="cgp-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div><strong>Reporting transparent</strong> : accès à un tableau de bord partenaire avec suivi de vos apports et commissions.</div>
+      </li>
+      <li>
+        <div class="cgp-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div><strong>Qualité de service irréprochable</strong> : votre réputation est notre priorité, nous gérons chaque bien avec soin et sérieux.</div>
+      </li>
+      <li>
+        <div class="cgp-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div><strong>Convention de partenariat</strong> : cadre juridique clair, convention signée, facturation transparente.</div>
+      </li>
+    </ul>
+    <a href="index.html#contact" class="btn-cgp">
+      Devenir partenaire
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+  <div class="cgp-cards">
+    <div class="cgp-card">
+      <div class="cgp-card-header">
+        <div class="cgp-card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <h3>Pour les CGP &amp; family offices</h3>
+      </div>
+      <p>Complétez votre offre patrimoniale avec une gestion locative haut de gamme. Vos clients investisseurs méritent la même qualité pour la gestion que pour le conseil.</p>
+    </div>
+    <div class="cgp-card">
+      <div class="cgp-card-header">
+        <div class="cgp-card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="2" width="18" height="20" rx="1"/><line x1="9" y1="22" x2="9" y2="2"/><line x1="9" y1="6" x2="3" y2="6"/><line x1="9" y1="10" x2="3" y2="10"/><line x1="9" y1="14" x2="3" y2="14"/><line x1="21" y1="6" x2="15" y2="6"/><line x1="21" y1="10" x2="15" y2="10"/><line x1="21" y1="14" x2="15" y2="14"/></svg>
+        </div>
+        <h3>Pour les agents immobiliers</h3>
+      </div>
+      <p>Vous vendez, nous gérons. Proposez à vos acquéreurs un service de gestion clé en main et fidélisez votre clientèle investisseur durablement.</p>
+    </div>
+    <div class="cgp-card">
+      <div class="cgp-card-header">
+        <div class="cgp-card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <h3>Pour les courtiers &amp; CGPI</h3>
+      </div>
+      <p>Un partenaire de gestion locative de référence pour vos clients ayant investi en locatif via votre accompagnement en financement ou défiscalisation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cgp-cta">
+  <div class="cgp-cta-inner">
+    <h2>Construisons un partenariat</h2>
+    <p>Parlons de votre clientèle et de la façon dont nous pouvons travailler ensemble.</p>
+    <a href="index.html#contact" class="btn-cgp">Prendre contact</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <svg width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="22" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+            <path d="M 6 24 A 18 18 0 0 1 42 24" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <path d="M 6 24 A 18 18 0 0 0 42 24" stroke="rgba(255,255,255,0.35)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="15" font-weight="bold" fill="white">OG</text>
+          </svg>
+          <div>
+            <div class="footer-logo-name">Olivia Gestion</div>
+            <div class="footer-logo-tagline">Gestion locative Paris</div>
+          </div>
+        </div>
+        <p>Experts en gestion locative à Paris et en petite couronne. Transparence, réactivité et accompagnement personnalisé pour chaque propriétaire.</p>
+        <div class="footer-legal-info">
+          Olivia Gestion SAS · Capital social : 1 000 €<br>
+          RCS Paris 105 790 315<br>
+          Siège social : 25 rue de Ponthieu, 75008 Paris<br>
+          Carte G · Activité réglementée (loi Hoguet)<br>
+          contact@olivia-gestion.fr · 06 79 21 75 53
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Découvrir</h4>
+        <ul>
+          <li><a href="notre-histoire.html">Notre histoire</a></li>
+          <li><a href="questions-proprietaires.html">Questions propriétaires</a></li>
+          <li><a href="partenaires-cgp.html">Partenaires CGP</a></li>
+          <li><a href="espace-proprietaire.html">Espace propriétaire</a></li>
+          <li><a href="simulateur.html">Simulateur</a></li>
+          <li><a href="blog/">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Informations</h4>
+        <ul>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="index.html#tarifs">Nos tarifs</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Légal</h4>
+        <ul>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+          <li><a href="mentions-legales.html#confidentialite">Confidentialité</a></li>
+          <li><a href="mentions-legales.html#cgv">CGV</a></li>
+          <li><a href="mentions-legales.html#editeur">Carte professionnelle</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Olivia Gestion · SAS au capital de 1 000 € · RCS Paris 105 790 315 · 25 rue de Ponthieu, 75008 Paris</p>
+      <div class="footer-bottom-legal">
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="mentions-legales.html#confidentialite">Confidentialité</a>
+        <a href="mentions-legales.html#cookies">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const burger = document.getElementById('burger');
+  const mobileNav = document.getElementById('mobileNav');
+  burger.addEventListener('click', () => mobileNav.classList.toggle('open'));
+</script>
+</body>
+</html>

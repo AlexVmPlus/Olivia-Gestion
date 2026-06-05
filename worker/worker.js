@@ -74,25 +74,19 @@ export default {
     };
 
     // 1) Création / mise à jour du contact (best-effort : n'interrompt pas la notification).
-    try {
-      await fetch('https://api.brevo.com/v3/contacts', {
-        method: 'POST',
-        headers: brevoHeaders,
-        body: JSON.stringify({
-          email,
-          updateEnabled: true,
-          attributes: {
-            NOM: nom,
-            TELEPHONE: telephone,
-            TYPE_BIEN: typebien,
-            SUJET: sujet,
-            SOURCE: 'Formulaire site olivia-gestion.fr',
-          },
-        }),
-      });
-    } catch (_) {
-      // on ignore : la notification email reste prioritaire
-    }
+    //    On tente avec les attributs ; si Brevo refuse (ex. attribut inexistant),
+    //    on réessaie sans attributs pour que le contact soit quand même enregistré.
+    await createContact(brevoHeaders, {
+      email,
+      updateEnabled: true,
+      attributes: {
+        NOM: nom,
+        TELEPHONE: telephone,
+        TYPE_BIEN: typebien,
+        SUJET: sujet,
+        SOURCE: 'Formulaire site olivia-gestion.fr',
+      },
+    });
 
     // 2) Email de notification (critique).
     const html = `
@@ -132,6 +126,24 @@ export default {
     return json({ ok: true }, 200, cors);
   },
 };
+
+async function createContact(headers, body) {
+  try {
+    const resp = await fetch('https://api.brevo.com/v3/contacts', {
+      method: 'POST', headers, body: JSON.stringify(body),
+    });
+    // 201 = créé, 204 = mis à jour. Sinon (ex. attribut inexistant -> 400),
+    // on réessaie sans attributs pour garantir l'enregistrement du contact.
+    if (!resp.ok && body.attributes) {
+      await fetch('https://api.brevo.com/v3/contacts', {
+        method: 'POST', headers,
+        body: JSON.stringify({ email: body.email, updateEnabled: true }),
+      });
+    }
+  } catch (_) {
+    // on ignore : la notification email reste prioritaire
+  }
+}
 
 function clean(v, max) {
   return (v == null ? '' : String(v)).trim().slice(0, max);

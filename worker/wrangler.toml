@@ -1,0 +1,6 @@
+name = "olivia-gestion-contact"
+main = "worker.js"
+compatibility_date = "2025-01-01"
+
+# La clé API Brevo n'est PAS définie ici. Elle est stockée comme secret :
+#   wrangler secret put BREVO_API_KEY

@@ -268,6 +268,9 @@
     .btn-submit { width: 100%; background: linear-gradient(135deg, var(--navy), var(--navy-light)); color: var(--white); font-family: var(--font-body); font-weight: bold; font-size: 0.95rem; padding: 15px 24px; border: none; border-radius: 8px; cursor: pointer; transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 8px; }
     .btn-submit:hover { opacity: 0.92; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(30,58,122,0.3); }
     .form-success { display: none; text-align: center; padding: 20px; background: rgba(39,174,96,0.08); border: 1px solid rgba(39,174,96,0.3); border-radius: var(--radius); color: #27ae60; font-size: 0.9rem; margin-top: 12px; }
+    .form-error { display: none; text-align: center; padding: 20px; background: rgba(214,69,69,0.08); border: 1px solid rgba(214,69,69,0.3); border-radius: var(--radius); color: #c0392b; font-size: 0.9rem; margin-top: 12px; }
+    .form-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
     /* ===== FOOTER ===== */
     footer { background: var(--dark); color: rgba(255,255,255,0.7); padding: 56px 24px 28px; }
@@ -885,12 +888,20 @@
             <label for="message">Votre message *</label>
             <textarea id="message" name="message" placeholder="Décrivez votre bien et votre projet (adresse approximative, surface, situation locative actuelle…)" required></textarea>
           </div>
-          <button type="submit" class="btn-submit">
+          <!-- Champ anti-spam (honeypot) : invisible pour les humains -->
+          <div class="form-hp" aria-hidden="true">
+            <label for="website">Ne pas remplir</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+          <button type="submit" class="btn-submit" id="contactSubmit">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
             Envoyer ma demande
           </button>
           <div class="form-success" id="formSuccess">
             ✓ Votre message a bien été envoyé ! Nous vous répondrons sous 24h.
+          </div>
+          <div class="form-error" id="formError">
+            Une erreur est survenue lors de l'envoi. Merci de réessayer ou de nous écrire directement à contact@olivia-gestion.fr.
           </div>
         </form>
       </div>
@@ -1095,10 +1106,16 @@
     if (!isOpen) item.classList.add('open');
   }
 
-  // Contact form
+  // Contact form → proxy Brevo (Cloudflare Worker)
+  // URL du Worker déployé (voir worker/README.md). Remplacer après déploiement.
+  const CONTACT_API_URL = 'https://olivia-gestion-contact.VOTRE-SOUS-DOMAINE.workers.dev';
   const form = document.getElementById('contactForm');
   const successMsg = document.getElementById('formSuccess');
-  form.addEventListener('submit', (e) => {
+  const errorMsg = document.getElementById('formError');
+  const submitBtn = document.getElementById('contactSubmit');
+  const submitBtnLabel = submitBtn ? submitBtn.innerHTML : '';
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const nom = form.nom.value.trim();
     const email = form.email.value.trim();
@@ -1107,9 +1124,39 @@
       alert('Merci de remplir les champs obligatoires (nom, email, message).');
       return;
     }
-    form.querySelectorAll('input,select,textarea,button').forEach(el => el.disabled = true);
-    successMsg.style.display = 'block';
-    successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+    successMsg.style.display = 'none';
+    errorMsg.style.display = 'none';
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Envoi en cours…';
+
+    const payload = {
+      nom,
+      email,
+      telephone: form.telephone.value.trim(),
+      typebien: form.typebien.value,
+      sujet: form.sujet.value,
+      message: msg,
+      website: form.website ? form.website.value : '' // honeypot
+    };
+
+    try {
+      const resp = await fetch(CONTACT_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!resp.ok) throw new Error('HTTP ' + resp.status);
+      form.querySelectorAll('input,select,textarea').forEach(el => el.disabled = true);
+      submitBtn.style.display = 'none';
+      successMsg.style.display = 'block';
+      successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    } catch (err) {
+      errorMsg.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = submitBtnLabel;
+      errorMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
   });
 
   // Guide form

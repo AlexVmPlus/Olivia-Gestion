@@ -66,15 +66,11 @@
     a { text-decoration: none; color: inherit; }
     img { max-width: 100%; display: block; }
 
-    /* ===== HEADER (premium : transparent sur le hero, solide au scroll) ===== */
+    /* ===== HEADER (toujours blanc, épuré, style Barnes) ===== */
     #header {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000; overflow: hidden;
-      background: transparent; backdrop-filter: none; box-shadow: none;
-      transition: background 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
-    }
-    #header.scrolled {
-      background: rgba(255,255,255,0.97); backdrop-filter: blur(8px);
-      box-shadow: 0 2px 24px rgba(30,58,122,0.13);
+      background: #ffffff; box-shadow: 0 2px 16px rgba(46,94,170,0.08);
+      transition: box-shadow 0.3s ease;
     }
     .header-inner {
       max-width: 1200px; margin: 0 auto; padding: 0 24px;
@@ -82,28 +78,20 @@
     }
     .logo { display: flex; align-items: center; gap: 11px; cursor: pointer; flex-shrink: 0; min-width: 0; }
     .logo-emblem { position: relative; width: 42px; height: 42px; flex-shrink: 0; }
-    .logo-emblem svg { position: absolute; inset: 0; width: 42px; height: 42px; transition: opacity 0.3s ease; }
-    .logo-emblem .emblem-dark { opacity: 0; }
-    .logo-emblem .emblem-light { opacity: 1; }
-    #header.scrolled .logo-emblem .emblem-dark { opacity: 1; }
-    #header.scrolled .logo-emblem .emblem-light { opacity: 0; }
+    .logo-emblem svg { width: 42px; height: 42px; }
+    .logo-emblem .emblem-light { display: none; }
     .logo-text { display: flex; flex-direction: column; line-height: 1.1; min-width: 0; }
-    .logo-name { font-family: var(--font-title); font-size: 1.2rem; font-weight: 700; color: #fff; letter-spacing: 0.06em; white-space: nowrap; transition: color 0.3s ease; }
-    .logo-tagline { font-family: var(--font-body); font-size: 0.58rem; font-weight: 400; color: rgba(255,255,255,0.82); letter-spacing: 0.18em; text-transform: uppercase; white-space: nowrap; transition: color 0.3s ease; }
-    #header.scrolled .logo-name { color: var(--navy); }
-    #header.scrolled .logo-tagline { color: var(--gold-dark); }
+    .logo-name { font-family: var(--font-title); font-size: 1.2rem; font-weight: 700; color: var(--navy); letter-spacing: 0.06em; white-space: nowrap; }
+    .logo-tagline { font-family: var(--font-body); font-size: 0.58rem; font-weight: 400; color: var(--gold-dark); letter-spacing: 0.18em; text-transform: uppercase; white-space: nowrap; }
     nav { display: flex; align-items: center; gap: 4px; }
-    nav a { font-size: 0.82rem; color: #fff; padding: 8px 12px; border-radius: 6px; transition: background 0.2s, color 0.3s ease; letter-spacing: 0.03em; white-space: nowrap; }
-    nav a:hover { background: rgba(255,255,255,0.14); }
-    #header.scrolled nav a { color: var(--navy); }
-    #header.scrolled nav a:hover { background: var(--light-gray); }
+    nav a { font-size: 0.82rem; color: var(--navy); padding: 8px 12px; border-radius: 6px; transition: background 0.2s, color 0.2s; letter-spacing: 0.03em; white-space: nowrap; }
+    nav a:hover { background: var(--light-gray); }
     .btn-nav { background: var(--gold); color: var(--navy) !important; font-weight: bold; padding: 9px 20px !important; border-radius: 6px; margin-left: 8px; position: relative; overflow: hidden; z-index: 0; transition: color 0.4s ease; }
     .btn-nav::before { content: ''; position: absolute; inset: 0; background: var(--gold-dark); transform: scaleX(0); transform-origin: left center; transition: transform 0.4s ease; z-index: -1; }
     .btn-nav:hover { color: var(--white) !important; }
     .btn-nav:hover::before { transform: scaleX(1); }
     .burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
-    .burger span { display: block; width: 26px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
-    #header.scrolled .burger span { background: var(--navy); }
+    .burger span { display: block; width: 26px; height: 2px; background: var(--navy); border-radius: 2px; transition: all 0.3s; }
     .mobile-nav { display: none; position: fixed; top: 70px; left: 0; right: 0; background: var(--white); box-shadow: 0 8px 24px rgba(30,58,122,0.12); padding: 16px 24px 24px; flex-direction: column; gap: 4px; z-index: 999; }
     .mobile-nav.open { display: flex; }
     .mobile-nav a { color: var(--navy); font-size: 0.95rem; padding: 12px 16px; border-radius: 8px; border-bottom: 1px solid var(--light-gray); transition: background 0.2s; }
@@ -118,25 +106,39 @@
     .section-subtitle { font-size: 1.05rem; color: var(--gray); max-width: 560px; line-height: 1.7; }
     .section-divider { width: 56px; height: 3px; background: linear-gradient(90deg, var(--gold), var(--navy)); border-radius: 3px; margin: 20px 0 36px; }
 
-    /* ===== HERO ===== */
-    #hero { padding-top: 70px; min-height: 90vh; display: flex; align-items: center; position: relative; overflow: hidden; background: #1f2a44 url('https://images.unsplash.com/photo-1543716091-a840c05249ec?w=1920&q=80') center/cover no-repeat; }
-    .hero-overlay { position: absolute; inset: 0; background: #00000066; z-index: 1; }
-    .hero-inner { position: relative; z-index: 2; max-width: 880px; margin: 0 auto; padding: 100px 24px; text-align: center; }
-    .hero-title { font-size: clamp(2.2rem, 5vw, 3.8rem); color: var(--white); line-height: 1.12; margin-bottom: 22px; font-weight: 700; }
+    /* ===== HERO SLIDESHOW (style Barnes) ===== */
+    #hero { padding-top: 70px; min-height: 85vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background: #1f2a44; }
+    .slides-container { position: absolute; inset: 0; z-index: 0; }
+    .slide { position: absolute; inset: 0; background-size: cover; background-position: center; background-repeat: no-repeat; opacity: 0; transition: opacity 1.5s ease-in-out; }
+    .slide.active { opacity: 1; }
+    .hero-overlay { position: absolute; inset: 0; background: rgba(10,10,10,0.35); z-index: 1; }
+    .hero-content { position: relative; z-index: 2; max-width: 880px; margin: 0 auto; padding: 80px 24px; text-align: center; }
+    .hero-title { font-family: var(--font-title); font-size: clamp(2.2rem, 5vw, 3.8rem); color: var(--white); line-height: 1.12; margin-bottom: 20px; font-weight: 700; }
     .hero-title .word { display: inline-block; }
     .hero-title em { color: var(--gold-light); font-style: italic; display: inline-block; }
-    .hero-sub { font-size: 1.12rem; color: rgba(255,255,255,0.9); line-height: 1.7; margin: 0 auto 38px; max-width: 600px; }
-    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+    .hero-subtitle { font-size: 1.15rem; color: rgba(255,255,255,0.92); line-height: 1.7; margin: 0 auto 36px; max-width: 600px; }
+    .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
     /* Bouton principal : remplissage doré depuis la gauche au survol */
     .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: var(--navy); font-family: var(--font-body); font-weight: bold; font-size: 0.92rem; padding: 15px 32px; border-radius: 8px; transition: color 0.4s ease, transform 0.3s ease; letter-spacing: 0.02em; position: relative; overflow: hidden; z-index: 0; }
     .btn-primary::before { content: ''; position: absolute; inset: 0; background: var(--gold-dark); transform: scaleX(0); transform-origin: left center; transition: transform 0.4s ease; z-index: -1; }
     .btn-primary:hover { color: var(--white); transform: translateY(-2px); }
     .btn-primary:hover::before { transform: scaleX(1); }
-    .btn-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--white); font-size: 0.92rem; padding: 15px 32px; border-radius: 8px; border: 1.5px solid rgba(255,255,255,0.5); transition: border-color 0.2s, background 0.2s, transform 0.2s; }
-    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.12); transform: translateY(-2px); }
-    .hero-stats { display: flex; gap: 48px; margin-top: 56px; justify-content: center; flex-wrap: wrap; }
-    .hero-stat-value { font-family: var(--font-title); font-size: 2rem; color: var(--white); font-weight: bold; }
-    .hero-stat-label { font-size: 0.76rem; color: rgba(255,255,255,0.72); text-transform: uppercase; letter-spacing: 0.08em; }
+    .btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--white); font-size: 0.92rem; padding: 15px 32px; border-radius: 8px; border: 1.5px solid rgba(255,255,255,0.6); transition: border-color 0.2s, background 0.2s, transform 0.2s; }
+    .btn-secondary:hover { border-color: var(--white); background: rgba(255,255,255,0.14); transform: translateY(-2px); }
+    /* Points de navigation du slideshow */
+    .hero-dots { position: absolute; bottom: 26px; left: 0; right: 0; z-index: 3; display: flex; gap: 10px; justify-content: center; }
+    .hero-dot { width: 11px; height: 11px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.8); background: transparent; cursor: pointer; padding: 0; transition: background 0.3s, transform 0.3s; }
+    .hero-dot:hover { background: rgba(255,255,255,0.5); }
+    .hero-dot.active { background: var(--white); transform: scale(1.15); }
+
+    /* ===== BANDE STATS (sous le hero, style Barnes) ===== */
+    .stats-band { background: #ffffff; padding: 0; border-bottom: 1px solid rgba(30,58,122,0.08); }
+    .stats-band-inner { max-width: 1100px; margin: 0 auto; min-height: 100px; display: grid; grid-template-columns: 1fr 1fr 1fr; }
+    .stat-col { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 22px 16px; border-right: 1px solid rgba(30,58,122,0.12); }
+    .stat-col:last-child { border-right: none; }
+    .stat-value { font-family: var(--font-title); font-size: 1.9rem; font-weight: 700; color: var(--navy); line-height: 1; }
+    .stat-label { font-size: 0.74rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 8px; }
+    @media (max-width: 560px) { .stat-value { font-size: 1.4rem; } .stat-label { font-size: 0.62rem; letter-spacing: 0.06em; } }
 
     /* ===== VALEUR ===== */
     #valeur { background: #f8f8f8; padding: 84px 24px; }
@@ -316,9 +318,6 @@
     .intro-logo { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 2; }
     .intro-logo svg { width: 96px; height: 96px; }
 
-    /* ===== HERO : badge + titre animé ===== */
-    .hero-badge { display: inline-block; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.35); border-radius: 30px; padding: 6px 18px; margin-bottom: 22px; }
-
     /* ===== ÉQUIPE ===== */
 
     /* ===== ÉQUIPE ===== */
@@ -450,32 +449,47 @@
   <a href="#contact" class="btn-nav" onclick="closeMobileNav()">Nous contacter</a>
 </div>
 
-<!-- ===== HERO ===== -->
-<section id="hero">
+<!-- ===== HERO SLIDESHOW (appartements haussmanniens) ===== -->
+<section id="hero" class="hero-slideshow">
+  <div class="slides-container">
+    <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1920&q=85')"></div>
+    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1920&q=85')"></div>
+    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=1920&q=85')"></div>
+    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1920&q=85')"></div>
+    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1920&q=85')"></div>
+  </div>
   <div class="hero-overlay"></div>
-  <div class="hero-inner">
-    <div class="hero-content">
-      <div class="hero-badge">Gestion locative · Paris &amp; petite couronne</div>
-      <h1 class="hero-title"><span class="word">Votre</span> <span class="word">bien,</span><br><em>notre priorité</em></h1>
-      <p class="hero-sub">Nous gérons votre appartement comme si c'était le nôtre. Vous touchez vos loyers, on s'occupe du reste : locataires, travaux, administratif. Un seul interlocuteur, des comptes clairs chaque mois.</p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn-primary">Demander un devis</a>
-        <a href="#services" class="btn-outline">Découvrir nos services</a>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="hero-stat-value" data-count="7" data-suffix="%">7%</div>
-          <div class="hero-stat-label">Honoraires gestion</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-value" data-count="100" data-suffix="%">100%</div>
-          <div class="hero-stat-label">Transparence</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-value">Paris</div>
-          <div class="hero-stat-label">&amp; 92 · 93 · 94</div>
-        </div>
-      </div>
+  <div class="hero-content">
+    <h1 class="hero-title"><span class="word">Votre</span> <span class="word">bien,</span><br><em>notre priorité</em></h1>
+    <p class="hero-subtitle">Nous gérons votre appartement comme si c'était le nôtre.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">Demander un devis</a>
+      <a href="#services" class="btn-secondary">Découvrir nos services</a>
+    </div>
+  </div>
+  <div class="hero-dots" role="tablist" aria-label="Choisir une image">
+    <button class="hero-dot active" type="button" data-slide="0" aria-label="Image 1"></button>
+    <button class="hero-dot" type="button" data-slide="1" aria-label="Image 2"></button>
+    <button class="hero-dot" type="button" data-slide="2" aria-label="Image 3"></button>
+    <button class="hero-dot" type="button" data-slide="3" aria-label="Image 4"></button>
+    <button class="hero-dot" type="button" data-slide="4" aria-label="Image 5"></button>
+  </div>
+</section>
+
+<!-- ===== BANDE STATS (style Barnes, sous le hero) ===== -->
+<section id="stats-band" class="stats-band">
+  <div class="stats-band-inner">
+    <div class="stat-col">
+      <div class="stat-value" data-count="7" data-suffix="%">7%</div>
+      <div class="stat-label">Honoraires de gestion</div>
+    </div>
+    <div class="stat-col">
+      <div class="stat-value" data-count="100" data-suffix="%">100%</div>
+      <div class="stat-label">Transparence</div>
+    </div>
+    <div class="stat-col">
+      <div class="stat-value">Paris</div>
+      <div class="stat-label">92 · 93 · 94</div>
     </div>
   </div>
 </section>
@@ -964,12 +978,37 @@
   });
   scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-  // Header premium : transparent sur le hero, fond blanc + ombre après 80px de scroll.
-  // Fonctionne avec ou sans GSAP (pur CSS/JS).
-  const header = document.getElementById('header');
-  const onHeaderScroll = () => header.classList.toggle('scrolled', window.scrollY > 80);
-  window.addEventListener('scroll', onHeaderScroll, { passive: true });
-  onHeaderScroll();
+  // Header : toujours blanc (géré en CSS) — aucune logique de scroll nécessaire.
+
+  // ===== HERO SLIDESHOW (indépendant de GSAP : fonctionne même si le CDN échoue) =====
+  (function () {
+    const slides = Array.from(document.querySelectorAll('#hero .slide'));
+    const dots = Array.from(document.querySelectorAll('#hero .hero-dot'));
+    if (!slides.length) return;
+    let current = 0, timer = null;
+    const INTERVAL = 5000;
+
+    function goTo(index) {
+      current = (index + slides.length) % slides.length;
+      slides.forEach((s, i) => s.classList.toggle('active', i === current));
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+    function next() { goTo(current + 1); }
+    function start() { stop(); timer = setInterval(next, INTERVAL); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        goTo(parseInt(dot.dataset.slide, 10) || 0);
+        start(); // relance le minuteur après une interaction
+      });
+    });
+
+    // Accessibilité : pas de défilement automatique si l'utilisateur préfère réduire les animations.
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    goTo(0);
+    if (!reduce) start();
+  })();
 
   // Révélations au scroll et compteurs animés : gérés par GSAP (bloc plus bas).
   // Sans GSAP, le contenu reste visible et les statistiques affichent leur valeur finale.
@@ -1079,7 +1118,10 @@
     const intro = document.getElementById('intro');
 
     // Compteurs animés : 0 → valeur finale en 2s, via un objet et onUpdate (effet premium).
+    let countersStarted = false;
     function startCounters() {
+      if (countersStarted) return;
+      countersStarted = true;
       gsap.utils.toArray('[data-count]').forEach((el) => {
         const end = parseFloat(el.dataset.count);
         const suffix = el.dataset.suffix || '';
@@ -1109,32 +1151,27 @@
       }
 
       // ===== ÉTATS INITIAUX DU HERO (cachés sous l'intro, donc pas de flash) =====
-      gsap.set('.hero-badge', { y: -24, autoAlpha: 0 });
       gsap.set('.hero-title .word', { xPercent: -45, autoAlpha: 0 });
       gsap.set('.hero-title em', { autoAlpha: 1, clipPath: 'inset(0 100% 0 0)' });
-      gsap.set('.hero-actions .btn-primary, .hero-actions .btn-outline', { y: 30, autoAlpha: 0 });
-      gsap.set('.hero-stat', { y: 22, autoAlpha: 0 });
+      gsap.set('.hero-cta .btn-primary, .hero-cta .btn-secondary', { y: 30, autoAlpha: 0 });
 
-      // Paragraphe : découpé en lignes via SplitText si disponible, sinon en bloc.
+      // Sous-titre : découpé en lignes via SplitText si disponible, sinon en bloc.
       let subLines = null;
       if (window.SplitText) {
-        try { subLines = new SplitText('.hero-sub', { type: 'lines' }).lines; }
+        try { subLines = new SplitText('.hero-subtitle', { type: 'lines' }).lines; }
         catch (e) { subLines = null; }
       }
-      const subTarget = (subLines && subLines.length) ? subLines : '.hero-sub';
+      const subTarget = (subLines && subLines.length) ? subLines : '.hero-subtitle';
       gsap.set(subTarget, { y: 16, autoAlpha: 0 });
 
       // ===== TIMELINE D'ENTRÉE DU HERO =====
       function playHero() {
         const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-        tl.to('.hero-badge', { y: 0, autoAlpha: 1, duration: 0.7 })
-          .to('.hero-title .word', { xPercent: 0, autoAlpha: 1, duration: 0.6, stagger: 0.14 }, '-=0.25')
+        tl.to('.hero-title .word', { xPercent: 0, autoAlpha: 1, duration: 0.6, stagger: 0.14 })
           .to('.hero-title em', { clipPath: 'inset(0 0% 0 0)', duration: 0.85, ease: 'power3.inOut' }, '-=0.2')
-          .to(subTarget, { y: 0, autoAlpha: 1, duration: 0.7, stagger: 0.12 }, '-=0.45')
-          .to('.hero-actions .btn-primary, .hero-actions .btn-outline',
-              { y: 0, autoAlpha: 1, duration: 0.7, stagger: 0.12, ease: 'back.out(1.7)' }, '-=0.3')
-          .to('.hero-stat', { y: 0, autoAlpha: 1, duration: 0.6, stagger: 0.12 }, '-=0.4')
-          .add(startCounters, '-=0.2');
+          .to(subTarget, { y: 0, autoAlpha: 1, duration: 0.7, stagger: 0.12 }, '-=0.4')
+          .to('.hero-cta .btn-primary, .hero-cta .btn-secondary',
+              { y: 0, autoAlpha: 1, duration: 0.7, stagger: 0.12, ease: 'back.out(1.7)' }, '-=0.3');
       }
 
       // ===== 1) INTRO REVEAL (durée ~2.5s) =====
@@ -1145,6 +1182,8 @@
           document.body.style.overflow = '';
           if (intro) intro.style.display = 'none';
           ScrollTrigger.refresh();
+          // Compteurs : se déclenchent quand la bande stats entre dans le viewport.
+          ScrollTrigger.create({ trigger: '.stats-band', start: 'top 88%', once: true, onEnter: startCounters });
         }
       });
       introTl
@@ -1160,6 +1199,7 @@
         if (intro && intro.style.display !== 'none') {
           document.body.style.overflow = '';
           intro.style.display = 'none';
+          startCounters();
         }
       });
 

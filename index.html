@@ -378,6 +378,127 @@
       .footer-bottom { flex-direction: column; text-align: center; }
       .footer-bottom-legal { justify-content: center; }
     }
+
+    /* ============================================================
+       REFONTE STYLE BARNES — typographie fine, blocs 50/50, alternance blanc/sombre
+       (placé en fin de feuille : surcharge volontairement les styles ci-dessus)
+       ============================================================ */
+
+    /* --- Typographie globale des sections --- */
+    .section-badge { background: none; border: none; padding: 0; border-radius: 0; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+    .section-title { font-family: var(--font-title); font-size: 2.2rem; font-weight: 400; letter-spacing: 0.02em; color: var(--navy); line-height: 1.28; }
+    .section-subtitle { font-size: 1rem; line-height: 1.8; color: #555; }
+    .section-divider { display: none; }
+
+    /* --- Helpers réutilisables (blocs 50/50) --- */
+    .split-label { display: block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .split-title { font-family: var(--font-title); font-size: 2.2rem; font-weight: 400; letter-spacing: 0.02em; color: var(--navy); line-height: 1.3; margin-bottom: 20px; }
+    .split-desc { font-size: 1rem; line-height: 1.8; color: #555; margin-bottom: 26px; }
+    .link-arrow { display: inline-flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-dark); transition: gap 0.25s ease, color 0.25s ease; align-self: flex-start; }
+    .link-arrow:hover { gap: 14px; color: var(--gold); }
+
+    /* --- SECTION 1 : bloc 50/50 "Notre approche" --- */
+    #valeur { padding: 0; background: #fff; }
+    .split-block { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; }
+    .split-text { display: flex; flex-direction: column; justify-content: center; padding: 80px 6vw; }
+    .split-photo { background-size: cover; background-position: center; background-repeat: no-repeat; min-height: 600px; }
+
+    /* --- SECTION 2 : services épurés --- */
+    #services { background: #fff; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 50px; }
+    .service-card { background: #fff; border: 1px solid #ececec; border-top: 2px solid var(--gold); border-radius: 0; padding: 34px 30px; box-shadow: none; overflow: visible; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .service-card::before { display: none; }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(30,58,122,0.10); border-color: #ececec; border-top-color: var(--gold); }
+    html.gsap-active .service-card:hover { transform: translateY(-4px); }
+    .service-num { font-family: var(--font-title); font-size: 1.45rem; font-weight: 400; color: var(--gold); margin-bottom: 14px; }
+    .service-card h3 { font-size: 1.05rem; color: var(--navy); font-weight: 600; margin-bottom: 8px; }
+    .service-card p { font-size: 0.9rem; color: #555; line-height: 1.7; }
+    @media (max-width: 880px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .services-grid { grid-template-columns: 1fr; } }
+
+    /* --- SECTION 3 : bande chiffres (bleu nuit) --- */
+    .chiffres-band { background: #1a2744; padding: 80px 24px; }
+    .chiffres-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); }
+    .chiffre-col { text-align: center; padding: 10px 24px; border-right: 1px solid rgba(255,255,255,0.15); }
+    .chiffre-col:last-child { border-right: none; }
+    .chiffre-num { font-family: var(--font-title); font-size: 4.5rem; font-weight: 400; color: #fff; line-height: 1; }
+    .chiffre-label { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.62); margin-top: 16px; }
+    @media (max-width: 680px) { .chiffres-inner { grid-template-columns: 1fr; gap: 36px; } .chiffre-col { border-right: none; } .chiffre-num { font-size: 3.4rem; } }
+
+    /* --- SECTION 4 : "Pourquoi" en bloc sombre --- */
+    #pourquoi { background: #1a2744; }
+    .dark-block-inner { max-width: 1100px; margin: 0 auto; }
+    .dark-head { text-align: center; margin-bottom: 50px; }
+    .dark-title { font-family: var(--font-title); font-size: 2.2rem; font-weight: 400; letter-spacing: 0.02em; color: #fff; line-height: 1.3; }
+    .pourquoi-body { display: grid; grid-template-columns: 1.25fr 1fr; gap: 56px; align-items: center; }
+    .pourquoi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 34px 40px; margin-top: 0; }
+    .pourquoi-num { font-family: var(--font-title); font-size: 1.6rem; font-weight: 400; color: var(--gold); margin-bottom: 10px; line-height: 1; }
+    .pourquoi-point h3 { font-size: 1.05rem; color: #fff; font-weight: 600; margin-bottom: 8px; }
+    .pourquoi-point p { font-size: 0.9rem; color: rgba(255,255,255,0.62); line-height: 1.7; }
+    .pourquoi-photo { background-size: cover; background-position: center; border-radius: 4px; min-height: 420px; }
+    @media (max-width: 860px) { .pourquoi-body { grid-template-columns: 1fr; gap: 40px; } .pourquoi-photo { min-height: 280px; } }
+    @media (max-width: 480px) { .pourquoi-grid { grid-template-columns: 1fr; } }
+
+    /* --- SECTION 5 : tarifs épurés (blanc) --- */
+    #tarifs { background: #fff; }
+    .tarif-block { background: #fff; border: 1px solid #e0e0e0; border-radius: 4px; box-shadow: none; }
+    .tarif-block h3 { font-weight: 600; }
+    .tarif-block.featured { background: #fff; color: var(--dark); border: 1px solid #e0e0e0; border-top: 2px solid var(--gold); box-shadow: 0 12px 40px rgba(30,58,122,0.07); }
+    .tarif-block.featured h3 { color: var(--navy); }
+    .tarif-block.featured .tarif-block-subtitle { color: var(--gray); }
+    .tarif-main { font-family: var(--font-title); font-size: 3.2rem; font-weight: 400; color: var(--navy); }
+    .tarif-main span { font-size: 1.05rem; color: var(--gray); }
+    .tarif-block.featured .tarif-main { color: var(--navy); }
+    .tarif-block.featured .tarif-main span { color: var(--gray); }
+    .tarif-block.featured .tarif-note { color: var(--gray); }
+    .tarif-block.featured .tarif-table th { color: var(--gold-dark); border-color: rgba(201,168,76,0.3); }
+    .tarif-block.featured .tarif-table td { color: var(--dark); border-color: rgba(0,0,0,0.05); }
+    .tarif-block.featured .tarif-table .price { color: var(--navy); }
+    .tarif-block.featured .tarif-tag { background: rgba(201,168,76,0.15); color: var(--gold-dark); border-color: rgba(201,168,76,0.3); }
+    .tarif-footer { background: #faf8f3; border-left: 3px solid var(--gold); }
+
+    /* --- SECTION 6 : FAQ épurée (séparateurs fins, chevron doré) --- */
+    #faq { background: #fff; }
+    .faq-list { gap: 0; }
+    .faq-item { border: none; border-bottom: 1px solid #e8e8e8; border-radius: 0; background: #fff; }
+    .faq-item:first-child { border-top: 1px solid #e8e8e8; }
+    .faq-item.open { border-color: #e8e8e8; box-shadow: none; }
+    .faq-question { padding: 24px 6px; }
+    .faq-question:hover { background: transparent; }
+    .faq-item.open .faq-question { background: transparent; }
+    .faq-question h3 { color: var(--navy); font-weight: 500; font-size: 1rem; }
+    .faq-toggle { border: none; width: 22px; height: 22px; }
+    .faq-item.open .faq-toggle { background: transparent; border: none; transform: rotate(180deg); }
+    .faq-toggle svg, .faq-item.open .faq-toggle svg { stroke: var(--gold); }
+
+    /* --- SECTION 7 : contact 50/50 inversé (photo gauche, formulaire droite) --- */
+    #contact { padding: 0; background: #fff; }
+    .contact-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; }
+    .contact-photo { position: relative; background-size: cover; background-position: center; display: flex; align-items: center; }
+    .contact-photo-overlay { position: absolute; inset: 0; background: rgba(13,17,23,0.62); }
+    .contact-photo-content { position: relative; z-index: 1; padding: 80px 6vw; max-width: 540px; }
+    .contact-photo-content .split-label { color: var(--gold-light); }
+    .contact-photo-content h2 { font-family: var(--font-title); font-size: 2.2rem; font-weight: 400; color: #fff; line-height: 1.25; margin-bottom: 16px; }
+    .contact-photo-content > p { font-size: 0.98rem; color: rgba(255,255,255,0.82); line-height: 1.8; margin-bottom: 30px; }
+    .contact-photo-content .contact-detail-icon { background: rgba(255,255,255,0.12); }
+    .contact-photo-content .contact-detail-icon svg { stroke: var(--gold-light); }
+    .contact-photo-content .contact-detail-text strong { color: #fff; }
+    .contact-photo-content .contact-detail-text span { color: rgba(255,255,255,0.78); }
+    .contact-form-wrap { background: #fff; display: flex; align-items: center; padding: 70px 6vw; }
+    .contact-form-wrap .contact-form { background: #fff; border: none; box-shadow: none; padding: 0; width: 100%; max-width: 580px; border-radius: 0; }
+    .contact-split .form-group input, .contact-split .form-group select, .contact-split .form-group textarea { border: none; border-bottom: 1.5px solid #d8d8d8; border-radius: 0; padding: 10px 2px; background: transparent; }
+    .contact-split .form-group input:focus, .contact-split .form-group select:focus, .contact-split .form-group textarea:focus { border-bottom-color: var(--navy); box-shadow: none; }
+    .contact-split .form-group textarea { min-height: 90px; }
+    .contact-split .btn-submit { background: var(--gold); color: var(--navy); }
+    .contact-split .btn-submit:hover { background: var(--gold-dark); color: #fff; box-shadow: none; }
+    @media (max-width: 860px) {
+      .split-block, .contact-split { grid-template-columns: 1fr; }
+      .split-photo { min-height: 320px; }
+      .contact-photo { min-height: 320px; order: -1; }
+    }
+
+    /* --- SECTION 8 : footer sombre Barnes --- */
+    footer { background: #0d1117; border-top: 2px solid var(--gold); }
   </style>
 </head>
 <body>
@@ -489,20 +610,20 @@
     </div>
     <div class="stat-col">
       <div class="stat-value">Paris</div>
-      <div class="stat-label">92 · 93 · 94</div>
+      <div class="stat-label">Grand Paris</div>
     </div>
   </div>
 </section>
 
-<!-- ===== VALEUR DIFFÉRENCIANTE ===== -->
-<section id="valeur">
-  <div class="valeur-inner">
-    <div class="valeur-label fade-up">Notre engagement</div>
-    <h2 class="valeur-title fade-up delay-1">Une gestion sur-mesure, des honoraires transparents</h2>
-    <p class="valeur-desc fade-up delay-2">
-      Chaque propriétaire est unique. Nous adaptons notre accompagnement à votre bien et à vos objectifs, avec des honoraires clairs, sans frais cachés et conformes à la loi ALUR.
-    </p>
+<!-- ===== SECTION 1 : NOTRE APPROCHE (bloc 50/50) ===== -->
+<section id="valeur" class="split-block">
+  <div class="split-text slide-left">
+    <span class="split-label">Notre approche</span>
+    <h2 class="split-title">Une gestion sur-mesure,<br>des honoraires transparents</h2>
+    <p class="split-desc">Chaque propriétaire est unique. Nous adaptons notre accompagnement à votre bien et à vos objectifs, sans frais cachés.</p>
+    <a href="#services" class="link-arrow">Découvrir nos services →</a>
   </div>
+  <div class="split-photo slide-right" style="background-image:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=85')"></div>
 </section>
 
 <!-- ===== SERVICES ===== -->
@@ -515,54 +636,53 @@
 
     <div class="services-grid">
       <div class="service-card fade-up">
-        <div class="service-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        </div>
+        <div class="service-num">01</div>
         <h3>Gestion locative complète</h3>
-        <p>Encaissement des loyers, reversement mensuel, gestion des impayés, quittances et régularisation de charges. Votre bien géré sans effort.</p>
+        <p>Encaissement, reversement, quittances et gestion des impayés — votre bien géré sans effort.</p>
       </div>
-      <div class="service-card fade-up delay-1">
-        <div class="service-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        </div>
+      <div class="service-card fade-up">
+        <div class="service-num">02</div>
         <h3>Mise en location</h3>
-        <p>Estimation du loyer, photos professionnelles, diffusion multi-plateformes, sélection rigoureuse des candidats et signature du bail.</p>
+        <p>Estimation, photos professionnelles, diffusion ciblée et sélection rigoureuse des candidats.</p>
       </div>
-      <div class="service-card fade-up delay-2">
-        <div class="service-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>
-        </div>
+      <div class="service-card fade-up">
+        <div class="service-num">03</div>
         <h3>État des lieux</h3>
-        <p>États des lieux d'entrée et de sortie détaillés, réalisés par nos soins avec rapport photographique complet et contradictoire.</p>
+        <p>Entrée et sortie détaillés, réalisés par nos soins avec rapport photographique contradictoire.</p>
       </div>
-      <div class="service-card fade-up delay-3">
-        <div class="service-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M14.5 9a4 4 0 1 0 0 6"/><line x1="7" y1="11" x2="14" y2="11"/><line x1="7" y1="13" x2="14" y2="13"/></svg>
-        </div>
+      <div class="service-card fade-up">
+        <div class="service-num">04</div>
         <h3>Suivi des loyers</h3>
-        <p>Révision annuelle des loyers, quittances automatiques, compte-rendu de gérance mensuel et déclaration fiscale simplifiée.</p>
+        <p>Révision annuelle, quittances automatiques et compte-rendu de gérance mensuel.</p>
       </div>
-      <div class="service-card fade-up delay-4">
-        <div class="service-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-        </div>
-        <h3>Gestion des travaux</h3>
-        <p>Coordination avec artisans de confiance, devis comparatifs, suivi des interventions et réception des travaux en votre nom.</p>
+      <div class="service-card fade-up">
+        <div class="service-num">05</div>
+        <h3>Travaux &amp; rénovation</h3>
+        <p>Réseau d'artisans de confiance, devis comparatifs et suivi des interventions en votre nom.</p>
       </div>
-      <div class="service-card fade-up delay-1">
-        <div class="service-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="12 3 12 21"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M5 6 3 12a4 4 0 0 0 8 0L9 6"/><path d="M19 6l-2 6a4 4 0 0 1-8 0l-2-6"/><line x1="9" y1="21" x2="15" y2="21"/></svg>
-        </div>
+      <div class="service-card fade-up">
+        <div class="service-num">06</div>
         <h3>Conseil juridique &amp; fiscal</h3>
-        <p>Accompagnement sur les obligations légales du bailleur, optimisation fiscale et veille réglementaire continue.</p>
+        <p>Obligations du bailleur, optimisation fiscale et veille réglementaire continue.</p>
       </div>
-      <div class="service-card fade-up delay-2">
-        <div class="service-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-        </div>
-        <h3>Travaux &amp; Rénovation</h3>
-        <p>Nous coordonnons l'ensemble de vos travaux grâce à notre réseau de prestataires de confiance avec qui nous travaillons depuis plusieurs années. Changement de serrure, ménage professionnel, rafraîchissement ou rénovation complète d'appartement : tout est géré sur devis transparent.</p>
-      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 3 : BANDE CHIFFRES (bleu nuit) ===== -->
+<section class="chiffres-band">
+  <div class="chiffres-inner">
+    <div class="chiffre-col fade-up">
+      <div class="chiffre-num" data-count="15" data-suffix=" ans">15 ans</div>
+      <div class="chiffre-label">D'expertise immobilière</div>
+    </div>
+    <div class="chiffre-col fade-up">
+      <div class="chiffre-num" data-count="7" data-suffix="%">7%</div>
+      <div class="chiffre-label">Honoraires tout compris</div>
+    </div>
+    <div class="chiffre-col fade-up">
+      <div class="chiffre-num">Paris</div>
+      <div class="chiffre-label">Intramuros &amp; Grand Paris</div>
     </div>
   </div>
 </section>
@@ -624,45 +744,37 @@
   </div>
 </section>
 
-<!-- ===== POURQUOI NOUS ===== -->
-<section id="pourquoi">
-  <div class="section-inner">
-    <span class="section-badge fade-up">Nos engagements</span>
-    <h2 class="section-title fade-up delay-1">Pourquoi choisir Olivia Gestion ?</h2>
-    <div class="section-divider fade-up delay-2"></div>
-    <div class="pourquoi-grid">
-      <div class="pourquoi-card slide-left">
-        <div class="pourquoi-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="1.7" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+<!-- ===== SECTION 4 : POURQUOI (bloc sombre) ===== -->
+<section id="pourquoi" class="dark-block">
+  <div class="dark-block-inner">
+    <div class="dark-head fade-up">
+      <span class="split-label">Nos engagements</span>
+      <h2 class="dark-title">Pourquoi Olivia Gestion ?</h2>
+    </div>
+    <div class="pourquoi-body">
+      <div class="pourquoi-grid">
+        <div class="pourquoi-point fade-up">
+          <div class="pourquoi-num">01</div>
+          <h3>Transparence totale</h3>
+          <p>Aucun frais caché. Des tarifs affichés clairement et un compte-rendu détaillé chaque mois.</p>
         </div>
-        <div class="pourquoi-number">01</div>
-        <h3>Transparence totale</h3>
-        <p>Aucun frais caché, aucune surprise. Nos tarifs sont affichés clairement et conformes aux plafonds légaux. Vous recevez un compte-rendu détaillé chaque mois.</p>
-      </div>
-      <div class="pourquoi-card fade-up delay-1">
-        <div class="pourquoi-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <div class="pourquoi-point fade-up">
+          <div class="pourquoi-num">02</div>
+          <h3>Réactivité garantie</h3>
+          <p>Réponse sous 24h et un interlocuteur dédié qui connaît votre dossier personnellement.</p>
         </div>
-        <div class="pourquoi-number">02</div>
-        <h3>Réactivité garantie</h3>
-        <p>Réponse sous 24h à toute demande. Un interlocuteur dédié vous connaît personnellement et suit votre dossier. Plus jamais de messages sans réponse.</p>
-      </div>
-      <div class="pourquoi-card fade-up delay-2">
-        <div class="pourquoi-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="1.7" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div class="pourquoi-point fade-up">
+          <div class="pourquoi-num">03</div>
+          <h3>Expertise du Grand Paris</h3>
+          <p>Encadrement des loyers, zonage ALUR, marché local : nous maîtrisons chaque arrondissement.</p>
         </div>
-        <div class="pourquoi-number">03</div>
-        <h3>Expertise Paris &amp; banlieue</h3>
-        <p>Spécialistes du Grand Paris, nous maîtrisons les spécificités de chaque arrondissement et commune : encadrement des loyers, zonage ALUR, marché local.</p>
-      </div>
-      <div class="pourquoi-card slide-right delay-3">
-        <div class="pourquoi-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+        <div class="pourquoi-point fade-up">
+          <div class="pourquoi-num">04</div>
+          <h3>Accompagnement sur-mesure</h3>
+          <p>Une gestion adaptée à vos objectifs patrimoniaux et à vos préférences de communication.</p>
         </div>
-        <div class="pourquoi-number">04</div>
-        <h3>Accompagnement personnalisé</h3>
-        <p>Chaque propriétaire est unique. Nous adaptons notre gestion à vos objectifs patrimoniaux, votre disponibilité et vos préférences de communication.</p>
       </div>
+      <div class="pourquoi-photo slide-right" style="background-image:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=85')"></div>
     </div>
   </div>
 </section>
@@ -678,35 +790,35 @@
       <div class="faq-item fade-up">
         <div class="faq-question" onclick="toggleFaq(this)">
           <h3>Quels sont vos honoraires de gestion ?</h3>
-          <div class="faq-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          <div class="faq-toggle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
         </div>
         <div class="faq-body"><div class="faq-body-inner"><p style="padding:16px 24px 20px; border-top:1px solid rgba(30,58,122,0.07);">Nos honoraires de <strong>gestion courante s'élèvent à 7% des loyers charges comprises</strong>, prélevés à chaque encaissement. Ce taux inclut l'encaissement des loyers, les quittances mensuelles, le compte-rendu de gérance, la révision du loyer, la gestion des petits travaux et la régularisation des charges. Aucun frais caché, aucun supplément surprenant.</p></div></div>
       </div>
       <div class="faq-item fade-up delay-1">
         <div class="faq-question" onclick="toggleFaq(this)">
           <h3>Quelle est votre zone d'intervention ?</h3>
-          <div class="faq-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          <div class="faq-toggle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
         </div>
         <div class="faq-body"><div class="faq-body-inner"><p style="padding:16px 24px 20px; border-top:1px solid rgba(30,58,122,0.07);">Nous intervenons principalement sur <strong>Paris intramuros (tous arrondissements)</strong> et la <strong>petite couronne</strong> : Hauts-de-Seine (92), Seine-Saint-Denis (93) et Val-de-Marne (94). Pour tout bien situé en dehors de cette zone, n'hésitez pas à nous contacter : nous étudions chaque demande au cas par cas.</p></div></div>
       </div>
       <div class="faq-item fade-up delay-2">
         <div class="faq-question" onclick="toggleFaq(this)">
           <h3>Combien de temps faut-il pour trouver un locataire ?</h3>
-          <div class="faq-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          <div class="faq-toggle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
         </div>
         <div class="faq-body"><div class="faq-body-inner"><p style="padding:16px 24px 20px; border-top:1px solid rgba(46,94,170,0.07);">Notre processus de mise en location est conçu pour être rapide et rigoureux. Sur le marché parisien, nous trouvons un locataire en <strong>1 à 3 semaines maximum</strong> grâce à une diffusion ciblée sur SeLoger et une sélection sérieuse des candidats. Chaque dossier est étudié avec soin pour vous présenter uniquement des profils solides.</p></div></div>
       </div>
       <div class="faq-item fade-up delay-3">
         <div class="faq-question" onclick="toggleFaq(this)">
           <h3>Que comprend exactement la gestion locative ?</h3>
-          <div class="faq-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          <div class="faq-toggle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
         </div>
         <div class="faq-body"><div class="faq-body-inner"><p style="padding:16px 24px 20px; border-top:1px solid rgba(30,58,122,0.07);">Notre mandat de gestion comprend : <strong>encaissement et reversement des loyers</strong>, émission des quittances, relances en cas d'impayé, régularisation annuelle des charges, révision du loyer selon l'IRL, compte-rendu mensuel, gestion des petits travaux et sinistres, et interface avec le locataire pour toutes les demandes courantes. Vous n'avez plus rien à gérer au quotidien.</p></div></div>
       </div>
       <div class="faq-item fade-up delay-3">
         <div class="faq-question" onclick="toggleFaq(this)">
           <h3>Comment se passe la première mise en location ?</h3>
-          <div class="faq-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          <div class="faq-toggle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
         </div>
         <div class="faq-body"><div class="faq-body-inner"><p style="padding:16px 24px 20px; border-top:1px solid rgba(30,58,122,0.07);">Après la signature du mandat, nous réalisons une <strong>visite du bien et une estimation du loyer</strong> au prix du marché. Nous organisons les photos professionnelles, rédigeons l'annonce et lançons la diffusion. Nous gérons toutes les visites, sélectionnons les candidats (vérification des dossiers, solvabilité), vous présentons les meilleurs profils, puis rédigeons le bail et réalisons l'état des lieux d'entrée. Les honoraires sont <strong>partagés à égalité entre vous et le locataire</strong>, conformément à la loi ALUR.</p></div></div>
       </div>
@@ -714,61 +826,55 @@
   </div>
 </section>
 
-<!-- ===== CONTACT ===== -->
-<section id="contact">
-  <div class="section-inner">
-    <span class="section-badge fade-up">Prenons contact</span>
-    <h2 class="section-title fade-up delay-1">Parlez-nous de votre bien</h2>
-    <div class="section-divider fade-up delay-2"></div>
+<!-- ===== SECTION 7 : CONTACT (bloc 50/50 inversé — photo gauche, formulaire droite) ===== -->
+<section id="contact" class="contact-split">
+  <div class="contact-photo slide-left" style="background-image:url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1200&q=85')">
+    <div class="contact-photo-overlay"></div>
+    <div class="contact-photo-content">
+      <span class="split-label">Prenons contact</span>
+      <h2>Parlons de votre bien</h2>
+      <p>Que vous soyez propriétaire d'un studio ou d'un immeuble de rapport, notre équipe étudie votre projet et vous répond sous 24h.</p>
 
-    <div class="contact-grid">
-      <div class="contact-info slide-left">
-        <h3>Nous sommes à votre écoute</h3>
-        <p>Que vous soyez propriétaire d'un studio ou d'un immeuble de rapport, notre équipe est disponible pour étudier votre projet et vous proposer une solution sur-mesure.</p>
-
-        <div class="contact-detail">
-          <div class="contact-detail-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="1.8" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          </div>
-          <div class="contact-detail-text">
-            <strong>Adresse</strong>
-            <span>25 rue de Ponthieu, 75008 Paris</span>
-          </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="1.8" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
-        <div class="contact-detail">
-          <div class="contact-detail-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="1.8" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
-          </div>
-          <div class="contact-detail-text">
-            <strong>Email</strong>
-            <span>contact@olivia-gestion.fr</span>
-          </div>
-        </div>
-        <div class="contact-detail">
-          <div class="contact-detail-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <div class="contact-detail-text">
-            <strong>Disponibilité</strong>
-            <span>Lun–Ven 9h–19h · Réponse sous 24h</span>
-          </div>
-        </div>
-        <div class="contact-detail">
-          <div class="contact-detail-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          </div>
-          <div class="contact-detail-text">
-            <strong>Zone d'intervention</strong>
-            <span>Paris &amp; Petite couronne (92, 93, 94)</span>
-          </div>
-        </div>
-
-        <div style="margin-top:32px; padding:20px; background:rgba(30,58,122,0.05); border-radius:12px; border-left:3px solid var(--gold);">
-          <p style="font-size:0.85rem; color:var(--navy); margin:0; font-style:italic;">"Premier contact gratuit et sans engagement. Nous vous rappelons sous 24h pour étudier ensemble votre projet de gestion locative."</p>
+        <div class="contact-detail-text">
+          <strong>Adresse</strong>
+          <span>25 rue de Ponthieu, 75008 Paris</span>
         </div>
       </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="1.8" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
+        </div>
+        <div class="contact-detail-text">
+          <strong>Email</strong>
+          <span>contact@olivia-gestion.fr</span>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="contact-detail-text">
+          <strong>Disponibilité</strong>
+          <span>Lun–Ven 9h–19h · Réponse sous 24h</span>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div class="contact-detail-text">
+          <strong>Zone d'intervention</strong>
+          <span>Paris &amp; Grand Paris</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
-      <div class="slide-right delay-2">
+  <div class="contact-form-wrap slide-right">
         <form class="contact-form" id="contactForm" novalidate>
           <div class="form-row">
             <div class="form-group">
@@ -828,8 +934,6 @@
             Une erreur est survenue lors de l'envoi. Merci de réessayer ou de nous écrire directement à contact@olivia-gestion.fr.
           </div>
         </form>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -1118,18 +1222,26 @@
     const intro = document.getElementById('intro');
 
     // Compteurs animés : 0 → valeur finale en 2s, via un objet et onUpdate (effet premium).
-    let countersStarted = false;
-    function startCounters() {
-      if (countersStarted) return;
-      countersStarted = true;
-      gsap.utils.toArray('[data-count]').forEach((el) => {
-        const end = parseFloat(el.dataset.count);
-        const suffix = el.dataset.suffix || '';
-        const obj = { v: 0 };
-        gsap.to(obj, {
-          v: end, duration: 2, ease: 'power1.out',
-          onUpdate: () => { el.textContent = Math.round(obj.v) + suffix; }
-        });
+    // Compteur d'un seul élément (0 → valeur finale en 2s). Idempotent par élément.
+    function animateCount(el) {
+      if (el.dataset.counted) return;
+      el.dataset.counted = '1';
+      const end = parseFloat(el.dataset.count);
+      const suffix = el.dataset.suffix || '';
+      const obj = { v: 0 };
+      gsap.to(obj, {
+        v: end, duration: 2, ease: 'power1.out',
+        onUpdate: () => { el.textContent = Math.round(obj.v) + suffix; }
+      });
+    }
+    // Déclenche chaque compteur quand sa bande entre dans le viewport (bande stats + bande chiffres).
+    let countersInit = false;
+    function initCounters() {
+      if (countersInit) return;
+      countersInit = true;
+      ScrollTrigger.batch('[data-count]', {
+        start: 'top 88%', once: true,
+        onEnter: (els) => els.forEach(animateCount)
       });
     }
 
@@ -1177,29 +1289,39 @@
       // ===== 1) INTRO REVEAL (durée ~2.5s) =====
       document.body.style.overflow = 'hidden';
       gsap.set('.intro-logo', { autoAlpha: 0, scale: 0.85 });
-      const introTl = gsap.timeline({
-        onComplete: () => {
-          document.body.style.overflow = '';
-          if (intro) intro.style.display = 'none';
-          ScrollTrigger.refresh();
-          // Compteurs : se déclenchent quand la bande stats entre dans le viewport.
-          ScrollTrigger.create({ trigger: '.stats-band', start: 'top 88%', once: true, onEnter: startCounters });
-        }
-      });
-      introTl
-        .to('.intro-logo', { autoAlpha: 1, scale: 1, duration: 0.6, ease: 'power2.out' }, 0)      // apparition du logo
-        .to({}, { duration: 1 })                                                                  // pause ~1s
-        .to('.intro-logo', { autoAlpha: 0, scale: 1.06, duration: 0.4, ease: 'power2.in' }, 1.6)  // disparition du logo
-        .to('.intro-left',  { xPercent: -100, duration: 0.9, ease: 'power4.inOut' }, 1.65)        // panneaux qui s'écartent
-        .to('.intro-right', { xPercent: 100,  duration: 0.9, ease: 'power4.inOut' }, 1.65)
-        .add(playHero, 2.05);                                                                     // démarrage des animations du hero
 
-      // Filet de sécurité : si l'intro reste bloquée, on la retire au bout de 4s.
-      gsap.delayedCall(4, () => {
-        if (intro && intro.style.display !== 'none') {
-          document.body.style.overflow = '';
-          intro.style.display = 'none';
-          startCounters();
+      let introDone = false;
+      function finishIntro() {
+        if (introDone) return;
+        introDone = true;
+        document.body.style.overflow = '';
+        if (intro) intro.style.display = 'none';
+        ScrollTrigger.refresh();
+        initCounters();
+      }
+
+      function lancerIntro() {
+        const introTl = gsap.timeline({ onComplete: finishIntro });
+        introTl
+          .to('.intro-logo', { autoAlpha: 1, scale: 1, duration: 0.6, ease: 'power2.out' }, 0)      // apparition du logo
+          .to({}, { duration: 1 })                                                                  // pause ~1s
+          .to('.intro-logo', { autoAlpha: 0, scale: 1.06, duration: 0.4, ease: 'power2.in' }, 1.6)  // disparition du logo
+          .to('.intro-left',  { xPercent: -100, duration: 0.9, ease: 'power4.inOut' }, 1.65)        // panneaux qui s'écartent
+          .to('.intro-right', { xPercent: 100,  duration: 0.9, ease: 'power4.inOut' }, 1.65)
+          .add(playHero, 2.05);                                                                     // démarrage des animations du hero
+      }
+
+      // Lance l'intro dès que la page est chargée OU au plus tard après 3s (filet de sécurité demandé).
+      Promise.race([
+        new Promise((r) => window.addEventListener('load', r)),
+        new Promise((r) => setTimeout(r, 3000))
+      ]).then(lancerIntro);
+
+      // Filet de sécurité ultime : si l'intro n'est pas terminée après 7s, on révèle tout le contenu.
+      gsap.delayedCall(7, () => {
+        if (!introDone) {
+          finishIntro();
+          playHero();
         }
       });
 
@@ -1255,21 +1377,7 @@
         onEnter: (els) => revealTo(els, { stagger: 0.2 })
       });
 
-      // ===== 5) SURVOL DES CARTES SERVICES (GSAP) =====
-      gsap.utils.toArray('.service-card').forEach((card) => {
-        const underline = document.createElement('span');
-        underline.className = 'card-underline';
-        card.appendChild(underline);
-        gsap.set(underline, { scaleX: 0, transformOrigin: 'left center' });
-        card.addEventListener('mouseenter', () => {
-          gsap.to(card, { y: -8, boxShadow: '0 20px 55px rgba(30,58,122,0.22)', duration: 0.3, ease: 'power2.out', overwrite: 'auto' });
-          gsap.to(underline, { scaleX: 1, duration: 0.3, ease: 'power2.out', overwrite: 'auto' });
-        });
-        card.addEventListener('mouseleave', () => {
-          gsap.to(card, { y: 0, boxShadow: '0 4px 24px rgba(30,58,122,0.10)', duration: 0.3, ease: 'power2.out', overwrite: 'auto' });
-          gsap.to(underline, { scaleX: 0, duration: 0.3, ease: 'power2.out', overwrite: 'auto' });
-        });
-      });
+      // Survol des cartes services : géré en CSS (élévation + ombre douce, style Barnes).
 
       // Recalcule les positions une fois la mise en page stabilisée.
       ScrollTrigger.refresh();

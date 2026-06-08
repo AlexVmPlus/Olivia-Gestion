@@ -102,7 +102,6 @@
     .bar-foncia { background: #aaa; }
     .bar-moyenne { background: #888; }
     .bar-olivia { background: #C9A84C; }
-    .rate-loc { display: none; color: var(--gold-dark); }
     .no-result { text-align: center; padding: 40px 20px; }
     .no-result svg { opacity: 0.25; margin: 0 auto 16px; display: block; }
     .no-result p { color: var(--gray); font-size: 0.9rem; }
@@ -229,7 +228,7 @@
       <label for="typeGestion">Type de gestion souhaité</label>
       <select id="typeGestion">
         <option value="gestion">Gestion seule</option>
-        <option value="gestion_location">Gestion + Mise en location</option>
+        <option value="gestion_complete">Gestion complète</option>
       </select>
     </div>
 
@@ -266,13 +265,13 @@
         <tbody>
           <tr class="data-row">
             <td class="agency">Foncia / Nexity</td>
-            <td class="rate">10% + TVA 20% = 12% effectif<span class="rate-loc" id="locFoncia"> + 2% mise en loc.</span></td>
+            <td class="rate">10% + TVA 20% = 12% effectif</td>
             <td class="annual" id="costFoncia">–</td>
           </tr>
           <tr class="bar-row"><td colspan="3"><span class="bar bar-foncia" id="barFoncia"></span></td></tr>
           <tr class="data-row">
             <td class="agency">Agence moyenne</td>
-            <td class="rate">8% + TVA 20% = 9,6% effectif<span class="rate-loc" id="locMoyenne"> + 2% mise en loc.</span></td>
+            <td class="rate">8% + TVA 20% = 9,6% effectif</td>
             <td class="annual" id="costMoyenne">–</td>
           </tr>
           <tr class="bar-row"><td colspan="3"><span class="bar bar-moyenne" id="barMoyenne"></span></td></tr>
@@ -422,19 +421,13 @@
     resultContent.style.display = 'block';
 
     const annuel = loyer * 12;
-    const isLocation = typeGestion === 'gestion_location';
-    // Gestion + mise en location : +2 points de surcoût sur les concurrents (location incluse). Olivia reste à 7%.
-    const foncia = annuel * (isLocation ? 0.14 : 0.12);
-    const moyenne = annuel * (isLocation ? 0.116 : 0.096);
+    const foncia = annuel * 0.12;
+    const moyenne = annuel * 0.096;
     const olivia = annuel * 0.07;
 
     document.getElementById('costFoncia').textContent = fmt(foncia);
     document.getElementById('costMoyenne').textContent = fmt(moyenne);
     document.getElementById('costOlivia').textContent = fmt(olivia);
-
-    // Suffixe « +2% mise en location » affiché sur les lignes concurrents
-    document.getElementById('locFoncia').style.display = isLocation ? 'inline' : 'none';
-    document.getElementById('locMoyenne').style.display = isLocation ? 'inline' : 'none';
 
     // Barres proportionnelles au coût (Foncia = référence 100%, toujours le plus élevé)
     document.getElementById('barFoncia').style.width = '100%';

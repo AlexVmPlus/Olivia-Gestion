@@ -19,6 +19,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://images.unsplash.com" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Marque la page comme « GSAP actif » avant le rendu : évite un flash du texte du hero
+       avant l'animation d'entrée. Retiré automatiquement si GSAP ne se charge pas (fallback CSS). -->
+  <script>document.documentElement.classList.add('gsap-active');</script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -287,6 +290,16 @@
     .delay-2 { transition-delay: 0.20s; }
     .delay-3 { transition-delay: 0.30s; }
     .delay-4 { transition-delay: 0.40s; }
+
+    /* ===== GSAP (progressive enhancement) ===== */
+    /* When GSAP is active it drives the reveals/hero, so disable the CSS transitions
+       and pre-hide the hero text to avoid a flash before the entrance animation.
+       If GSAP fails to load, this class is removed and the CSS fallback takes over. */
+    html.gsap-active .fade-up,
+    html.gsap-active .slide-left,
+    html.gsap-active .slide-right { transition: none; }
+    html.gsap-active #hero .hero-content > * { visibility: hidden; }
+    html.gsap-active .hero-video { will-change: transform; }
 
     /* ===== CARTE G BADGE (hero) ===== */
 
@@ -890,8 +903,16 @@
   </div>
 </div>
 
+<!-- ===== GSAP (animations) ===== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+
 <!-- ===== SCRIPTS ===== -->
 <script>
+  // Si GSAP n'a pas pu se charger (CDN indisponible), on repasse au comportement CSS d'origine.
+  const gsapReady = !!(window.gsap && window.ScrollTrigger);
+  if (!gsapReady) document.documentElement.classList.remove('gsap-active');
+
   // Mobile nav
   const burger = document.getElementById('burger');
   const mobileNav = document.getElementById('mobileNav');
@@ -913,17 +934,20 @@
       : '0 2px 16px rgba(30,58,122,0.08)';
   });
 
-  // IntersectionObserver — fade-up, slide-left, slide-right
-  const animEls = document.querySelectorAll('.fade-up, .slide-left, .slide-right');
-  const animObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        animObserver.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.10 });
-  animEls.forEach(el => animObserver.observe(el));
+  // Révélation au scroll — fallback CSS (IntersectionObserver) utilisé uniquement
+  // quand GSAP n'est pas disponible. Avec GSAP, voir le bloc d'animations plus bas.
+  if (!gsapReady) {
+    const animEls = document.querySelectorAll('.fade-up, .slide-left, .slide-right');
+    const animObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          animObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.10 });
+    animEls.forEach(el => animObserver.observe(el));
+  }
 
   // Animated counters
   function animateCounter(el) {
@@ -1045,6 +1069,71 @@
   }
   document.getElementById('cookieAccept').addEventListener('click', () => setCookieChoice('accepted'));
   document.getElementById('cookieRefuse').addEventListener('click', () => setCookieChoice('refused'));
+</script>
+
+<!-- ===== GSAP : animations professionnelles ===== -->
+<script>
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const revealSelector = '.fade-up, .slide-left, .slide-right';
+
+    // matchMedia : gère les préférences d'accessibilité (prefers-reduced-motion).
+    // Tout ce qui est créé ici est automatiquement nettoyé/réverté si la condition change.
+    const mm = gsap.matchMedia();
+
+    mm.add({
+      reduce: '(prefers-reduced-motion: reduce)',
+      animate: '(prefers-reduced-motion: no-preference)'
+    }, (ctx) => {
+      const { reduce } = ctx.conditions;
+
+      // Accessibilité : aucun mouvement, on affiche simplement le contenu.
+      if (reduce) {
+        gsap.set('#hero .hero-content > *', { autoAlpha: 1 });
+        gsap.set(revealSelector, { autoAlpha: 1, clearProps: 'transform' });
+        return;
+      }
+
+      // 1) Entrée du hero — le texte apparaît progressivement, du bas vers le haut.
+      const heroTl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 0.9 } });
+      heroTl
+        .from('.hero-title',   { y: 40, autoAlpha: 0 })
+        .from('.hero-sub',     { y: 30, autoAlpha: 0, duration: 0.8 }, '-=0.55')
+        .from('.hero-actions', { y: 24, autoAlpha: 0, duration: 0.7 }, '-=0.5')
+        .from('.hero-stats',   { autoAlpha: 0, duration: 0.7 }, '-=0.45')
+        .from('.hero-stat',    { y: 22, stagger: 0.12, duration: 0.6 }, '-=0.5');
+
+      // 2) Révélation des sections au scroll — les éléments glissent depuis le bas.
+      gsap.set(revealSelector, { y: 40, autoAlpha: 0 });
+      ScrollTrigger.batch(revealSelector, {
+        start: 'top 88%',
+        onEnter: (els) => gsap.to(els, {
+          y: 0, autoAlpha: 1, duration: 0.8, ease: 'power3.out',
+          stagger: 0.12, overwrite: true
+        })
+      });
+
+      // 3) Parallaxe légère sur la vidéo de fond du hero.
+      //    On agrandit légèrement la vidéo pour qu'aucun bord ne se découvre pendant le déplacement.
+      gsap.set('.hero-video', { scale: 1.18, transformOrigin: 'center center' });
+      gsap.fromTo('.hero-video',
+        { yPercent: -6 },
+        {
+          yPercent: 8, ease: 'none',
+          scrollTrigger: {
+            trigger: '#hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true
+          }
+        }
+      );
+
+      // Recalcule les positions une fois la mise en page stabilisée (polices, etc.).
+      ScrollTrigger.refresh();
+    });
+  }
 </script>
 </body>
 </html>

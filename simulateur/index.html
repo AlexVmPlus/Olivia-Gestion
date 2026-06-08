@@ -224,14 +224,6 @@
       <p id="loyerHint" class="field-hint" style="display:none"></p>
     </div>
 
-    <div class="form-group">
-      <label for="typeGestion">Type de gestion souhaité</label>
-      <select id="typeGestion">
-        <option value="gestion">Gestion seule</option>
-        <option value="gestion_complete">Gestion complète</option>
-      </select>
-    </div>
-
     <button type="button" class="btn-calc" onclick="calculate()">Calculer mes économies</button>
   </div>
 
@@ -406,7 +398,6 @@
     const loyer = parseFloat(document.getElementById('loyer').value) || 0;
     const surface = parseFloat(document.getElementById('surface').value) || 0;
     const zone = document.getElementById('zone').value;
-    const typeGestion = document.getElementById('typeGestion').value;
 
     const noResult = document.getElementById('noResult');
     const resultContent = document.getElementById('resultContent');
@@ -440,18 +431,6 @@
     document.getElementById('savingsAmount').textContent = fmt(econFoncia);
     document.getElementById('savings5y').textContent = 'soit ' + fmt(econFoncia * 5) + ' économisés sur 5 ans';
     document.getElementById('savingsVsOther').textContent = 'soit ' + fmt(econMoyenne) + ' vs une agence moyenne';
-
-    const locationBlock = document.getElementById('locationBlock');
-    if (typeGestion === 'gestion_location' && surface > 0) {
-      locationBlock.style.display = 'block';
-      const tarifTotal = locationRates[zone];
-      const bailleurPart = (tarifTotal / 2) * surface;
-      document.getElementById('locationText').textContent =
-        'Pour un bien de ' + surface + ' m² en zone sélectionnée : honoraires de mise en location à votre charge estimés à ' +
-        fmt(bailleurPart) + ' (tarif réglementé ALUR, part bailleur = ' + (tarifTotal / 2).toFixed(2).replace('.', ',') + ' €/m²). Ce tarif est identique chez toutes les agences — notre avantage porte sur les frais de gestion annuels récurrents.';
-    } else {
-      locationBlock.style.display = 'none';
-    }
   }
 
   // Loyer moyen estimé par zone, affiché tant que le champ loyer est vide
@@ -470,7 +449,7 @@
     }
   }
 
-  ['loyer', 'surface', 'zone', 'typeGestion'].forEach(id => {
+  ['loyer', 'surface', 'zone'].forEach(id => {
     document.getElementById(id).addEventListener('input', calculate);
     document.getElementById(id).addEventListener('change', calculate);
   });

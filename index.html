@@ -119,8 +119,7 @@
     .section-divider { width: 56px; height: 3px; background: linear-gradient(90deg, var(--gold), var(--navy)); border-radius: 3px; margin: 20px 0 36px; }
 
     /* ===== HERO ===== */
-    #hero { padding-top: 70px; min-height: 90vh; display: flex; align-items: center; position: relative; overflow: hidden; background: #1f2a44 url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1920&q=80') center/cover no-repeat; }
-    .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+    #hero { padding-top: 70px; min-height: 90vh; display: flex; align-items: center; position: relative; overflow: hidden; background: #1f2a44 url('https://images.unsplash.com/photo-1543716091-a840c05249ec?w=1920&q=80') center/cover no-repeat; }
     .hero-overlay { position: absolute; inset: 0; background: #00000066; z-index: 1; }
     .hero-inner { position: relative; z-index: 2; max-width: 880px; margin: 0 auto; padding: 100px 24px; text-align: center; }
     .hero-title { font-size: clamp(2.2rem, 5vw, 3.8rem); color: var(--white); line-height: 1.12; margin-bottom: 22px; font-weight: 700; }
@@ -306,7 +305,6 @@
     /* ===== ANIMATIONS (reveal hooks) =====
        Aucun état caché en CSS : sans JS/GSAP, le contenu reste visible (accessibilité, exigence #10).
        Quand GSAP est actif, il pose l'état initial caché au runtime puis révèle au scroll. */
-    html.gsap-active .hero-video { will-change: transform; }
 
     /* ===== INTRO REVEAL (écran d'ouverture) ===== */
     #intro { position: fixed; inset: 0; z-index: 9999; display: none; }
@@ -454,10 +452,6 @@
 
 <!-- ===== HERO ===== -->
 <section id="hero">
-  <video class="hero-video" autoplay muted loop playsinline preload="auto"
-         poster="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=1600&q=70">
-    <source src="https://videos.pexels.com/video-files/1851190/1851190-hd_1920_1080_25fps.mp4" type="video/mp4" />
-  </video>
   <div class="hero-overlay"></div>
   <div class="hero-inner">
     <div class="hero-content">
@@ -1236,16 +1230,6 @@
           gsap.to(underline, { scaleX: 0, duration: 0.3, ease: 'power2.out', overwrite: 'auto' });
         });
       });
-
-      // ===== 8) PARALLAXE VIDÉO (≈60% de la vitesse de scroll, yPercent 0 → -20) =====
-      gsap.set('.hero-video', { scale: 1.4, transformOrigin: 'center center' });
-      gsap.fromTo('.hero-video',
-        { yPercent: 0 },
-        {
-          yPercent: -20, ease: 'none',
-          scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true }
-        }
-      );
 
       // Recalcule les positions une fois la mise en page stabilisée.
       ScrollTrigger.refresh();

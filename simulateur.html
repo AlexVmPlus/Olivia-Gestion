@@ -70,6 +70,7 @@
     .input-suffix span { position: absolute; right: 2px; top: 50%; transform: translateY(-50%); font-size: 0.9rem; color: var(--gray); pointer-events: none; }
     .btn-calc { width: 100%; margin-top: 12px; background: #1a2744; color: #fff; font-family: var(--font-body); font-weight: 600; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 16px; border: none; border-radius: 4px; cursor: pointer; transition: background 0.2s; }
     .btn-calc:hover { background: #11192d; }
+    .field-hint { font-size: 0.78rem; color: var(--gray); font-style: italic; margin-top: 8px; }
 
     /* RESULTS */
     .sim-results-card { background: #ffffff; border: 1px solid #e8e8e8; border-radius: 0; padding: 40px; }
@@ -80,6 +81,7 @@
     .savings-amount { font-family: var(--font-title); font-size: 3rem; font-weight: 700; color: var(--gold-light); line-height: 1; }
     .savings-amount-sub { font-size: 0.88rem; color: rgba(255,255,255,0.65); margin-top: 6px; }
     .savings-vs { font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-top: 4px; }
+    .savings-5y { font-size: 0.8rem; font-style: italic; color: rgba(255,255,255,0.7); margin-top: 8px; }
     .comp-table { width: 100%; border-collapse: collapse; }
     .comp-table thead th { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dark); text-align: left; padding: 10px 12px; border-bottom: 2px solid rgba(201,168,76,0.2); }
     .comp-table tbody tr { border-bottom: 1px solid #e8e8e8; transition: background 0.15s; }
@@ -92,6 +94,16 @@
     .comp-table .annual { font-family: var(--font-title); font-weight: 700; color: var(--dark); text-align: right; }
     .comp-table .olivia .annual { color: var(--gold-dark); }
     .comp-table .badge-olivia { display: inline-block; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3); border-radius: 4px; font-size: 0.68rem; padding: 2px 7px; color: var(--gold-dark); margin-left: 6px; font-weight: 600; vertical-align: middle; }
+    .comp-table tbody tr.data-row { border-bottom: none; }
+    .comp-table tbody tr.bar-row { border-bottom: 1px solid #e8e8e8; }
+    .comp-table tbody tr.bar-row:last-child { border-bottom: none; }
+    .comp-table tbody tr.bar-row td { padding: 0 12px 14px; }
+    .bar { display: block; height: 4px; border-radius: 2px; width: 0; transition: width 0.4s ease; }
+    .bar-foncia { background: #aaa; }
+    .bar-moyenne { background: #888; }
+    .bar-olivia { background: #C9A84C; }
+    .rate-loc { display: none; color: var(--gold-dark); }
+    .rendement { font-size: 0.85rem; color: #1a2744; font-weight: 600; margin-top: 18px; padding: 12px 0; border-top: 1px solid #e8e8e8; }
     .no-result { text-align: center; padding: 40px 20px; }
     .no-result svg { opacity: 0.25; margin: 0 auto 16px; display: block; }
     .no-result p { color: var(--gray); font-size: 0.9rem; }
@@ -198,6 +210,14 @@
     </div>
 
     <div class="form-group">
+      <label for="valeur">Valeur du bien (optionnel)</label>
+      <div class="input-suffix">
+        <input type="number" id="valeur" placeholder="Ex : 250 000" min="1" />
+        <span>€</span>
+      </div>
+    </div>
+
+    <div class="form-group">
       <label for="zone">Zone</label>
       <select id="zone">
         <option value="tres_tendue">Paris intramuros – Zone très tendue</option>
@@ -212,6 +232,7 @@
         <input type="number" id="loyer" placeholder="Ex : 1200" min="1" />
         <span>€</span>
       </div>
+      <p id="loyerHint" class="field-hint" style="display:none"></p>
     </div>
 
     <div class="form-group">
@@ -240,6 +261,7 @@
         <div class="savings-label">Votre économie annuelle avec Olivia Gestion</div>
         <div class="savings-amount" id="savingsAmount">–</div>
         <div class="savings-amount-sub">vs. une grande agence (Foncia / Nexity)</div>
+        <div class="savings-5y" id="savings5y">–</div>
         <div class="savings-vs" id="savingsVsOther">–</div>
       </div>
 
@@ -252,23 +274,28 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr class="data-row">
             <td class="agency">Foncia / Nexity</td>
-            <td class="rate">10% + TVA 20% = 12% effectif</td>
+            <td class="rate">10% + TVA 20% = 12% effectif<span class="rate-loc" id="locFoncia"> + 2% mise en loc.</span></td>
             <td class="annual" id="costFoncia">–</td>
           </tr>
-          <tr>
+          <tr class="bar-row"><td colspan="3"><span class="bar bar-foncia" id="barFoncia"></span></td></tr>
+          <tr class="data-row">
             <td class="agency">Agence moyenne</td>
-            <td class="rate">8% + TVA 20% = 9,6% effectif</td>
+            <td class="rate">8% + TVA 20% = 9,6% effectif<span class="rate-loc" id="locMoyenne"> + 2% mise en loc.</span></td>
             <td class="annual" id="costMoyenne">–</td>
           </tr>
-          <tr class="olivia">
+          <tr class="bar-row"><td colspan="3"><span class="bar bar-moyenne" id="barMoyenne"></span></td></tr>
+          <tr class="olivia data-row">
             <td class="agency">Olivia Gestion <span class="badge-olivia">SANS TVA</span></td>
             <td class="rate">7% sans TVA = 7% effectif</td>
             <td class="annual" id="costOlivia">–</td>
           </tr>
+          <tr class="olivia bar-row"><td colspan="3"><span class="bar bar-olivia" id="barOlivia"></span></td></tr>
         </tbody>
       </table>
+
+      <p class="rendement" id="rendementLine" style="display:none">–</p>
 
       <div id="locationBlock" style="display:none; margin-top:20px; padding:16px; background:#fafafa; border-radius:0; border-left:3px solid var(--gold);">
         <p style="font-size:0.82rem; color:#1a2744; font-weight:600; margin-bottom:6px;">Honoraires de mise en location (1ère année – part bailleur)</p>
@@ -408,19 +435,41 @@
     resultContent.style.display = 'block';
 
     const annuel = loyer * 12;
-    const foncia = annuel * 0.12;
-    const moyenne = annuel * 0.096;
+    const isLocation = typeGestion === 'gestion_location';
+    // Gestion + mise en location : +2 points de surcoût sur les concurrents (location incluse). Olivia reste à 7%.
+    const foncia = annuel * (isLocation ? 0.14 : 0.12);
+    const moyenne = annuel * (isLocation ? 0.116 : 0.096);
     const olivia = annuel * 0.07;
 
     document.getElementById('costFoncia').textContent = fmt(foncia);
     document.getElementById('costMoyenne').textContent = fmt(moyenne);
     document.getElementById('costOlivia').textContent = fmt(olivia);
 
+    // Suffixe « +2% mise en location » affiché sur les lignes concurrents
+    document.getElementById('locFoncia').style.display = isLocation ? 'inline' : 'none';
+    document.getElementById('locMoyenne').style.display = isLocation ? 'inline' : 'none';
+
+    // Barres proportionnelles au coût (Foncia = référence 100%, toujours le plus élevé)
+    document.getElementById('barFoncia').style.width = '100%';
+    document.getElementById('barMoyenne').style.width = (moyenne / foncia * 100).toFixed(1) + '%';
+    document.getElementById('barOlivia').style.width = (olivia / foncia * 100).toFixed(1) + '%';
+
     const econFoncia = foncia - olivia;
     const econMoyenne = moyenne - olivia;
 
     document.getElementById('savingsAmount').textContent = fmt(econFoncia);
+    document.getElementById('savings5y').textContent = 'soit ' + fmt(econFoncia * 5) + ' économisés sur 5 ans';
     document.getElementById('savingsVsOther').textContent = 'soit ' + fmt(econMoyenne) + ' vs une agence moyenne';
+
+    // Rendement brut estimé (n'entre pas dans le calcul d'économies — affiché uniquement si la valeur est renseignée)
+    const valeur = parseFloat(document.getElementById('valeur').value) || 0;
+    const rendementLine = document.getElementById('rendementLine');
+    if (valeur > 0) {
+      rendementLine.textContent = 'Rendement brut estimé : ' + (annuel / valeur * 100).toFixed(1).replace('.', ',') + ' %';
+      rendementLine.style.display = 'block';
+    } else {
+      rendementLine.style.display = 'none';
+    }
 
     const locationBlock = document.getElementById('locationBlock');
     if (typeGestion === 'gestion_location' && surface > 0) {
@@ -435,10 +484,29 @@
     }
   }
 
-  ['loyer', 'surface', 'zone', 'typeGestion'].forEach(id => {
+  // Loyer moyen estimé par zone, affiché tant que le champ loyer est vide
+  const loyerRanges = {
+    tres_tendue: '1 400 – 2 200 €/mois',
+    tendue: '900 – 1 400 €/mois',
+    non_tendue: '650 – 1 000 €/mois'
+  };
+  function updateLoyerHint() {
+    const hint = document.getElementById('loyerHint');
+    if (document.getElementById('loyer').value === '') {
+      hint.textContent = 'Loyer moyen estimé pour cette zone : ' + loyerRanges[document.getElementById('zone').value];
+      hint.style.display = 'block';
+    } else {
+      hint.style.display = 'none';
+    }
+  }
+
+  ['loyer', 'surface', 'valeur', 'zone', 'typeGestion'].forEach(id => {
     document.getElementById(id).addEventListener('input', calculate);
     document.getElementById(id).addEventListener('change', calculate);
   });
+  document.getElementById('loyer').addEventListener('input', updateLoyerHint);
+  document.getElementById('zone').addEventListener('change', updateLoyerHint);
+  updateLoyerHint();
 </script>
 </body>
 </html>

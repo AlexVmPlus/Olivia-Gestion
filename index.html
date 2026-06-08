@@ -66,11 +66,15 @@
     a { text-decoration: none; color: inherit; }
     img { max-width: 100%; display: block; }
 
-    /* ===== HEADER ===== */
+    /* ===== HEADER (premium : transparent sur le hero, solide au scroll) ===== */
     #header {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000; overflow: hidden;
+      background: transparent; backdrop-filter: none; box-shadow: none;
+      transition: background 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+    }
+    #header.scrolled {
       background: rgba(255,255,255,0.97); backdrop-filter: blur(8px);
-      box-shadow: 0 2px 16px rgba(46,94,170,0.08); transition: box-shadow 0.3s;
+      box-shadow: 0 2px 24px rgba(30,58,122,0.13);
     }
     .header-inner {
       max-width: 1200px; margin: 0 auto; padding: 0 24px;
@@ -78,17 +82,28 @@
     }
     .logo { display: flex; align-items: center; gap: 11px; cursor: pointer; flex-shrink: 0; min-width: 0; }
     .logo-emblem { position: relative; width: 42px; height: 42px; flex-shrink: 0; }
-    .logo-emblem svg { width: 42px; height: 42px; }
+    .logo-emblem svg { position: absolute; inset: 0; width: 42px; height: 42px; transition: opacity 0.3s ease; }
+    .logo-emblem .emblem-dark { opacity: 0; }
+    .logo-emblem .emblem-light { opacity: 1; }
+    #header.scrolled .logo-emblem .emblem-dark { opacity: 1; }
+    #header.scrolled .logo-emblem .emblem-light { opacity: 0; }
     .logo-text { display: flex; flex-direction: column; line-height: 1.1; min-width: 0; }
-    .logo-name { font-family: var(--font-title); font-size: 1.2rem; font-weight: 700; color: var(--navy); letter-spacing: 0.06em; white-space: nowrap; }
-    .logo-tagline { font-family: var(--font-body); font-size: 0.58rem; font-weight: 400; color: var(--gold-dark); letter-spacing: 0.18em; text-transform: uppercase; white-space: nowrap; }
+    .logo-name { font-family: var(--font-title); font-size: 1.2rem; font-weight: 700; color: #fff; letter-spacing: 0.06em; white-space: nowrap; transition: color 0.3s ease; }
+    .logo-tagline { font-family: var(--font-body); font-size: 0.58rem; font-weight: 400; color: rgba(255,255,255,0.82); letter-spacing: 0.18em; text-transform: uppercase; white-space: nowrap; transition: color 0.3s ease; }
+    #header.scrolled .logo-name { color: var(--navy); }
+    #header.scrolled .logo-tagline { color: var(--gold-dark); }
     nav { display: flex; align-items: center; gap: 4px; }
-    nav a { font-size: 0.82rem; color: var(--navy); padding: 8px 12px; border-radius: 6px; transition: background 0.2s, color 0.2s; letter-spacing: 0.03em; white-space: nowrap; }
-    nav a:hover { background: var(--light-gray); }
-    .btn-nav { background: var(--gold); color: var(--navy) !important; font-weight: bold; padding: 9px 20px !important; border-radius: 6px; margin-left: 8px; }
-    .btn-nav:hover { background: var(--gold-dark) !important; color: var(--white) !important; transform: translateY(-1px); }
+    nav a { font-size: 0.82rem; color: #fff; padding: 8px 12px; border-radius: 6px; transition: background 0.2s, color 0.3s ease; letter-spacing: 0.03em; white-space: nowrap; }
+    nav a:hover { background: rgba(255,255,255,0.14); }
+    #header.scrolled nav a { color: var(--navy); }
+    #header.scrolled nav a:hover { background: var(--light-gray); }
+    .btn-nav { background: var(--gold); color: var(--navy) !important; font-weight: bold; padding: 9px 20px !important; border-radius: 6px; margin-left: 8px; position: relative; overflow: hidden; z-index: 0; transition: color 0.4s ease; }
+    .btn-nav::before { content: ''; position: absolute; inset: 0; background: var(--gold-dark); transform: scaleX(0); transform-origin: left center; transition: transform 0.4s ease; z-index: -1; }
+    .btn-nav:hover { color: var(--white) !important; }
+    .btn-nav:hover::before { transform: scaleX(1); }
     .burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
-    .burger span { display: block; width: 26px; height: 2px; background: var(--navy); border-radius: 2px; transition: all 0.3s; }
+    .burger span { display: block; width: 26px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+    #header.scrolled .burger span { background: var(--navy); }
     .mobile-nav { display: none; position: fixed; top: 70px; left: 0; right: 0; background: var(--white); box-shadow: 0 8px 24px rgba(30,58,122,0.12); padding: 16px 24px 24px; flex-direction: column; gap: 4px; z-index: 999; }
     .mobile-nav.open { display: flex; }
     .mobile-nav a { color: var(--navy); font-size: 0.95rem; padding: 12px 16px; border-radius: 8px; border-bottom: 1px solid var(--light-gray); transition: background 0.2s; }
@@ -109,11 +124,15 @@
     .hero-overlay { position: absolute; inset: 0; background: #00000066; z-index: 1; }
     .hero-inner { position: relative; z-index: 2; max-width: 880px; margin: 0 auto; padding: 100px 24px; text-align: center; }
     .hero-title { font-size: clamp(2.2rem, 5vw, 3.8rem); color: var(--white); line-height: 1.12; margin-bottom: 22px; font-weight: 700; }
-    .hero-title em { color: var(--white); font-style: italic; }
+    .hero-title .word { display: inline-block; }
+    .hero-title em { color: var(--gold-light); font-style: italic; display: inline-block; }
     .hero-sub { font-size: 1.12rem; color: rgba(255,255,255,0.9); line-height: 1.7; margin: 0 auto 38px; max-width: 600px; }
     .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
-    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: var(--navy); font-family: var(--font-body); font-weight: bold; font-size: 0.92rem; padding: 15px 32px; border-radius: 8px; transition: background 0.2s, transform 0.2s; letter-spacing: 0.02em; }
-    .btn-primary:hover { background: var(--gold-dark); color: var(--white); transform: translateY(-2px); }
+    /* Bouton principal : remplissage doré depuis la gauche au survol */
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: var(--navy); font-family: var(--font-body); font-weight: bold; font-size: 0.92rem; padding: 15px 32px; border-radius: 8px; transition: color 0.4s ease, transform 0.3s ease; letter-spacing: 0.02em; position: relative; overflow: hidden; z-index: 0; }
+    .btn-primary::before { content: ''; position: absolute; inset: 0; background: var(--gold-dark); transform: scaleX(0); transform-origin: left center; transition: transform 0.4s ease; z-index: -1; }
+    .btn-primary:hover { color: var(--white); transform: translateY(-2px); }
+    .btn-primary:hover::before { transform: scaleX(1); }
     .btn-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--white); font-size: 0.92rem; padding: 15px 32px; border-radius: 8px; border: 1.5px solid rgba(255,255,255,0.5); transition: border-color 0.2s, background 0.2s, transform 0.2s; }
     .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.12); transform: translateY(-2px); }
     .hero-stats { display: flex; gap: 48px; margin-top: 56px; justify-content: center; flex-wrap: wrap; }
@@ -134,6 +153,11 @@
     .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--navy)); opacity: 0; transition: opacity 0.3s; }
     .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(201,168,76,0.25); }
     .service-card:hover::before { opacity: 1; }
+    /* Ligne dorée animée par GSAP au survol (apparait du bas, depuis la gauche) */
+    .card-underline { position: absolute; left: 0; bottom: 0; height: 3px; width: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-dark)); transform: scaleX(0); transform-origin: left center; pointer-events: none; }
+    /* Quand GSAP pilote le survol, on neutralise l'effet CSS pour éviter le doublon */
+    html.gsap-active .service-card::before { display: none; }
+    html.gsap-active .service-card:hover { transform: none; }
     .service-icon { width: 54px; height: 54px; background: linear-gradient(135deg, rgba(30,58,122,0.08), rgba(201,168,76,0.12)); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
     .service-card h3 { font-size: 1.05rem; color: var(--navy); margin-bottom: 10px; }
     .service-card p { font-size: 0.85rem; color: var(--gray); line-height: 1.65; }
@@ -279,29 +303,25 @@
     #scrollTop.visible { opacity: 1; pointer-events: auto; }
     #scrollTop:hover { background: var(--gold); color: var(--navy); transform: translateY(-2px); }
 
-    /* ===== ANIMATIONS ===== */
-    .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
-    .slide-left { opacity: 0; transform: translateX(-44px); transition: opacity 0.65s ease-out, transform 0.65s ease-out; }
-    .slide-left.visible { opacity: 1; transform: translateX(0); }
-    .slide-right { opacity: 0; transform: translateX(44px); transition: opacity 0.65s ease-out, transform 0.65s ease-out; }
-    .slide-right.visible { opacity: 1; transform: translateX(0); }
-    .delay-1 { transition-delay: 0.10s; }
-    .delay-2 { transition-delay: 0.20s; }
-    .delay-3 { transition-delay: 0.30s; }
-    .delay-4 { transition-delay: 0.40s; }
-
-    /* ===== GSAP (progressive enhancement) ===== */
-    /* When GSAP is active it drives the reveals/hero, so disable the CSS transitions
-       and pre-hide the hero text to avoid a flash before the entrance animation.
-       If GSAP fails to load, this class is removed and the CSS fallback takes over. */
-    html.gsap-active .fade-up,
-    html.gsap-active .slide-left,
-    html.gsap-active .slide-right { transition: none; }
-    html.gsap-active #hero .hero-content > * { visibility: hidden; }
+    /* ===== ANIMATIONS (reveal hooks) =====
+       Aucun état caché en CSS : sans JS/GSAP, le contenu reste visible (accessibilité, exigence #10).
+       Quand GSAP est actif, il pose l'état initial caché au runtime puis révèle au scroll. */
     html.gsap-active .hero-video { will-change: transform; }
 
-    /* ===== CARTE G BADGE (hero) ===== */
+    /* ===== INTRO REVEAL (écran d'ouverture) ===== */
+    #intro { position: fixed; inset: 0; z-index: 9999; display: none; }
+    html.gsap-active #intro { display: block; }
+    @media (prefers-reduced-motion: reduce) { html.gsap-active #intro { display: none; } }
+    .intro-panel { position: absolute; top: 0; bottom: 0; width: 50.5%; background: #0b0e15; }
+    .intro-left { left: 0; }
+    .intro-right { right: 0; }
+    .intro-logo { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 2; }
+    .intro-logo svg { width: 96px; height: 96px; }
+
+    /* ===== HERO : badge + titre animé ===== */
+    .hero-badge { display: inline-block; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.35); border-radius: 30px; padding: 6px 18px; margin-bottom: 22px; }
+
+    /* ===== ÉQUIPE ===== */
 
     /* ===== ÉQUIPE ===== */
     #equipe { background: var(--off-white); }
@@ -365,16 +385,38 @@
 </head>
 <body>
 
+<!-- ===== INTRO REVEAL : écran d'ouverture qui s'écarte en deux panneaux ===== -->
+<div id="intro" aria-hidden="true">
+  <div class="intro-panel intro-left"></div>
+  <div class="intro-panel intro-right"></div>
+  <div class="intro-logo">
+    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="24" cy="24" r="22" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1"/>
+      <path d="M 6 24 A 18 18 0 0 1 42 24" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      <path d="M 6 24 A 18 18 0 0 0 42 24" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="15" font-weight="bold" fill="#ffffff">OG</text>
+    </svg>
+  </div>
+</div>
+
 <!-- ===== HEADER ===== -->
 <header id="header">
   <div class="header-inner">
     <a href="#hero" class="logo">
       <div class="logo-emblem">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Version normale (affichée sur fond blanc, après scroll) -->
+        <svg class="emblem-dark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="24" cy="24" r="22" fill="white" stroke="#f0eff0" stroke-width="1"/>
           <path d="M 6 24 A 18 18 0 0 1 42 24" stroke="#2E5EAA" stroke-width="2.5" stroke-linecap="round" fill="none"/>
           <path d="M 6 24 A 18 18 0 0 0 42 24" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" fill="none"/>
           <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="15" font-weight="bold" fill="#2E5EAA">OG</text>
+        </svg>
+        <!-- Version claire (affichée sur le hero sombre, header transparent) -->
+        <svg class="emblem-light" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="24" r="22" fill="rgba(255,255,255,0.10)" stroke="rgba(255,255,255,0.40)" stroke-width="1"/>
+          <path d="M 6 24 A 18 18 0 0 1 42 24" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <path d="M 6 24 A 18 18 0 0 0 42 24" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="15" font-weight="bold" fill="#ffffff">OG</text>
         </svg>
       </div>
       <div class="logo-text">
@@ -419,7 +461,8 @@
   <div class="hero-overlay"></div>
   <div class="hero-inner">
     <div class="hero-content">
-      <h1 class="hero-title">Votre bien,<br><em>notre priorité</em></h1>
+      <div class="hero-badge">Gestion locative · Paris &amp; petite couronne</div>
+      <h1 class="hero-title"><span class="word">Votre</span> <span class="word">bien,</span><br><em>notre priorité</em></h1>
       <p class="hero-sub">Nous gérons votre appartement comme si c'était le nôtre. Vous touchez vos loyers, on s'occupe du reste : locataires, travaux, administratif. Un seul interlocuteur, des comptes clairs chaque mois.</p>
       <div class="hero-actions">
         <a href="#contact" class="btn-primary">Demander un devis</a>
@@ -543,7 +586,7 @@
         </table>
       </div>
 
-      <div class="tarif-block slide-right">
+      <div class="tarif-block slide-left">
         <h3>Mise en location &amp; État des lieux</h3>
         <div class="tarif-block-subtitle">Honoraires réglementés ALUR · Partagés bailleur/locataire</div>
         <table class="tarif-table">
@@ -906,6 +949,7 @@
 <!-- ===== GSAP (animations) ===== -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js"></script>
 
 <!-- ===== SCRIPTS ===== -->
 <script>
@@ -926,54 +970,15 @@
   });
   scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-  // Header shadow
+  // Header premium : transparent sur le hero, fond blanc + ombre après 80px de scroll.
+  // Fonctionne avec ou sans GSAP (pur CSS/JS).
   const header = document.getElementById('header');
-  window.addEventListener('scroll', () => {
-    header.style.boxShadow = window.scrollY > 20
-      ? '0 2px 24px rgba(30,58,122,0.13)'
-      : '0 2px 16px rgba(30,58,122,0.08)';
-  });
+  const onHeaderScroll = () => header.classList.toggle('scrolled', window.scrollY > 80);
+  window.addEventListener('scroll', onHeaderScroll, { passive: true });
+  onHeaderScroll();
 
-  // Révélation au scroll — fallback CSS (IntersectionObserver) utilisé uniquement
-  // quand GSAP n'est pas disponible. Avec GSAP, voir le bloc d'animations plus bas.
-  if (!gsapReady) {
-    const animEls = document.querySelectorAll('.fade-up, .slide-left, .slide-right');
-    const animObserver = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          animObserver.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.10 });
-    animEls.forEach(el => animObserver.observe(el));
-  }
-
-  // Animated counters
-  function animateCounter(el) {
-    const target = parseInt(el.dataset.count);
-    const suffix = el.dataset.suffix || '';
-    const duration = 1400;
-    const start = performance.now();
-    function step(now) {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.round(eased * target) + suffix;
-      if (progress < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-  const counterEls = document.querySelectorAll('[data-count]');
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        animateCounter(e.target);
-        counterObserver.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.5 });
-  counterEls.forEach(el => counterObserver.observe(el));
+  // Révélations au scroll et compteurs animés : gérés par GSAP (bloc plus bas).
+  // Sans GSAP, le contenu reste visible et les statistiques affichent leur valeur finale.
 
   // FAQ accordion
   function toggleFaq(questionEl) {
@@ -1071,15 +1076,28 @@
   document.getElementById('cookieRefuse').addEventListener('click', () => setCookieChoice('refused'));
 </script>
 
-<!-- ===== GSAP : animations professionnelles ===== -->
+<!-- ===== GSAP : animations premium (intro, hero, compteurs, hover, scroll, parallaxe) ===== -->
 <script>
   if (window.gsap && window.ScrollTrigger) {
     gsap.registerPlugin(ScrollTrigger);
+    if (window.SplitText) gsap.registerPlugin(SplitText);
 
-    const revealSelector = '.fade-up, .slide-left, .slide-right';
+    const intro = document.getElementById('intro');
 
-    // matchMedia : gère les préférences d'accessibilité (prefers-reduced-motion).
-    // Tout ce qui est créé ici est automatiquement nettoyé/réverté si la condition change.
+    // Compteurs animés : 0 → valeur finale en 2s, via un objet et onUpdate (effet premium).
+    function startCounters() {
+      gsap.utils.toArray('[data-count]').forEach((el) => {
+        const end = parseFloat(el.dataset.count);
+        const suffix = el.dataset.suffix || '';
+        const obj = { v: 0 };
+        gsap.to(obj, {
+          v: end, duration: 2, ease: 'power1.out',
+          onUpdate: () => { el.textContent = Math.round(obj.v) + suffix; }
+        });
+      });
+    }
+
+    // matchMedia : désactive toutes les animations si prefers-reduced-motion est activé.
     const mm = gsap.matchMedia();
 
     mm.add({
@@ -1088,49 +1106,148 @@
     }, (ctx) => {
       const { reduce } = ctx.conditions;
 
-      // Accessibilité : aucun mouvement, on affiche simplement le contenu.
+      // ===== ACCESSIBILITÉ : aucun mouvement, tout est visible immédiatement. =====
       if (reduce) {
-        gsap.set('#hero .hero-content > *', { autoAlpha: 1 });
-        gsap.set(revealSelector, { autoAlpha: 1, clearProps: 'transform' });
+        if (intro) intro.style.display = 'none';
+        document.body.style.overflow = '';
+        // Le contenu garde son état naturel (aucun opacity:0 n'a été posé).
         return;
       }
 
-      // 1) Entrée du hero — le texte apparaît progressivement, du bas vers le haut.
-      const heroTl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 0.9 } });
-      heroTl
-        .from('.hero-title',   { y: 40, autoAlpha: 0 })
-        .from('.hero-sub',     { y: 30, autoAlpha: 0, duration: 0.8 }, '-=0.55')
-        .from('.hero-actions', { y: 24, autoAlpha: 0, duration: 0.7 }, '-=0.5')
-        .from('.hero-stats',   { autoAlpha: 0, duration: 0.7 }, '-=0.45')
-        .from('.hero-stat',    { y: 22, stagger: 0.12, duration: 0.6 }, '-=0.5');
+      // ===== ÉTATS INITIAUX DU HERO (cachés sous l'intro, donc pas de flash) =====
+      gsap.set('.hero-badge', { y: -24, autoAlpha: 0 });
+      gsap.set('.hero-title .word', { xPercent: -45, autoAlpha: 0 });
+      gsap.set('.hero-title em', { autoAlpha: 1, clipPath: 'inset(0 100% 0 0)' });
+      gsap.set('.hero-actions .btn-primary, .hero-actions .btn-outline', { y: 30, autoAlpha: 0 });
+      gsap.set('.hero-stat', { y: 22, autoAlpha: 0 });
 
-      // 2) Révélation des sections au scroll — les éléments glissent depuis le bas.
-      gsap.set(revealSelector, { y: 40, autoAlpha: 0 });
-      ScrollTrigger.batch(revealSelector, {
-        start: 'top 88%',
-        onEnter: (els) => gsap.to(els, {
-          y: 0, autoAlpha: 1, duration: 0.8, ease: 'power3.out',
-          stagger: 0.12, overwrite: true
-        })
+      // Paragraphe : découpé en lignes via SplitText si disponible, sinon en bloc.
+      let subLines = null;
+      if (window.SplitText) {
+        try { subLines = new SplitText('.hero-sub', { type: 'lines' }).lines; }
+        catch (e) { subLines = null; }
+      }
+      const subTarget = (subLines && subLines.length) ? subLines : '.hero-sub';
+      gsap.set(subTarget, { y: 16, autoAlpha: 0 });
+
+      // ===== TIMELINE D'ENTRÉE DU HERO =====
+      function playHero() {
+        const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+        tl.to('.hero-badge', { y: 0, autoAlpha: 1, duration: 0.7 })
+          .to('.hero-title .word', { xPercent: 0, autoAlpha: 1, duration: 0.6, stagger: 0.14 }, '-=0.25')
+          .to('.hero-title em', { clipPath: 'inset(0 0% 0 0)', duration: 0.85, ease: 'power3.inOut' }, '-=0.2')
+          .to(subTarget, { y: 0, autoAlpha: 1, duration: 0.7, stagger: 0.12 }, '-=0.45')
+          .to('.hero-actions .btn-primary, .hero-actions .btn-outline',
+              { y: 0, autoAlpha: 1, duration: 0.7, stagger: 0.12, ease: 'back.out(1.7)' }, '-=0.3')
+          .to('.hero-stat', { y: 0, autoAlpha: 1, duration: 0.6, stagger: 0.12 }, '-=0.4')
+          .add(startCounters, '-=0.2');
+      }
+
+      // ===== 1) INTRO REVEAL (durée ~2.5s) =====
+      document.body.style.overflow = 'hidden';
+      gsap.set('.intro-logo', { autoAlpha: 0, scale: 0.85 });
+      const introTl = gsap.timeline({
+        onComplete: () => {
+          document.body.style.overflow = '';
+          if (intro) intro.style.display = 'none';
+          ScrollTrigger.refresh();
+        }
+      });
+      introTl
+        .to('.intro-logo', { autoAlpha: 1, scale: 1, duration: 0.6, ease: 'power2.out' }, 0)      // apparition du logo
+        .to({}, { duration: 1 })                                                                  // pause ~1s
+        .to('.intro-logo', { autoAlpha: 0, scale: 1.06, duration: 0.4, ease: 'power2.in' }, 1.6)  // disparition du logo
+        .to('.intro-left',  { xPercent: -100, duration: 0.9, ease: 'power4.inOut' }, 1.65)        // panneaux qui s'écartent
+        .to('.intro-right', { xPercent: 100,  duration: 0.9, ease: 'power4.inOut' }, 1.65)
+        .add(playHero, 2.05);                                                                     // démarrage des animations du hero
+
+      // Filet de sécurité : si l'intro reste bloquée, on la retire au bout de 4s.
+      gsap.delayedCall(4, () => {
+        if (intro && intro.style.display !== 'none') {
+          document.body.style.overflow = '';
+          intro.style.display = 'none';
+        }
       });
 
-      // 3) Parallaxe légère sur la vidéo de fond du hero.
-      //    On agrandit légèrement la vidéo pour qu'aucun bord ne se découvre pendant le déplacement.
-      gsap.set('.hero-video', { scale: 1.18, transformOrigin: 'center center' });
+      // ===== 7) RÉVÉLATIONS AU SCROLL (ScrollTrigger.batch, once:true) =====
+      const revealTo = (els, vars) => gsap.to(els, Object.assign({
+        y: 0, x: 0, autoAlpha: 1, duration: 0.8, ease: 'power2.out', overwrite: true
+      }, vars));
+
+      // Cartes services : glissent depuis le bas, stagger 0.15
+      gsap.set('.service-card', { y: 40, autoAlpha: 0 });
+      ScrollTrigger.batch('.service-card', {
+        start: 'top 85%', once: true,
+        onEnter: (els) => revealTo(els, { stagger: 0.15 })
+      });
+
+      // FAQ : items un par un depuis le bas, stagger 0.1
+      gsap.set('.faq-item', { y: 40, autoAlpha: 0 });
+      ScrollTrigger.batch('.faq-item', {
+        start: 'top 88%', once: true,
+        onEnter: (els) => revealTo(els, { stagger: 0.1 })
+      });
+
+      // Autres éléments « fade-up » (titres, badges, section valeur…)
+      const fadeEls = gsap.utils.toArray('.fade-up').filter((el) =>
+        !el.classList.contains('service-card') &&
+        !el.classList.contains('faq-item') &&
+        !el.closest('footer'));
+      gsap.set(fadeEls, { y: 40, autoAlpha: 0 });
+      ScrollTrigger.batch(fadeEls, {
+        start: 'top 88%', once: true,
+        onEnter: (els) => revealTo(els, { stagger: 0.1 })
+      });
+
+      // « slide-left » : arrivent depuis la gauche (tableau tarifs, infos contact…)
+      gsap.set('.slide-left', { x: -40, autoAlpha: 0 });
+      ScrollTrigger.batch('.slide-left', {
+        start: 'top 85%', once: true,
+        onEnter: (els) => revealTo(els, { stagger: 0.1 })
+      });
+
+      // « slide-right » : arrivent depuis la droite (formulaire de contact…)
+      gsap.set('.slide-right', { x: 40, autoAlpha: 0 });
+      ScrollTrigger.batch('.slide-right', {
+        start: 'top 85%', once: true,
+        onEnter: (els) => revealTo(els, { stagger: 0.1 })
+      });
+
+      // ===== 9) FOOTER : colonnes de bas en haut, stagger 0.2 =====
+      const footerCols = gsap.utils.toArray('.footer-top > *');
+      gsap.set(footerCols, { y: 40, autoAlpha: 0 });
+      ScrollTrigger.batch(footerCols, {
+        start: 'top 92%', once: true,
+        onEnter: (els) => revealTo(els, { stagger: 0.2 })
+      });
+
+      // ===== 5) SURVOL DES CARTES SERVICES (GSAP) =====
+      gsap.utils.toArray('.service-card').forEach((card) => {
+        const underline = document.createElement('span');
+        underline.className = 'card-underline';
+        card.appendChild(underline);
+        gsap.set(underline, { scaleX: 0, transformOrigin: 'left center' });
+        card.addEventListener('mouseenter', () => {
+          gsap.to(card, { y: -8, boxShadow: '0 20px 55px rgba(30,58,122,0.22)', duration: 0.3, ease: 'power2.out', overwrite: 'auto' });
+          gsap.to(underline, { scaleX: 1, duration: 0.3, ease: 'power2.out', overwrite: 'auto' });
+        });
+        card.addEventListener('mouseleave', () => {
+          gsap.to(card, { y: 0, boxShadow: '0 4px 24px rgba(30,58,122,0.10)', duration: 0.3, ease: 'power2.out', overwrite: 'auto' });
+          gsap.to(underline, { scaleX: 0, duration: 0.3, ease: 'power2.out', overwrite: 'auto' });
+        });
+      });
+
+      // ===== 8) PARALLAXE VIDÉO (≈60% de la vitesse de scroll, yPercent 0 → -20) =====
+      gsap.set('.hero-video', { scale: 1.4, transformOrigin: 'center center' });
       gsap.fromTo('.hero-video',
-        { yPercent: -6 },
+        { yPercent: 0 },
         {
-          yPercent: 8, ease: 'none',
-          scrollTrigger: {
-            trigger: '#hero',
-            start: 'top top',
-            end: 'bottom top',
-            scrub: true
-          }
+          yPercent: -20, ease: 'none',
+          scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true }
         }
       );
 
-      // Recalcule les positions une fois la mise en page stabilisée (polices, etc.).
+      // Recalcule les positions une fois la mise en page stabilisée.
       ScrollTrigger.refresh();
     });
   }

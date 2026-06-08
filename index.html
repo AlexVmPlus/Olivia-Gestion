@@ -257,10 +257,6 @@
     .contact-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 60px; margin-top: 48px; align-items: start; }
     .contact-info h3 { font-size: 1.2rem; color: var(--navy); margin-bottom: 10px; }
     .contact-info p { font-size: 0.9rem; color: var(--gray); line-height: 1.7; margin-bottom: 28px; }
-    .contact-detail { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 20px; }
-    .contact-detail-icon { width: 42px; height: 42px; background: rgba(30,58,122,0.07); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .contact-detail-text strong { display: block; font-size: 0.82rem; color: var(--navy); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px; }
-    .contact-detail-text span { font-size: 0.9rem; color: var(--gray); }
     .contact-form { background: var(--white); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow); border: 1px solid rgba(30,58,122,0.07); }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .form-group { margin-bottom: 20px; }
@@ -471,30 +467,28 @@
     .faq-item.open .faq-toggle { background: transparent; border: none; transform: rotate(180deg); }
     .faq-toggle svg, .faq-item.open .faq-toggle svg { stroke: var(--gold); }
 
-    /* --- SECTION 7 : contact 50/50 inversé (photo gauche, formulaire droite) --- */
-    #contact { padding: 0; background: #fff; }
-    .contact-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; }
-    .contact-photo { position: relative; background-size: cover; background-position: center; display: flex; align-items: center; }
-    .contact-photo-overlay { position: absolute; inset: 0; background: rgba(13,17,23,0.62); }
-    .contact-photo-content { position: relative; z-index: 1; padding: 80px 6vw; max-width: 540px; }
-    .contact-photo-content .split-label { color: var(--gold-light); }
-    .contact-photo-content h2 { font-family: var(--font-title); font-size: 2.2rem; font-weight: 400; color: #fff; line-height: 1.25; margin-bottom: 16px; }
-    .contact-photo-content > p { font-size: 0.98rem; color: rgba(255,255,255,0.82); line-height: 1.8; margin-bottom: 30px; }
-    .contact-photo-content .contact-detail-icon { background: rgba(255,255,255,0.12); }
-    .contact-photo-content .contact-detail-icon svg { stroke: var(--gold-light); }
-    .contact-photo-content .contact-detail-text strong { color: #fff; }
-    .contact-photo-content .contact-detail-text span { color: rgba(255,255,255,0.78); }
-    .contact-form-wrap { background: #fff; display: flex; align-items: center; padding: 70px 6vw; }
-    .contact-form-wrap .contact-form { background: #fff; border: none; box-shadow: none; padding: 0; width: 100%; max-width: 580px; border-radius: 0; }
-    .contact-split .form-group input, .contact-split .form-group select, .contact-split .form-group textarea { border: none; border-bottom: 1.5px solid #d8d8d8; border-radius: 0; padding: 10px 2px; background: transparent; }
-    .contact-split .form-group input:focus, .contact-split .form-group select:focus, .contact-split .form-group textarea:focus { border-bottom-color: var(--navy); box-shadow: none; }
-    .contact-split .form-group textarea { min-height: 90px; }
-    .contact-split .btn-submit { background: var(--gold); color: var(--navy); }
-    .contact-split .btn-submit:hover { background: var(--gold-dark); color: #fff; box-shadow: none; }
+    /* --- SECTION 7 : contact épuré (style Barnes) --- */
+    #contact { background: #fafafa; }
+    .contact-head { text-align: center; max-width: 620px; margin: 0 auto 56px; }
+    .contact-head h2 { font-family: var(--font-title); font-size: 2.2rem; font-weight: 400; color: var(--navy); line-height: 1.25; margin-bottom: 14px; }
+    .contact-head p { font-size: 0.96rem; color: var(--gray); line-height: 1.8; }
+    .contact-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; max-width: 1040px; margin: 0 auto; align-items: start; }
+    .contact-coords { font-size: 0.9rem; color: var(--dark); line-height: 1.7; }
+    .contact-coords .coord { padding: 18px 0; border-bottom: 1px solid #e6e6e6; }
+    .contact-coords .coord:first-child { padding-top: 0; }
+    .contact-coords .coord:last-child { border-bottom: none; }
+    .contact-form-wrap .contact-form { background: transparent; border: none; box-shadow: none; padding: 0; border-radius: 0; }
+    #contact .form-group { margin-bottom: 30px; }
+    #contact .form-group label { color: var(--gold-dark); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 9px; }
+    #contact .form-group input, #contact .form-group select, #contact .form-group textarea { border: none; border-bottom: 1px solid #ddd; border-radius: 0; padding: 10px 2px; background: transparent; }
+    #contact .form-group input:focus, #contact .form-group select:focus, #contact .form-group textarea:focus { border-bottom-color: var(--navy); box-shadow: none; }
+    #contact .form-group textarea { min-height: 90px; }
+    #contact .btn-submit { background: #1a2744; color: #fff; }
+    #contact .btn-submit:hover { background: #11192d; color: #fff; opacity: 1; box-shadow: none; transform: translateY(-1px); }
     @media (max-width: 860px) {
-      .split-block, .contact-split { grid-template-columns: 1fr; }
+      .split-block { grid-template-columns: 1fr; }
       .split-photo { min-height: 320px; }
-      .contact-photo { min-height: 320px; order: -1; }
+      .contact-layout { grid-template-columns: 1fr; gap: 40px; }
     }
 
     /* --- SECTION 8 : footer sombre Barnes --- */
@@ -827,54 +821,21 @@
 </section>
 
 <!-- ===== SECTION 7 : CONTACT (bloc 50/50 inversé — photo gauche, formulaire droite) ===== -->
-<section id="contact" class="contact-split">
-  <div class="contact-photo slide-left" style="background-image:url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1200&q=85')">
-    <div class="contact-photo-overlay"></div>
-    <div class="contact-photo-content">
-      <span class="split-label">Prenons contact</span>
-      <h2>Parlons de votre bien</h2>
-      <p>Que vous soyez propriétaire d'un studio ou d'un immeuble de rapport, notre équipe étudie votre projet et vous répond sous 24h.</p>
-
-      <div class="contact-detail">
-        <div class="contact-detail-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="1.8" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </div>
-        <div class="contact-detail-text">
-          <strong>Adresse</strong>
-          <span>25 rue de Ponthieu, 75008 Paris</span>
-        </div>
-      </div>
-      <div class="contact-detail">
-        <div class="contact-detail-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="1.8" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
-        </div>
-        <div class="contact-detail-text">
-          <strong>Email</strong>
-          <span>contact@olivia-gestion.fr</span>
-        </div>
-      </div>
-      <div class="contact-detail">
-        <div class="contact-detail-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        </div>
-        <div class="contact-detail-text">
-          <strong>Disponibilité</strong>
-          <span>Lun–Ven 9h–19h · Réponse sous 24h</span>
-        </div>
-      </div>
-      <div class="contact-detail">
-        <div class="contact-detail-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E5EAA" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        </div>
-        <div class="contact-detail-text">
-          <strong>Zone d'intervention</strong>
-          <span>Paris &amp; Grand Paris</span>
-        </div>
-      </div>
-    </div>
+<section id="contact">
+  <div class="contact-head fade-up">
+    <span class="split-label">Prenons contact</span>
+    <h2>Parlons de votre bien</h2>
+    <p>Que vous soyez propriétaire d'un studio ou d'un immeuble de rapport, notre équipe étudie votre projet et vous répond sous 24h.</p>
   </div>
 
-  <div class="contact-form-wrap slide-right">
+  <div class="contact-layout">
+    <div class="contact-coords contact-col">
+      <div class="coord">25 rue de Ponthieu, 75008 Paris</div>
+      <div class="coord">contact@olivia-gestion.fr</div>
+      <div class="coord">Lun–Ven 9h–19h · Réponse sous 24h</div>
+    </div>
+
+    <div class="contact-form-wrap contact-col">
         <form class="contact-form" id="contactForm" novalidate>
           <div class="form-row">
             <div class="form-group">
@@ -905,16 +866,6 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="sujet">Sujet</label>
-            <select id="sujet" name="sujet">
-              <option value="gestion">Gestion locative</option>
-              <option value="location">Mise en location</option>
-              <option value="partenariat">Partenariat CGP</option>
-              <option value="estimation">Estimation du loyer</option>
-              <option value="autre">Autre demande</option>
-            </select>
-          </div>
-          <div class="form-group">
             <label for="message">Votre message *</label>
             <textarea id="message" name="message" placeholder="Décrivez votre bien et votre projet (adresse approximative, surface, situation locative actuelle…)" required></textarea>
           </div>
@@ -934,6 +885,7 @@
             Une erreur est survenue lors de l'envoi. Merci de réessayer ou de nous écrire directement à contact@olivia-gestion.fr.
           </div>
         </form>
+    </div>
   </div>
 </section>
 
@@ -1154,7 +1106,6 @@
       email,
       telephone: form.telephone.value.trim(),
       typebien: form.typebien.value,
-      sujet: form.sujet.value,
       message: msg,
       website: form.website ? form.website.value : '' // honeypot
     };
@@ -1367,6 +1318,13 @@
       ScrollTrigger.batch('.slide-right', {
         start: 'top 85%', once: true,
         onEnter: (els) => revealTo(els, { stagger: 0.1 })
+      });
+
+      // Contact : les deux colonnes entrent depuis le bas (fade + translateY 30px)
+      gsap.set('.contact-col', { y: 30, autoAlpha: 0 });
+      ScrollTrigger.batch('.contact-col', {
+        start: 'top 85%', once: true,
+        onEnter: (els) => revealTo(els, { stagger: 0.15 })
       });
 
       // ===== 9) FOOTER : colonnes de bas en haut, stagger 0.2 =====

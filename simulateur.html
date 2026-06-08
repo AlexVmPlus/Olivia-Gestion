@@ -103,7 +103,6 @@
     .bar-moyenne { background: #888; }
     .bar-olivia { background: #C9A84C; }
     .rate-loc { display: none; color: var(--gold-dark); }
-    .rendement { font-size: 0.85rem; color: #1a2744; font-weight: 600; margin-top: 18px; padding: 12px 0; border-top: 1px solid #e8e8e8; }
     .no-result { text-align: center; padding: 40px 20px; }
     .no-result svg { opacity: 0.25; margin: 0 auto 16px; display: block; }
     .no-result p { color: var(--gray); font-size: 0.9rem; }
@@ -210,14 +209,6 @@
     </div>
 
     <div class="form-group">
-      <label for="valeur">Valeur du bien (optionnel)</label>
-      <div class="input-suffix">
-        <input type="number" id="valeur" placeholder="Ex : 250 000" min="1" />
-        <span>€</span>
-      </div>
-    </div>
-
-    <div class="form-group">
       <label for="zone">Zone</label>
       <select id="zone">
         <option value="tres_tendue">Paris intramuros – Zone très tendue</option>
@@ -294,8 +285,6 @@
           <tr class="olivia bar-row"><td colspan="3"><span class="bar bar-olivia" id="barOlivia"></span></td></tr>
         </tbody>
       </table>
-
-      <p class="rendement" id="rendementLine" style="display:none">–</p>
 
       <div id="locationBlock" style="display:none; margin-top:20px; padding:16px; background:#fafafa; border-radius:0; border-left:3px solid var(--gold);">
         <p style="font-size:0.82rem; color:#1a2744; font-weight:600; margin-bottom:6px;">Honoraires de mise en location (1ère année – part bailleur)</p>
@@ -461,16 +450,6 @@
     document.getElementById('savings5y').textContent = 'soit ' + fmt(econFoncia * 5) + ' économisés sur 5 ans';
     document.getElementById('savingsVsOther').textContent = 'soit ' + fmt(econMoyenne) + ' vs une agence moyenne';
 
-    // Rendement brut estimé (n'entre pas dans le calcul d'économies — affiché uniquement si la valeur est renseignée)
-    const valeur = parseFloat(document.getElementById('valeur').value) || 0;
-    const rendementLine = document.getElementById('rendementLine');
-    if (valeur > 0) {
-      rendementLine.textContent = 'Rendement brut estimé : ' + (annuel / valeur * 100).toFixed(1).replace('.', ',') + ' %';
-      rendementLine.style.display = 'block';
-    } else {
-      rendementLine.style.display = 'none';
-    }
-
     const locationBlock = document.getElementById('locationBlock');
     if (typeGestion === 'gestion_location' && surface > 0) {
       locationBlock.style.display = 'block';
@@ -500,7 +479,7 @@
     }
   }
 
-  ['loyer', 'surface', 'valeur', 'zone', 'typeGestion'].forEach(id => {
+  ['loyer', 'surface', 'zone', 'typeGestion'].forEach(id => {
     document.getElementById(id).addEventListener('input', calculate);
     document.getElementById(id).addEventListener('change', calculate);
   });

@@ -59,6 +59,24 @@
     .page-hero h1 em { color: #C9A84C; font-style: italic; }
     .page-hero p { font-size: 1.05rem; color: rgba(255,255,255,0.78); max-width: 560px; margin: 0 auto; line-height: 1.7; }
 
+    /* ONGLETS */
+    .sim-tabs { max-width: 1100px; margin: 46px auto 0; padding: 0 24px; display: flex; }
+    .sim-tab { flex: 1; text-align: center; padding: 16px 12px; font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.03em; color: var(--gray); background: #f4f4f2; border: 1px solid #e6e6e6; cursor: pointer; transition: background 0.2s, color 0.2s; }
+    .sim-tab.active { background: #1a2744; color: #fff; border-color: #1a2744; }
+    .sim-tab:first-child { border-right: none; }
+    @media (max-width: 560px) { .sim-tab { font-size: 0.74rem; padding: 14px 8px; } }
+
+    /* Résultat estimation loyer */
+    .loyer-max { font-family: var(--font-title); font-size: 3rem; font-weight: 700; color: var(--gold-light); line-height: 1; }
+    .loyer-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 22px 0; }
+    .loyer-cell { background: #fafafa; border: 1px solid #eee; padding: 16px; text-align: center; }
+    .loyer-cell .v { font-family: var(--font-title); font-size: 1.5rem; color: #1a2744; font-weight: 700; }
+    .loyer-cell .l { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray); margin-top: 6px; }
+    .loyer-note { font-size: 0.85rem; color: var(--gray); line-height: 1.65; background: #fafafa; border-left: 3px solid var(--gold); padding: 16px; margin-top: 8px; }
+    .loyer-loading { text-align: center; color: var(--gray); font-size: 0.9rem; padding: 30px 0; }
+    .loyer-outside { text-align: center; padding: 20px 0; }
+    .loyer-outside p { font-size: 0.95rem; color: #1a2744; line-height: 1.6; margin-bottom: 18px; }
+
     /* MAIN */
     .sim-wrap { max-width: 1100px; margin: 0 auto; padding: 60px 24px 80px; display: grid; grid-template-columns: 1fr 1.3fr; gap: 40px; align-items: start; }
 
@@ -112,6 +130,7 @@
     .no-result p { color: var(--gray); font-size: 0.9rem; }
     .cta-block { margin-top: 28px; padding-top: 24px; border-top: 1px solid #e8e8e8; text-align: center; }
     .cta-block p { font-size: 0.88rem; color: var(--gray); margin-bottom: 16px; line-height: 1.6; }
+    .cta-reassurance { font-size: 0.75rem !important; color: #9a9a9a !important; letter-spacing: 0.03em; margin-top: 14px !important; margin-bottom: 0 !important; }
     .btn-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: var(--navy); font-weight: 700; font-size: 0.9rem; padding: 13px 28px; border-radius: 4px; transition: background 0.2s, transform 0.2s; }
     .btn-cta:hover { background: var(--gold-dark); color: var(--white); transform: translateY(-2px); }
     .disclaimer { font-size: 0.76rem; color: var(--gray); text-align: center; margin-top: 12px; font-style: italic; }
@@ -193,11 +212,114 @@
 
 <div class="page-hero">
   <span class="section-label">Outil gratuit</span>
-  <h1>Simulateur d'<em>économies locatives</em></h1>
-  <p>Comparez vos honoraires de gestion et découvrez combien vous économisez chaque année avec Olivia Gestion.</p>
+  <h1>Simulateur <em>locatif</em></h1>
+  <p>Estimez le loyer légal de votre bien à Paris et comparez vos frais de gestion, en quelques secondes.</p>
 </div>
 
-<div class="sim-wrap">
+<!-- ONGLETS -->
+<div class="sim-tabs">
+  <div class="sim-tab active" id="tab-loyer" onclick="switchMode('loyer')">Estimer mon loyer</div>
+  <div class="sim-tab" id="tab-eco" onclick="switchMode('eco')">Calculer mes économies</div>
+</div>
+
+<!-- ============ MODE 1 : ESTIMATION DU LOYER ============ -->
+<div class="sim-wrap" id="mode-loyer">
+  <div class="sim-form-card">
+    <h2>Votre bien</h2>
+    <p class="sub">Estimez le loyer maximum autorisé (encadrement des loyers) à Paris.</p>
+
+    <div class="form-group">
+      <label for="adresse">Adresse du bien</label>
+      <input type="text" id="adresse" placeholder="Ex : 25 rue de Ponthieu, 75008 Paris" autocomplete="off" />
+      <p class="field-hint">Estimation officielle disponible pour Paris intra-muros.</p>
+    </div>
+
+    <div class="form-group">
+      <label for="lsurface">Surface habitable</label>
+      <div class="input-suffix">
+        <input type="number" id="lsurface" placeholder="Ex : 45" min="1" max="999" />
+        <span>m²</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="pieces">Nombre de pièces</label>
+      <select id="pieces">
+        <option value="1">1 pièce</option>
+        <option value="2">2 pièces</option>
+        <option value="3">3 pièces</option>
+        <option value="4">4 pièces et plus</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="epoque">Époque de construction</label>
+      <select id="epoque">
+        <option value="avant 1946">Avant 1946</option>
+        <option value="1946-1970">1946 - 1970</option>
+        <option value="1971-1990">1971 - 1990</option>
+        <option value="apres 1990">Après 1990</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="meuble">Type de location</label>
+      <select id="meuble">
+        <option value="non meuble">Vide (non meublé)</option>
+        <option value="meuble">Meublé</option>
+      </select>
+    </div>
+
+    <button type="button" class="btn-calc" onclick="estimerLoyer()">Estimer mon loyer</button>
+  </div>
+
+  <div class="sim-results-card">
+    <h2>Loyer de référence</h2>
+    <p class="sub">Plafonds officiels de l'encadrement des loyers (préfecture de Paris).</p>
+
+    <div id="loyerNoResult" class="no-result">
+      <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#1a2744" stroke-width="1.2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h.01M9 13h.01M9 17h.01"/></svg>
+      <p>Saisissez l'adresse et les caractéristiques du bien pour afficher le loyer légal.</p>
+    </div>
+
+    <div id="loyerLoading" class="loyer-loading" style="display:none">Recherche du loyer de référence…</div>
+
+    <div id="loyerResult" style="display:none">
+      <div class="savings-hero">
+        <div class="savings-label">Loyer maximum autorisé (charges non comprises)</div>
+        <div class="loyer-max" id="loyerMax">–</div>
+        <div class="savings-amount-sub" id="loyerMaxM2">–</div>
+      </div>
+      <div class="loyer-detail-grid">
+        <div class="loyer-cell"><div class="v" id="loyerRef">–</div><div class="l">Loyer de référence</div></div>
+        <div class="loyer-cell"><div class="v" id="loyerMin">–</div><div class="l">Loyer minoré</div></div>
+      </div>
+      <div class="loyer-note" id="loyerNote"></div>
+      <div class="cta-block">
+        <p>Votre bien a des atouts (vue, dernier étage, terrasse, prestations rares) ? Un <strong>complément de loyer</strong> peut être justifié au-delà de ce plafond. Nous vous conseillons.</p>
+        <a href="/#contact" class="btn-cta">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Faire estimer mon bien
+        </a>
+        <p class="cta-reassurance">Sans engagement · Réponse sous 24h · Un interlocuteur dédié</p>
+      </div>
+    </div>
+
+    <div id="loyerOutside" class="loyer-outside" style="display:none">
+      <p><strong id="outsideCity">Votre commune</strong> n'est pas soumise à l'encadrement des loyers parisien.<br>Nous réalisons une <strong>estimation personnalisée et gratuite</strong> de votre loyer sur simple demande.</p>
+      <a href="/#contact" class="btn-cta">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Demander mon estimation gratuite
+      </a>
+      <p class="cta-reassurance">Sans engagement · Réponse sous 24h</p>
+    </div>
+
+    <p class="disclaimer">Données officielles de l'encadrement des loyers de la Ville de Paris. Le loyer de référence majoré est le loyer maximum applicable, hors complément de loyer éventuel.</p>
+  </div>
+</div>
+
+<!-- ============ MODE 2 : ÉCONOMIES DE GESTION ============ -->
+<div class="sim-wrap" id="mode-eco" style="display:none">
   <!-- FORM -->
   <div class="sim-form-card">
     <h2>Votre bien</h2>
@@ -214,8 +336,8 @@
     <div class="form-group">
       <label for="zone">Zone</label>
       <select id="zone">
-        <option value="tres_tendue">Paris intramuros – Zone très tendue</option>
-        <option value="tendue">Zone tendue (agglomérations &gt; 50 000 hab.)</option>
+        <option value="tres_tendue">Paris (zone très tendue)</option>
+        <option value="tendue">Petite couronne / zone tendue</option>
         <option value="non_tendue">Zone non tendue</option>
       </select>
     </div>
@@ -246,7 +368,7 @@
       <div class="savings-hero">
         <div class="savings-label">Votre économie annuelle avec Olivia Gestion</div>
         <div class="savings-amount" id="savingsAmount">–</div>
-        <div class="savings-amount-sub">vs. une grande agence (Foncia / Nexity)</div>
+        <div class="savings-amount-sub">vs. une agence à 8% + TVA</div>
         <div class="savings-5y" id="savings5y">–</div>
         <div class="savings-vs" id="savingsVsOther">–</div>
       </div>
@@ -261,14 +383,14 @@
         </thead>
         <tbody>
           <tr class="data-row">
-            <td class="agency">Foncia / Nexity</td>
-            <td class="rate">10% + TVA 20% = 12% effectif</td>
+            <td class="agency">Agence à 8%</td>
+            <td class="rate">8% + TVA 20% = 9,6% effectif</td>
             <td class="annual" id="costFoncia">–</td>
           </tr>
           <tr class="bar-row"><td colspan="3"><span class="bar bar-foncia" id="barFoncia"></span></td></tr>
           <tr class="data-row">
-            <td class="agency">Agence moyenne</td>
-            <td class="rate">8% + TVA 20% = 9,6% effectif</td>
+            <td class="agency">Agence à 7%</td>
+            <td class="rate">7% + TVA 20% = 8,4% effectif</td>
             <td class="annual" id="costMoyenne">–</td>
           </tr>
           <tr class="bar-row"><td colspan="3"><span class="bar bar-moyenne" id="barMoyenne"></span></td></tr>
@@ -287,11 +409,12 @@
       </div>
 
       <div class="cta-block">
-        <p>Prêt à économiser ? Confiez-nous votre bien et bénéficiez de nos honoraires parmi les plus compétitifs de Paris.</p>
+        <p>Confiez-nous votre bien et profitez de ces économies dès le premier loyer.</p>
         <a href="/#contact" class="btn-cta">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          Nous contacter gratuitement
+          Demander mon estimation gratuite
         </a>
+        <p class="cta-reassurance">Sans engagement · Réponse sous 24h · Un interlocuteur dédié</p>
       </div>
       <p class="disclaimer">Simulation indicative basée sur les loyers charges comprises. Les honoraires de mise en location sont réglementés et partagés bailleur/locataire selon la loi ALUR.</p>
     </div>
@@ -417,9 +540,9 @@
     resultContent.style.display = 'block';
 
     const annuel = loyer * 12;
-    const foncia = annuel * 0.12;
-    const moyenne = annuel * 0.096;
-    const olivia = annuel * 0.05;
+    const foncia = annuel * 0.096;  // agence à 8% + TVA
+    const moyenne = annuel * 0.084; // agence à 7% + TVA
+    const olivia = annuel * 0.05;   // Olivia Gestion, sans TVA
 
     document.getElementById('costFoncia').textContent = fmt(foncia);
     document.getElementById('costMoyenne').textContent = fmt(moyenne);
@@ -435,7 +558,21 @@
 
     document.getElementById('savingsAmount').textContent = fmt(econFoncia);
     document.getElementById('savings5y').textContent = 'soit ' + fmt(econFoncia * 5) + ' économisés sur 5 ans';
-    document.getElementById('savingsVsOther').textContent = 'soit ' + fmt(econMoyenne) + ' vs une agence moyenne';
+    document.getElementById('savingsVsOther').textContent = 'soit ' + fmt(econMoyenne) + ' vs une agence à 7%';
+
+    // Honoraires de mise en location (frais ponctuels, plafonnés loi ALUR selon la surface)
+    const locationBlock = document.getElementById('locationBlock');
+    if (surface > 0) {
+      const fraisLoc = surface * locationRates[zone];
+      const zoneLabel = { tres_tendue: 'zone très tendue', tendue: 'zone tendue', non_tendue: 'zone non tendue' }[zone];
+      document.getElementById('locationText').innerHTML =
+        '<strong>' + fmt(fraisLoc) + '</strong> une seule fois à la mise en location (' +
+        locationRates[zone].toFixed(2).replace('.', ',') + ' €/m² × ' + surface + ' m², plafond légal ' + zoneLabel + ').<br>' +
+        'Ces honoraires sont <strong>identiques chez toutes les agences</strong> (tarif réglementé) : c\'est sur la gestion courante à 5% que vous économisez chaque année.';
+      locationBlock.style.display = 'block';
+    } else {
+      locationBlock.style.display = 'none';
+    }
   }
 
   // Loyer moyen estimé par zone, affiché tant que le champ loyer est vide
@@ -454,13 +591,102 @@
     }
   }
 
-  ['loyer', 'surface', 'zone'].forEach(id => {
-    document.getElementById(id).addEventListener('input', calculate);
-    document.getElementById(id).addEventListener('change', calculate);
-  });
+  // Le calcul ne se déclenche qu'au clic sur le bouton « Calculer mes économies ».
+  // On ne garde que la mise à jour de l'indice de loyer moyen (aide à la saisie).
   document.getElementById('loyer').addEventListener('input', updateLoyerHint);
   document.getElementById('zone').addEventListener('change', updateLoyerHint);
   updateLoyerHint();
+
+  /* ===================== BASCULE ENTRE LES DEUX ONGLETS ===================== */
+  function switchMode(mode) {
+    const isLoyer = (mode === 'loyer');
+    document.getElementById('mode-loyer').style.display = isLoyer ? 'grid' : 'none';
+    document.getElementById('mode-eco').style.display   = isLoyer ? 'none' : 'grid';
+    document.getElementById('tab-loyer').classList.toggle('active', isLoyer);
+    document.getElementById('tab-eco').classList.toggle('active', !isLoyer);
+  }
+
+  /* ===================== ESTIMATION DU LOYER (encadrement Paris) ===================== */
+  function norm(s) {
+    return (s || '').toString().toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')  // enlève les accents
+      .replace(/\s+/g, ' ').trim();
+  }
+
+  async function estimerLoyer() {
+    const adresse = document.getElementById('adresse').value.trim();
+    const surface = parseFloat(document.getElementById('lsurface').value) || 0;
+    const pieces  = document.getElementById('pieces').value;
+    const epoque  = document.getElementById('epoque').value;
+    const meuble  = document.getElementById('meuble').value;
+
+    const noRes  = document.getElementById('loyerNoResult');
+    const loading = document.getElementById('loyerLoading');
+    const result = document.getElementById('loyerResult');
+    const outside = document.getElementById('loyerOutside');
+    [noRes, result, outside].forEach(e => e.style.display = 'none');
+
+    if (!adresse || surface <= 0) {
+      noRes.style.display = 'block';
+      return;
+    }
+    loading.style.display = 'block';
+
+    try {
+      // 1) Géocodage de l'adresse via la Base Adresse Nationale
+      const geoR = await fetch('https://api-adresse.data.gouv.fr/search/?limit=1&q=' + encodeURIComponent(adresse));
+      const geo = await geoR.json();
+      if (!geo.features || !geo.features.length) throw new Error('adresse introuvable');
+      const feat = geo.features[0];
+      const [lon, lat] = feat.geometry.coordinates;
+      const citycode = feat.properties.citycode || '';
+      const city = feat.properties.city || 'Votre commune';
+
+      // 2) Hors Paris → message + prise de contact
+      if (!citycode.startsWith('751')) {
+        loading.style.display = 'none';
+        document.getElementById('outsideCity').textContent = city;
+        outside.style.display = 'block';
+        return;
+      }
+
+      // 3) Paris → jeu de données officiel « encadrement des loyers »
+      const url = 'https://opendata.paris.fr/api/records/1.0/search/?dataset=logement-encadrement-des-loyers'
+        + '&rows=100&geofilter.distance=' + lat + ',' + lon + ',1';
+      const dR = await fetch(url);
+      const d = await dR.json();
+      const recs = (d.records || []).map(r => r.fields);
+      if (!recs.length) throw new Error('quartier non trouvé');
+
+      // Filtre : pièces + époque + meublé, année la plus récente
+      const matches = recs.filter(f =>
+        String(f.piece).indexOf(pieces) === 0 &&
+        norm(f.epoque).indexOf(norm(epoque).slice(0, 6)) !== -1 &&
+        norm(f.meuble_txt).indexOf(meuble === 'meuble' ? 'meuble' : 'non') === 0
+      ).sort((a, b) => (b.annee || 0) - (a.annee || 0));
+
+      const rec = matches[0] || recs.sort((a, b) => (b.annee || 0) - (a.annee || 0))[0];
+      const ref = parseFloat(rec.ref);
+      const maxi = parseFloat(rec.max);
+      const mini = parseFloat(rec.min);
+
+      const fmtM2 = v => v.toFixed(1).replace('.', ',') + ' €/m²';
+      document.getElementById('loyerMax').textContent = fmt(maxi * surface) + ' /mois';
+      document.getElementById('loyerMaxM2').textContent = 'soit ' + fmtM2(maxi) + ' × ' + surface + ' m²';
+      document.getElementById('loyerRef').textContent = fmtM2(ref);
+      document.getElementById('loyerMin').textContent = fmtM2(mini);
+      document.getElementById('loyerNote').innerHTML =
+        'Quartier <strong>' + (rec.nom_quartier || '') + '</strong> · barème ' + (rec.annee || '') + '. '
+        + 'Le loyer de votre bien ne peut légalement pas dépasser <strong>' + fmt(maxi * surface) + '/mois</strong> (hors charges), sauf complément de loyer justifié.';
+
+      loading.style.display = 'none';
+      result.style.display = 'block';
+    } catch (e) {
+      loading.style.display = 'none';
+      document.getElementById('outsideCity').textContent = 'Cette adresse';
+      outside.style.display = 'block';
+    }
+  }
 </script>
 </body>
 </html>

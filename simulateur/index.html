@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Simulateur d'économies – Gestion locative | Olivia Gestion</title>
-  <meta name="description" content="Calculez combien vous économisez avec Olivia Gestion vs une agence classique. Honoraires 7% sans TVA vs 10-12% avec TVA." />
+  <meta name="description" content="Calculez combien vous économisez avec Olivia Gestion vs une agence classique. Honoraires 5% sans TVA vs 10-12% avec TVA." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -269,7 +269,7 @@
           <tr class="bar-row"><td colspan="3"><span class="bar bar-moyenne" id="barMoyenne"></span></td></tr>
           <tr class="olivia data-row">
             <td class="agency">Olivia Gestion <span class="badge-olivia">SANS TVA</span></td>
-            <td class="rate">7% sans TVA = 7% effectif</td>
+            <td class="rate">5% sans TVA = 5% effectif</td>
             <td class="annual" id="costOlivia">–</td>
           </tr>
           <tr class="olivia bar-row"><td colspan="3"><span class="bar bar-olivia" id="barOlivia"></span></td></tr>
@@ -414,7 +414,7 @@
     const annuel = loyer * 12;
     const foncia = annuel * 0.12;
     const moyenne = annuel * 0.096;
-    const olivia = annuel * 0.07;
+    const olivia = annuel * 0.05;
 
     document.getElementById('costFoncia').textContent = fmt(foncia);
     document.getElementById('costMoyenne').textContent = fmt(moyenne);

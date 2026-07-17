@@ -1,0 +1,7 @@
+<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<rect width="48" height="48" fill="white" rx="6"/>
+<path d="M41 14.5 L41 33.5 L24 43.5 M7 33.5 L7 14.5 L24 4.5" stroke="#111111" stroke-width="2.4" fill="none"/>
+<path d="M24 4.5 L41 14.5" stroke="#F5A623" stroke-width="3" fill="none"/>
+<path d="M24 43.5 L7 33.5" stroke="#7CC4F2" stroke-width="3" fill="none"/>
+<text x="24.5" y="26.5" dominant-baseline="middle" text-anchor="middle" font-family="Georgia, 'Playfair Display', serif" font-size="16" font-weight="700" letter-spacing="-0.5" fill="#111111">OG</text>
+</svg>

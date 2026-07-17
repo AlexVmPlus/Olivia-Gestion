@@ -66,6 +66,15 @@
     .sim-tab:first-child { border-right: none; }
     @media (max-width: 560px) { .sim-tab { font-size: 0.74rem; padding: 14px 8px; } }
 
+    /* Autocomplétion d'adresse */
+    .autocomplete-wrap { position: relative; }
+    .autocomplete-list { position: absolute; top: 100%; left: 0; right: 0; background: #fff; border: 1px solid #e0e0e0; border-top: none; box-shadow: 0 8px 24px rgba(26,39,68,0.12); z-index: 50; max-height: 260px; overflow-y: auto; display: none; }
+    .autocomplete-list.open { display: block; }
+    .autocomplete-item { padding: 11px 14px; font-size: 0.9rem; color: #333; cursor: pointer; border-bottom: 1px solid #f2f2f2; transition: background 0.12s; }
+    .autocomplete-item:last-child { border-bottom: none; }
+    .autocomplete-item:hover, .autocomplete-item.active { background: #f4f6fb; }
+    .autocomplete-item .ac-ctx { color: #9a9a9a; font-size: 0.8rem; }
+
     /* Résultat estimation loyer */
     .loyer-max { font-family: var(--font-title); font-size: 3rem; font-weight: 700; color: var(--gold-light); line-height: 1; }
     .loyer-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 22px 0; }
@@ -230,7 +239,10 @@
 
     <div class="form-group">
       <label for="adresse">Adresse du bien</label>
-      <input type="text" id="adresse" placeholder="Ex : 25 rue de Ponthieu, 75008 Paris" autocomplete="off" />
+      <div class="autocomplete-wrap">
+        <input type="text" id="adresse" placeholder="Ex : 25 rue de Ponthieu, 75008 Paris" autocomplete="off" />
+        <div class="autocomplete-list" id="adresseSuggestions"></div>
+      </div>
       <p class="field-hint">Estimation officielle disponible pour Paris intra-muros.</p>
     </div>
 
@@ -606,6 +618,60 @@
     document.getElementById('tab-eco').classList.toggle('active', !isLoyer);
   }
 
+  /* ===================== AUTOCOMPLÉTION D'ADRESSE (Base Adresse Nationale) ===================== */
+  const adresseInput = document.getElementById('adresse');
+  const suggBox = document.getElementById('adresseSuggestions');
+  let acFeatures = [];      // résultats courants (avec coords)
+  let acSelected = null;    // adresse choisie (coords + citycode mémorisés)
+  let acTimer = null;
+
+  adresseInput.addEventListener('input', () => {
+    acSelected = null; // l'utilisateur retape : on oublie la sélection précédente
+    const q = adresseInput.value.trim();
+    clearTimeout(acTimer);
+    if (q.length < 4) { closeSuggestions(); return; }
+    acTimer = setTimeout(() => fetchSuggestions(q), 220);
+  });
+
+  async function fetchSuggestions(q) {
+    try {
+      const r = await fetch('https://api-adresse.data.gouv.fr/search/?autocomplete=1&limit=6&q=' + encodeURIComponent(q));
+      const d = await r.json();
+      acFeatures = d.features || [];
+      if (!acFeatures.length) { closeSuggestions(); return; }
+      suggBox.innerHTML = acFeatures.map((f, i) => {
+        const p = f.properties;
+        const main = p.name || p.label;
+        const ctx = [p.postcode, p.city].filter(Boolean).join(' ');
+        return '<div class="autocomplete-item" data-i="' + i + '">' + main +
+               ' <span class="ac-ctx">' + ctx + '</span></div>';
+      }).join('');
+      suggBox.classList.add('open');
+      suggBox.querySelectorAll('.autocomplete-item').forEach(el => {
+        el.addEventListener('mousedown', (ev) => {   // mousedown : se déclenche avant le blur
+          ev.preventDefault();
+          pickSuggestion(parseInt(el.dataset.i, 10));
+        });
+      });
+    } catch (e) { closeSuggestions(); }
+  }
+
+  function pickSuggestion(i) {
+    const f = acFeatures[i];
+    if (!f) return;
+    const p = f.properties;
+    adresseInput.value = p.label; // remplit l'adresse complète (n°, rue, CP, ville)
+    acSelected = {
+      lon: f.geometry.coordinates[0],
+      lat: f.geometry.coordinates[1],
+      citycode: p.citycode || '',
+      city: p.city || 'Votre commune'
+    };
+    closeSuggestions();
+  }
+  function closeSuggestions() { suggBox.classList.remove('open'); suggBox.innerHTML = ''; }
+  adresseInput.addEventListener('blur', () => setTimeout(closeSuggestions, 150));
+
   /* ===================== ESTIMATION DU LOYER (encadrement Paris) ===================== */
   function norm(s) {
     return (s || '').toString().toLowerCase()
@@ -633,14 +699,19 @@
     loading.style.display = 'block';
 
     try {
-      // 1) Géocodage de l'adresse via la Base Adresse Nationale
-      const geoR = await fetch('https://api-adresse.data.gouv.fr/search/?limit=1&q=' + encodeURIComponent(adresse));
-      const geo = await geoR.json();
-      if (!geo.features || !geo.features.length) throw new Error('adresse introuvable');
-      const feat = geo.features[0];
-      const [lon, lat] = feat.geometry.coordinates;
-      const citycode = feat.properties.citycode || '';
-      const city = feat.properties.city || 'Votre commune';
+      let lon, lat, citycode, city;
+      // 1) On réutilise l'adresse choisie dans le menu si disponible, sinon on géocode
+      if (acSelected) {
+        ({ lon, lat, citycode, city } = acSelected);
+      } else {
+        const geoR = await fetch('https://api-adresse.data.gouv.fr/search/?limit=1&q=' + encodeURIComponent(adresse));
+        const geo = await geoR.json();
+        if (!geo.features || !geo.features.length) throw new Error('adresse introuvable');
+        const feat = geo.features[0];
+        [lon, lat] = feat.geometry.coordinates;
+        citycode = feat.properties.citycode || '';
+        city = feat.properties.city || 'Votre commune';
+      }
 
       // 2) Hors Paris → message + prise de contact
       if (!citycode.startsWith('751')) {
